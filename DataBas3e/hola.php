@@ -1,1 +1,3 @@
-echo "hola"
+<php
+    echo accesskey=hola
+<?php>
