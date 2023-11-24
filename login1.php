@@ -9,7 +9,7 @@
     <form action="">
         <legend>
             <th>
-                <tr></tr>
+                <tr>Hola mundo</tr>
                 <tr></tr>
                 <tr></tr>
                 <tr></tr>
