@@ -1,3 +1,3 @@
 <php
-    echo accesskey=hola
+    echo accesskey=hola2
 <?php>
