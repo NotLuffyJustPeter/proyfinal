@@ -1,0 +1,21 @@
+/* Header */
+
+@font-face {
+    font-family: 'Cormorant_Infant';
+    src: url('../fonts/Cormorant_Infant/CormorantInfant-Light.ttf') format('truetype');
+}
+
+.header1{
+    font-family: 'Cormorant_Infant', sans-serif;
+    padding: 1 10px;
+}
+
+.logo{
+    margin: 0px;
+    width: 60px;
+    height: 50px;
+}
+
+a:hover{
+    background-color: #65646421; 
+}
