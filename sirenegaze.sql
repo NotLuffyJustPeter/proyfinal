@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 30-11-2023 a las 09:51:43
+-- Tiempo de generación: 02-12-2023 a las 21:05:10
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -53,6 +53,29 @@ INSERT INTO `inventario` (`Id_producto`, `nombre`, `descripcion`, `cantidad`, `p
 (7, 'Camiseta manga larga combinada terciopelo', 'Composición\r\n92% poliéster\r\n8% elastano\r\nPrincipal\r\n90% poliéster\r\n10% elastano', 4, 599, 'woman_blusa.jpg', 15, 'woman', 'blusas'),
 (8, 'Camiseta tirantes rib', 'Composición\r\n95% algodón\r\n5% elastano', 90, 299, 'man_camisa1.jpg', 60, 'men', 'camisas');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `usuarios`
+--
+
+CREATE TABLE `usuarios` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(255) NOT NULL,
+  `cuenta` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `pregunta_seleccionada` int(11) NOT NULL,
+  `respuesta_pregunta` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuarios`
+--
+
+INSERT INTO `usuarios` (`id`, `nombre`, `cuenta`, `email`, `pregunta_seleccionada`, `respuesta_pregunta`, `password`) VALUES
+(1, 'Alan Kaled', 'AKGO', 'alan22518prog@gmail.com', 2, 'Max', 'Fp9GLpvynVz7o+lW9xqBnw==');
+
 --
 -- Índices para tablas volcadas
 --
@@ -62,6 +85,22 @@ INSERT INTO `inventario` (`Id_producto`, `nombre`, `descripcion`, `cantidad`, `p
 --
 ALTER TABLE `inventario`
   ADD PRIMARY KEY (`Id_producto`);
+
+--
+-- Indices de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
