@@ -19,13 +19,24 @@
                 <form id="loginForm" action="login.php" method="post">
                     <div class="form-group">
                         <label for="cuenta">Cuenta:</label>
-                        <input type="text" class="form-control" id="cuenta" name="cuenta" required>
+                        <input type="text" class="form-control" id="cuenta" name="cuenta" value="<?php if(isset($_COOKIE["cuenta"])){ echo $_COOKIE["cuenta"];} ?>" required>
                     </div>
                     <div class="form-group">
                         <label for="password">Contraseña:</label>
-                        <input type="password" class="form-control" id="password" name="password" required>
+                        <input type="password" class="form-control" id="password" name="password" value="<?php if(isset($_COOKIE["password"])){ echo $_COOKIE["password"];} ?>" required>
                     </div>
+
+                    <div class="form-group captcha">
+                        <label for="captcha-input">Introduce el captcha</label>
+                        <div class="preview"></div>
+                        <div class="captcha-form">
+                            <input type="text" id="captcha-form" name="capt" placeholder="Introduce el captcha" required>
+                            <button class="captcha-refresh"><i class="fa fa-refresh"></i></button>
+                        </div>
+                    </div>
+
                     <input type="hidden" id="captcha-hidden" name="capt2" value="">
+
                     <p><input type="checkbox" name="remember" > Recordar usuario y password</p>
                     <button type="submit" class="btn btn-primary" id="login-btn">Iniciar Sesión</button>
                 </form>
@@ -70,10 +81,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             setcookie("cuenta","");
             setcookie("password","");
         }
-        echo "<script>Swal.fire('', '¡Iniciando sesión!', 'success')</script>";
         session_start();
         $_SESSION["cuenta"] = $cuenta;
-        header("Location: index.php");
+        echo "<script>
+                Swal.fire({
+                title: '',
+                text: '¡Iniciando sesión!',
+                icon: 'success',
+                confirmButtonText: 'OK'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = 'index.php';
+                }
+                });
+              </script>";
     } else {
         echo "<script>Swal.fire('Credenciales incorrectas o captcha inválido')</script>";
     }
@@ -81,11 +102,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if(!empty($_POST["remember"])){
         setcookie("cuenta",$_POST["cuenta"],time()+3600);
         setcookie("password",$_POST["password"],time()+3600);
-        echo "Cookies Set Successfuly";
     }else{
         setcookie("cuenta","");
         setcookie("password","");
-        echo "Cookies Not Set";
     }
 
     $conn->close();
