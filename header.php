@@ -44,10 +44,20 @@
             </ul>
           </li>
         </ul>
+        
         <form class="d-flex mt-3" role="search">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-success" type="submit">Search</button>
         </form>
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 position-absolute bottom-0 start-50 translate-middle-x navbar-nav-divider">
+          <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="login.php">Iniciar Sesion</a>
+          </li>
+          <li class="nav-item">
+              <center><a class="nav-link active" href="registro.php">Registrarse</a></center>  
+          </li>
+        </ul>
+
       </div>
     </div>
   </div>
