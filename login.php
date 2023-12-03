@@ -16,11 +16,14 @@
                 <form id="loginForm" action="login.php" method="post">
                     <div class="form-group">
                         <label for="cuenta">Cuenta:</label>
-                        <input type="text" class="form-control" id="cuenta" name="cuenta" required>
+                        <input type="text" class="form-control" id="cuenta" name="cuenta" value="<?php if(isset($_COOKIE["cuenta"])) {echo $_COOKIE["cuenta"]; } ?>" required>
                     </div>
                     <div class="form-group">
                         <label for="password">Contraseña:</label>
-                        <input type="password" class="form-control" id="password" name="password" required>
+                        <input type="password" class="form-control" id="password" name="password" value="<?php if(isset($_COOKIE["password"])) {echo $_COOKIE["password"]; } ?>" required>
+                    </div>
+                    <div class="form-group">
+                        <p><input type="checkbox" name="remember"> Recordar cuenta y password
                     </div>
                     <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
                 </form>
@@ -56,6 +59,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         echo "Inicio de sesión exitoso. Bienvenido, $nombre!";
     } else {
         echo "Credenciales incorrectas. Por favor, inténtalo de nuevo.";
+    }
+
+    if(!empty($_POST["remember"])){
+        setcookie("cuenta",$_POST["cuenta"],time()+3600);
+        setcookie("password",$_POST["password"],time()+3600);
+        echo "Cookies Set Successfuly";
+    }else{
+        setcookie("cuenta","");
+        setcookie("password","");
+        echo "Cookies Not Set";
     }
 
     $conn->close();
