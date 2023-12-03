@@ -8,52 +8,87 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="css/iniciar_sesion.css">
+    <style>
+        .caja__trasera-register{
+            width: 80%;
+        }
+
+        .caja__trasera-login{
+            width: 30%;
+        }
+        .formulario__register{
+            left: 320px;
+        }
+        .contenedor__login-register{
+            top: -225px;
+        }
+
+    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="card">
-            <h4>Registro</h4>
-            <div class="card-body">
-            <form id="registroForm" action="registro.php" method="post">
-                <div class="form-group">
-                    <label for="nombre">Nombre:</label>
-                    <input type="text" class="form-control" id="nombre" name="nombre" required>
-                </div>
-                 <div class="form-group">
-                    <label for="cuenta">Cuenta:</label>
-                    <input type="text" class="form-control" id="cuenta" name="cuenta" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Correo Electrónico:</label>
-                    <input type="email" class="form-control" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="preguntaSeleccionada">Pregunta de Seguridad:</label>
-                    <select class="form-control" id="preguntaSeleccionada" name="preguntaSeleccionada" required>
-                        <option value="1">Cual es el nombre de tu mejor amigo?</option>
-                        <option value="2">Cual es en nombre de tu mascota?</option>
-                        <option value="3">Cual es el nombre de tu cantante favorito?</option>
-                        <option value="4">Cual es tu personaje de ficción favorito?</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="respuestaPregunta">Respuesta de Seguridad:</label>
-                    <input type="text" class="form-control" id="respuestaPregunta" name="respuestaPregunta" required>
-                </div>
-                 <div class="form-group">
-                    <label for="password">Contraseña:</label>
-                    <input type="password" class="form-control" id="password" name="password" required>
-                </div>
-                <div class="form-group">
-                    <label for="confirmPassword">Repetir Contraseña:</label>
-                    <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
-                </div>
-                    <button type="submit" class="btn btn-primary">Registrarse</button>
+    <main>
+		<section class="regresar">
+			<a href="./index.php">
+				<i class=" fa-solid fa-arrow-left "></i>
+			</a>
+		</section>
+		<div class="contenedor__todo">
+			<div class="caja__trasera">
+				<div class="caja__trasera-login">
+					<h3>¿Ya tienes una cuenta?</h3>
+					<p>Inicia sesión para entrar a la página</p>
+					<button id="btn__iniciar-sesion"><a href="login.php">Iniciar Sesion</a></button>
+				</div>
+				<div class="caja__trasera-register">
+				</div>
+			</div>
+
+            <div class="contenedor__login-register">
+                <form id="registroForm" action="registro.php" method="post" class="formulario__register">
+                    <h2>Registro</h2>
+
+                    <div class="registrosl">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" class="form-control" id="nombre" name="nombre" required>
+
+                        <label for="cuenta">Cuenta:</label>
+                        <input type="text" class="form-control" id="cuenta" name="cuenta" required>
+                    </div>
+
+                    <div class="registrosl">
+                        <label for="email">Correo Electrónico:</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+
+                    <div class="registrosl">
+                        <label for="preguntaSeleccionada">Pregunta de Seguridad:</label>
+                        <select class="form-control" id="preguntaSeleccionada" name="preguntaSeleccionada" required>
+                            <option value="1">Cual es el nombre de tu mejor amigo?</option>
+                            <option value="2">Cual es en nombre de tu mascota?</option>
+                            <option value="3">Cual es el nombre de tu cantante favorito?</option>
+                            <option value="4">Cual es tu personaje de ficción favorito?</option>
+                        </select>
+                    </div>
+
+                    <div class="registrosl">
+                        <label for="respuestaPregunta">Respuesta de Seguridad:</label>
+                        <input type="text" class="form-control" id="respuestaPregunta" name="respuestaPregunta" required>
+                    </div>
+
+                    <div class="registrosl">
+                        <label for="password">Contraseña:</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    
+                        <label for="confirmPassword">Repetir Contraseña:</label>
+                        <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+                    </div>
+                    <center><button type="submit" class="btn btn-primary" style="margin-top:30px;">Registrarse</button></center> 
                 </form>
             </div>
         </div>
-    </div>
-
+    </main>
+    <script src="https://kit.fontawesome.com/673553f744.js" crossorigin="anonymous"></script>
     <script>
         $(document).ready(function () {
             $('#registroForm').submit(function () {
