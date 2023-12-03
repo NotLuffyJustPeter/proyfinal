@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <div class="container">
@@ -97,18 +98,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt_verificar->close();
 
     if ($count > 0) {
-        // El usuario ya existe, mostrar mensaje de error
-        echo "El usuario ya existe. Por favor, inicie sesión.";
+        echo '<script>
+                    Swal.fire({
+                        title: "Error al registrar",
+                        text: "Usuario ya existente",
+                        icon: "error",
+                        confirmButtonText: "Aceptar"
+                    });
+                </script>';
     } else {
         // El usuario no existe, realizar el registro
         $stmt_insertar = $conn->prepare("INSERT INTO usuarios (nombre, cuenta, email, pregunta_seleccionada, respuesta_pregunta, password) VALUES (?, ?, ?, ?, ?, ?)");
         $stmt_insertar->bind_param("ssssss", $nombre, $cuenta, $email, $preguntaSeleccionada, $respuestaPregunta, $encryptedPassword);
 
         if ($stmt_insertar->execute()) {
-            echo "Registro exitoso.";
+            // Registro exitoso
+            echo '<script>
+                    Swal.fire({
+                        title: "Registro exitoso",
+                        text: "¡El registro se ha completado con éxito!",
+                        icon: "success",
+                        confirmButtonText: "Aceptar"
+                    }).then(function() {
+                        window.location = "index.php";
+                    });
+                </script>';
         } else {
-            echo "Error al registrar: " . $stmt_insertar->error;
+            // Error al registrar
+            echo '<script>
+                    Swal.fire({
+                        title: "Error al registrar",
+                        text: "Hubo un error al procesar tu solicitud: ' . $stmt_insertar->error . '",
+                        icon: "error",
+                        confirmButtonText: "Aceptar"
+                    });
+                </script>';
         }
+
 
         $stmt_insertar->close();
     }

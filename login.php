@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-... (valor del hash) ..." crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+    <link rel="stylesheet" href="css/iniciar_sesion.css">
 </head>
 <body>
     <div class="container">
@@ -16,20 +19,22 @@
                 <form id="loginForm" action="login.php" method="post">
                     <div class="form-group">
                         <label for="cuenta">Cuenta:</label>
-                        <input type="text" class="form-control" id="cuenta" name="cuenta" value="<?php if(isset($_COOKIE["cuenta"])) {echo $_COOKIE["cuenta"]; } ?>" required>
+                        <input type="text" class="form-control" id="cuenta" name="cuenta" required>
                     </div>
                     <div class="form-group">
                         <label for="password">Contraseña:</label>
-                        <input type="password" class="form-control" id="password" name="password" value="<?php if(isset($_COOKIE["password"])) {echo $_COOKIE["password"]; } ?>" required>
+                        <input type="password" class="form-control" id="password" name="password" required>
                     </div>
-                    <div class="form-group">
-                        <p><input type="checkbox" name="remember"> Recordar cuenta y password
-                    </div>
-                    <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                    <input type="hidden" id="captcha-hidden" name="capt2" value="">
+                    <p><input type="checkbox" name="remember" > Recordar usuario y password</p>
+                    <button type="submit" class="btn btn-primary" id="login-btn">Iniciar Sesión</button>
                 </form>
             </div>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="js/login.js"></script>
 </body>
 </html>
 
@@ -37,6 +42,8 @@
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $cuenta = $_POST["cuenta"];
     $password = $_POST["password"];
+    $captcha = $_POST["capt"];
+    $captchaValue = $_POST["capt2"];
 
     $claveSecreta = "tu_clave_secreta";
 
@@ -55,10 +62,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $decryptedPassword = openssl_decrypt($encryptedPassword, 'aes-256-cbc', $claveSecreta, 0, $claveSecreta);
 
-    if ($password === $decryptedPassword) {
-        echo "Inicio de sesión exitoso. Bienvenido, $nombre!";
+    if ($password === $decryptedPassword && $captcha === $captchaValue) {
+        if(!empty($_POST["remember"])){
+            setcookie("cuenta",$_POST["cuenta"],time()+3600);
+            setcookie("password",$_POST["password"],time()+3600);
+        }else{
+            setcookie("cuenta","");
+            setcookie("password","");
+        }
+        echo "<script>Swal.fire('', '¡Iniciando sesión!', 'success')</script>";
+        session_start();
+        $_SESSION["cuenta"] = $cuenta;
+        header("Location: index.php");
     } else {
-        echo "Credenciales incorrectas. Por favor, inténtalo de nuevo.";
+        echo "<script>Swal.fire('Credenciales incorrectas o captcha inválido')</script>";
     }
 
     if(!empty($_POST["remember"])){
@@ -74,9 +91,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn->close();
 }
 ?>
-
-
-
-
-
-
