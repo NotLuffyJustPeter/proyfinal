@@ -1,3 +1,40 @@
+<?php
+    session_start();
+
+    // Función para generar el captcha
+    function generateCaptcha() {
+        $value = base64_encode(rand() * 1000000000);
+        $value = substr($value, 0, 5 + rand(0, 5));
+
+        // Guardar el valor del captcha en una sesión
+        $_SESSION['captcha_value'] = $value;
+    }
+
+    // Función para establecer el captcha en HTML
+    function setCaptcha() {
+        $captchaValue = $_SESSION['captcha_value'];
+
+        $fonts = ["cursive", "sans-serif", "serif", "monospace"];
+        $html = '';
+
+        for ($i = 0; $i < strlen($captchaValue); $i++) {
+            $char = $captchaValue[$i];
+            $rotate = -20 + rand(0, 30);
+            $font = $fonts[rand(0, count($fonts) - 1)];
+
+            $html .= "<span style='transform: rotate(${rotate}deg); font-family: ${font};'>${char}</span>";
+        }
+    }
+
+    // Iniciar el captcha
+    function initCaptcha() {
+        generateCaptcha();
+        setCaptcha();
+    }
+
+    // Llamada a la función de inicialización del captcha
+    initCaptcha();
+    ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -65,8 +102,6 @@
 </html>
 
 <?php
-session_start();
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $cuenta = $_POST["cuenta"];
     $password = $_POST["password"];
