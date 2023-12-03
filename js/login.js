@@ -36,7 +36,7 @@
     initCaptcha();
 
     document.querySelector("#login-btn").addEventListener("click", function(){
-        let inputCaptchaValue = document.querySelector(".   captcha-form input").value;
+        let inputCaptchaValue = document.querySelector(".captcha-form input").value;
         let hiddenCaptchaValue = document.getElementById("captcha-hidden").value;
     
         if (inputCaptchaValue === captchaValue) {
