@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,21 +12,34 @@
     <link rel="stylesheet" href="css/iniciar_sesion.css">
 </head>
 <body>
-    <div class="container">
-        <div class="card">
-            <h4>Iniciar Sesión</h4>
-            <div class="card-body">
-                <form id="loginForm" action="login.php" method="post">
-                    <div class="form-group">
-                        <label for="cuenta">Cuenta:</label>
-                        <input type="text" class="form-control" id="cuenta" name="cuenta" value="<?php if(isset($_COOKIE["cuenta"])){ echo $_COOKIE["cuenta"];} ?>" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Contraseña:</label>
-                        <input type="password" class="form-control" id="password" name="password" value="<?php if(isset($_COOKIE["password"])){ echo $_COOKIE["password"];} ?>" required>
-                    </div>
+	<main>
+		<section class="regresar">
+			<a href="./index.php">
+				<i class=" fa-solid fa-arrow-left "></i>
+			</a>
+		</section>
+		<div class="contenedor__todo">
+			<div class="caja__trasera">
+				<div class="caja__trasera-login">
+				</div>
 
-                    <div class="form-group captcha">
+				<div class="caja__trasera-register">
+					<h3>¿Aun no tienes cuenta?</h3>
+					<p>Registrate para que puedas iniciar sesión</p>
+					<button id="btn__registrarse"><a href="registro.php">Registrarse</a></button>
+				</div>
+			</div>
+
+			<div class="contenedor__login-register">
+				<form id="loginForm" action="login.php" method="post" class="formulario__login">
+                    <h2>Iniciar Sesion</h2>
+                    <label for="cuenta">Cuenta:</label>
+                    <input type="text" class="form-control" id="cuenta" name="cuenta" value="<?php if(isset($_COOKIE["cuenta"])){ echo $_COOKIE["cuenta"];} ?>" required>
+
+                    <label for="password">Contraseña:</label>
+                    <input type="password" class="form-control" id="password" name="password" value="<?php if(isset($_COOKIE["password"])){ echo $_COOKIE["password"];} ?>" required>
+
+                    <div class="captcha">
                         <label for="captcha-input">Introduce el captcha</label>
                         <div class="preview"></div>
                         <div class="captcha-form">
@@ -38,12 +51,14 @@
                     <input type="hidden" id="captcha-hidden" name="capt2" value="">
 
                     <p><input type="checkbox" name="remember" > Recordar usuario y password</p>
-                    <button type="submit" class="btn btn-primary" id="login-btn">Iniciar Sesión</button>
+                    <center><button type="submit" class="btn btn-primary" id="login-btn">Iniciar Sesión</button></center>
                 </form>
-            </div>
-        </div>
-    </div>
 
+			</div>
+
+		</div>
+	</main>
+    <script src="https://kit.fontawesome.com/673553f744.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="js/login.js"></script>
 </body>
