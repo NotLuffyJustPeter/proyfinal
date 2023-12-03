@@ -1,3 +1,9 @@
+<?php 
+//Ya inicio sesion
+  if(isset($_SESSION["cuenta"])){
+    $cuenta = $_SESSION["cuenta"];
+  }
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -49,9 +55,20 @@
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-success" type="submit">Search</button>
         </form>
+
+        <?php 
+        if(isset($_SESSION["cuenta"])){
+          if($cuenta == "admin"){?>
+            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+              <li class="nav-item activate"><a href="#" class="nav-link">Agregar productos</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">Editar productos</a></li>
+              <li class="nav-item"><a href="#" class="nav-link">Eliminar productos</a></li>
+            </ul>
+        <?php } 
+          }
+        ?>
+
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 position-absolute bottom-0 start-50 translate-middle-x navbar-nav-divider">
-          
-          
           <?php 
           //Ya inicio sesion
             if(isset($_SESSION["cuenta"])){
@@ -63,7 +80,6 @@
           <li class="nav-item">
               <center><a class="nav-link active red" href="cerrar_sesion.php">Cerrar Sesion</a></center>  
           </li>
-
           <?php }else { 
           //No ha iniciado sesion
           ?>
