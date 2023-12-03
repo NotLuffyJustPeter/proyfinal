@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-12-2023 a las 07:11:40
+-- Tiempo de generación: 03-12-2023 a las 21:33:34
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -66,18 +66,19 @@ CREATE TABLE `usuarios` (
   `email` varchar(255) NOT NULL,
   `pregunta_seleccionada` int(11) NOT NULL,
   `respuesta_pregunta` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+  `password` varchar(255) NOT NULL,
+  `intentos_fallidos` int(11) DEFAULT 0,
+  `cuenta_habilitada` tinyint(1) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nombre`, `cuenta`, `email`, `pregunta_seleccionada`, `respuesta_pregunta`, `password`) VALUES
-(1, 'Alan Kaled', 'AKGO', 'alan22518prog@gmail.com', 2, 'Max', 'Fp9GLpvynVz7o+lW9xqBnw=='),
-(3, 'Omar', 'Luck', 'reyesomar028@gmail.com', 1, 'Alan Kaled', '9MxrcsPP0A+UI7/wOX173A=='),
-(4, 'Daniela', 'Dany', 'dany23@gmial.com', 1, 'Noemi', 'RGJcyCJJBibboGHVuGWMzQ=='),
-(9, 'Omar Reyes', 'admin', 'admin@gmail.com', 1, 'Alan', 'Ql9oznRjxyc2wynVWbTJmg==');
+INSERT INTO `usuarios` (`id`, `nombre`, `cuenta`, `email`, `pregunta_seleccionada`, `respuesta_pregunta`, `password`, `intentos_fallidos`, `cuenta_habilitada`) VALUES
+(5, 'Alan Kaled', 'AKGO', 'alan22518prog@gmail.com', 2, 'max', '9MxrcsPP0A+UI7/wOX173A==', 0, 1),
+(6, 'Omar Reyes', 'ReyRamirez', 'luck@gmail.com', 1, 'Pedro', '3GQLH601iMtrCXTruZrKFg==', 0, 1),
+(7, 'Prueba', 'prueba', 'prueba@gmail.com', 1, 'max', '9MxrcsPP0A+UI7/wOX173A==', 2, 0);
 
 --
 -- Índices para tablas volcadas
@@ -103,7 +104,7 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
