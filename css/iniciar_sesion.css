@@ -1,0 +1,42 @@
+.captcha{
+    margin: 15px 0px;
+}
+
+.captcha .preview{
+    color: #555;
+    width: 100%;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    letter-spacing: 8px;
+    border: 1px  solid #888;
+    font-family: "monospace";
+}
+
+.captcha .preview span{
+    display: inline-block;
+    user-select: none;
+}
+
+.captcha .captcha-form{
+    display: flex;
+}
+
+.captcha .captcha-form input{
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #888;
+}
+
+.captcha .captcha-form .captcha-refresh{
+    width: 40px;
+    border: none;
+    outline: none;
+    background: #888;
+    color: #eee;
+    cursor: pointer;
+}
+
+#captcha-false{
+    
+}

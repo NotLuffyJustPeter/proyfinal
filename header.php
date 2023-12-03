@@ -50,12 +50,32 @@
           <button class="btn btn-success" type="submit">Search</button>
         </form>
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3 position-absolute bottom-0 start-50 translate-middle-x navbar-nav-divider">
+          
+          
+          <?php 
+          //Ya inicio sesion
+            if(isset($_SESSION["cuenta"])){
+               $cuenta = $_SESSION["cuenta"];
+          ?>
           <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="login.php">Iniciar Sesion</a>
+              <center><a class="nav-link active" aria-current="page" href="login.php"><?php echo $cuenta; ?></a></center>
+          </li>
+          <li class="nav-item">
+              <center><a class="nav-link active red" href="cerrar_sesion.php">Cerrar Sesion</a></center>  
+          </li>
+
+          <?php }else { 
+          //No ha iniciado sesion
+          ?>
+          <li class="nav-item">
+              <center><a class="nav-link active" aria-current="page" href="login.php">Iniciar Sesion</a></center>
           </li>
           <li class="nav-item">
               <center><a class="nav-link active" href="registro.php">Registrarse</a></center>  
           </li>
+          <?php } ?>
+
+
         </ul>
 
       </div>
