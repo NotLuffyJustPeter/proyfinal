@@ -50,6 +50,8 @@
 </html>
 
 <?php
+session_start();
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $cuenta = $_POST["cuenta"];
     $password = $_POST["password"];
@@ -64,24 +66,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         die("Error de conexión: " . $conn->connect_error);
     }
 
-    $stmt_verificar = $conn->prepare("SELECT nombre, password FROM usuarios WHERE cuenta = ?");
+    $stmt_verificar = $conn->prepare("SELECT nombre, password, Intentos_fallidos, cuenta_habilitada FROM usuarios WHERE cuenta = ?");
     $stmt_verificar->bind_param("s", $cuenta);
     $stmt_verificar->execute();
-    $stmt_verificar->bind_result($nombre, $encryptedPassword);
+    $stmt_verificar->bind_result($nombre, $encryptedPassword, $intentosFallidos, $cuentaHabilitada);
     $stmt_verificar->fetch();
     $stmt_verificar->close();
 
     $decryptedPassword = openssl_decrypt($encryptedPassword, 'aes-256-cbc', $claveSecreta, 0, $claveSecreta);
 
-    if ($password === $decryptedPassword && $captcha === $captchaValue) {
+    if ($cuentaHabilitada && $password === $decryptedPassword && $captcha === $captchaValue) {
+        // Restablecer intentos fallidos en caso de inicio de sesión exitoso
+        $stmt_reset_intentos = $conn->prepare("UPDATE usuarios SET Intentos_fallidos = 0 WHERE cuenta = ?");
+        $stmt_reset_intentos->bind_param("s", $cuenta);
+        $stmt_reset_intentos->execute();
+        $stmt_reset_intentos->close();
+
+        // Restablecer la cuenta bloqueada
+        $stmt_reset_cuenta = $conn->prepare("UPDATE usuarios SET cuenta_habilitada = 1 WHERE cuenta = ?");
+        $stmt_reset_cuenta->bind_param("s", $cuenta);
+        $stmt_reset_cuenta->execute();
+        $stmt_reset_cuenta->close();
+
         if(!empty($_POST["remember"])){
             setcookie("cuenta",$_POST["cuenta"],time()+3600);
             setcookie("password",$_POST["password"],time()+3600);
-        }else{
+        } else {
             setcookie("cuenta","");
             setcookie("password","");
         }
-        session_start();
+
         $_SESSION["cuenta"] = $cuenta;
         echo "<script>
                 Swal.fire({
@@ -96,13 +110,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 });
               </script>";
     } else {
-        echo "<script>Swal.fire('Credenciales incorrectas o captcha inválido')</script>";
+        // Incrementar el contador de intentos fallidos
+        $intentosFallidos++;
+
+        // Bloquear la cuenta al tercer intento fallido
+        if ($intentosFallidos >= 3) {
+            $stmt_bloquear_cuenta = $conn->prepare("UPDATE usuarios SET cuenta_habilitada = 0 WHERE cuenta = ?");
+            $stmt_bloquear_cuenta->bind_param("s", $cuenta);
+            $stmt_bloquear_cuenta->execute();
+            $stmt_bloquear_cuenta->close();
+
+            echo "<script>
+                    Swal.fire({
+                    title: 'Cuenta Bloqueada',
+                    text: 'Su cuenta ha sido bloqueada. Puede recuperar su contraseña.',
+                    icon: 'warning',
+                    confirmButtonText: 'OK'
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = 'recuperarpassword.php';
+                    }
+                    });
+                  </script>";
+        } else {
+            // Actualizar el contador de intentos fallidos
+            $stmt_actualizar_intentos = $conn->prepare("UPDATE usuarios SET Intentos_fallidos = ? WHERE cuenta = ?");
+            $stmt_actualizar_intentos->bind_param("is", $intentosFallidos, $cuenta);
+            $stmt_actualizar_intentos->execute();
+            $stmt_actualizar_intentos->close();
+
+            echo "<script>Swal.fire('Credenciales incorrectas o captcha inválido')</script>";
+        }
     }
 
     if(!empty($_POST["remember"])){
         setcookie("cuenta",$_POST["cuenta"],time()+3600);
         setcookie("password",$_POST["password"],time()+3600);
-    }else{
+    } else {
         setcookie("cuenta","");
         setcookie("password","");
     }
