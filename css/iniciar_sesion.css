@@ -129,7 +129,6 @@ main{
 	padding: 10px 20px;
 	display: flex;
 	justify-content: center;
-	background-filter:blur(10px);
 	background-color: rgba(173, 173, 173, 0.364);
 }
 
