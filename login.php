@@ -19,19 +19,11 @@
                 <form id="loginForm" action="login.php" method="post">
                     <div class="form-group">
                         <label for="cuenta">Cuenta:</label>
-                        <input type="text" class="form-control" id="cuenta" name="cuenta" value="<?php if(isset($_COOKIE["cuenta"])){ echo $_COOKIE["cuenta"];} ?>" required>
+                        <input type="text" class="form-control" id="cuenta" name="cuenta" required>
                     </div>
                     <div class="form-group">
                         <label for="password">Contraseña:</label>
-                        <input type="password" class="form-control" id="password" name="password" value="<?php if(isset($_COOKIE["password"])){ echo $_COOKIE["password"];} ?>" required>
-                    </div>
-                    <div class="form-group captcha">
-                        <label for="captcha-input">Captcha</label>
-                        <div class="preview"></div>
-                        <div class="captcha-form">
-                            <input type="text" id="captcha-form" name="capt" placeholder="Introduce el texto" required>
-                            <button class="captcha-refresh"><i class="fa fa-refresh" aria-hidden="true"></i></button>
-                        </div>
+                        <input type="password" class="form-control" id="password" name="password" required>
                     </div>
                     <input type="hidden" id="captcha-hidden" name="capt2" value="">
                     <p><input type="checkbox" name="remember" > Recordar usuario y password</p>
@@ -84,6 +76,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         header("Location: index.php");
     } else {
         echo "<script>Swal.fire('Credenciales incorrectas o captcha inválido')</script>";
+    }
+
+    if(!empty($_POST["remember"])){
+        setcookie("cuenta",$_POST["cuenta"],time()+3600);
+        setcookie("password",$_POST["password"],time()+3600);
+        echo "Cookies Set Successfuly";
+    }else{
+        setcookie("cuenta","");
+        setcookie("password","");
+        echo "Cookies Not Set";
     }
 
     $conn->close();
