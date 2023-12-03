@@ -54,19 +54,24 @@
         </div>
     </div>
 
-<script>
-    $(document).ready(function () {
-        $('#registroForm').submit(function () {
-            var password = $('#password').val();
-            var confirmPassword = $('#confirmPassword').val();
+    <script>
+        $(document).ready(function () {
+            $('#registroForm').submit(function () {
+                var password = $('#password').val();
+                var confirmPassword = $('#confirmPassword').val();
 
-            if (password !== confirmPassword) {
-                alert('Las contraseñas no coinciden.');
-                return false;
-            }
+                if (password !== confirmPassword) {
+                    Swal.fire({
+                        title: "Error al registrar",
+                        text: "Las contraseñas no coinciden",
+                        icon: "error",
+                        confirmButtonText: "Aceptar"
+                    });
+                    return false;
+                }
+            });
         });
-    });
-</script>
+    </script>
 </body>
 </html>
 
