@@ -2,7 +2,6 @@
     font-family: 'Cormorant_Infant';
     src: url('../fonts/Cormorant_Infant/CormorantInfant-Light.ttf') format('truetype');
 } 
-
 body{
     margin-top: 120px;
     display: flex;
@@ -21,7 +20,7 @@ body{
 .overlay {
     width: 700px;
     height: 500px;
-    background-color: rgba(0, 0, 0, 0.5); /* Color gris semitransparente */
+    background-color: rgba(0, 0, 0, 0.7); /* Color gris semitransparente */
     padding: 100px;
     padding-top: 50px;
 }
@@ -37,10 +36,14 @@ body{
 #contacto input[type="email"]{
     width: 95%;
     border: 1px solid #ccc;
-    background: #FFF;
+    background: transparent;
     margin-top: 3px;
     margin-bottom: 20px;
     padding: 10px;
+    font-size: 1.3rem;
+    color: #FFF;
+    font-family: sans-serif;
+    font-weight: 500;
 }
 
 #contacto textarea{
@@ -48,10 +51,16 @@ body{
     height: 80px;
     width: 95%;
     border: 1px solid #ccc;
-    background: #FFF;
+    background: transparent;
     margin-top: 3px;
     margin-bottom: 20px;
     padding: 10px;
+    color: #FFF;
+    font-family: sans-serif;
+    font-weight: 500;
+    font-size: 1.3rem;
+
+
 }
 
 #contacto input[type="text"]:hover,

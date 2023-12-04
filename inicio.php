@@ -91,11 +91,21 @@
 
     <h1 class="subtitulo1">W &nbsp&nbspO &nbsp&nbspM &nbsp&nbspA &nbsp&nbspN</h1>
     <div class="bloque4">
-        <img src="imagenes/woman_pantalon.jpg" alt="" class="cat b3 efecto1">
-        <img src="imagenes/woman_blusa.jpg" alt="" class="cat b3 efecto1">
-        <img src="imagenes/woman_sueter.jpg" alt="" class="cat b3 efecto1">
-        <img src="imagenes/woman_chamarra.jpg" alt="" class="cat b3 efecto1">
-        <img src="imagenes/woman_vestido.jpg" alt="" class="cat b3 efecto1">
+      <div class="zoom">
+        <img src="imagenes/woman_pantalon.jpg" >
+      </div>
+      <div class="zoom">
+        <img src="imagenes/woman_blusa.jpg" >
+      </div>
+      <div class="zoom">
+        <img src="imagenes/woman_sueter.jpg" >
+      </div>
+      <div class="zoom">
+        <img src="imagenes/woman_chamarra.jpg" >
+      </div>
+      <div class="zoom">
+        <img src="imagenes/woman_vestido.jpg" >
+      </div>
 
         <h4>Pantalones</h4>
         <h4>Blusas</h4>
@@ -108,11 +118,21 @@
         <div class="blanco"></div>
         <div class="blanco"></div>
         <div class="blanco"></div>
-        <img src="imagenes/man_camisa.jpg" alt="" class="cat b3 efecto1">
-        <img src="imagenes/man_camisa_mc.jpg" alt="" class="cat b3 efecto1">
-        <img src="imagenes/man_chamarra.jpg" alt="" class="cat b3 efecto1">
-        <img src="imagenes/man_pantalon.jpg" alt="" class="cat b3 efecto1">
-        <img src="imagenes/man_sudadera.jpg" alt="" class="cat b3 efecto1">
+        <div class="zoom">
+          <img src="imagenes/man_camisa.jpg" >
+        </div>
+        <div class="zoom">
+          <img src="imagenes/man_camisa_mc.jpg" >
+        </div>
+        <div class="zoom">
+          <img src="imagenes/man_chamarra.jpg" >
+        </div>
+        <div class="zoom">
+          <img src="imagenes/man_pantalon.jpg">
+        </div>
+        <div class="zoom">
+          <img src="imagenes/man_sudadera.jpg" >
+        </div>
         <div class="blanco"></div>
         <div class="blanco"></div>
         <div class="blanco"></div>
