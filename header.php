@@ -39,10 +39,34 @@
                       <div style="font-size:17px;">0</div>
                     </div>
                     <?php 
+                //Ya inicio sesion
+                if(isset($_SESSION["cuenta"])){
+                $cuenta = $_SESSION["cuenta"];
+                ?>
+                <div class="dropdown">
+                        <button class="dropbtn"><i class="fa-solid fa-user" style="color: #000000; font-size:15px;"></i><?php echo '&nbsp' . $cuenta; ?></button>
+                        <div class="dropdown-content">
+                            <a id="menu1" href="cerrar_sesion.php">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                    <!-- Nombre de usuario e inicio de sesion -->
+                    <?php }else{
+                      ?>
+                      <div class="dropdown">
+                            <button class="dropbtn"><i class="fa-regular fa-circle-user" style="color: #000000; font-size:28px;"></i></button>
+                            <div class="dropdown-content">
+                                <a id="menu1" href="login.php">Iniciar Sesión</a>
+                                <a href="registro.php">Registrarse</a>
+                            </div>
+                        </div>
+                      <?php
+                    } ?>
+                    <!-- Funciones de administrador -->
+                    <?php 
                     if(isset($_SESSION["cuenta"])){
                       if($cuenta == "admin"){?>
                       <div class="dropdown">
-                          <button class="dropbtn">Admin</button>
+                          <button class="dropbtn"> Control </button>
                           <div class="dropdown-content">
                               <a id="menu1" href="a.php">Agregar productos</a>
                               <a id="menu1" href="c.php">Editar productos</a>
@@ -52,28 +76,6 @@
                     <?php } 
                       }
                     ?>
-                    <?php 
-                //Ya inicio sesion
-                if(isset($_SESSION["cuenta"])){
-                $cuenta = $_SESSION["cuenta"];
-                ?>
-                <div class="dropdown">
-                        <button class="dropbtn"><i class="fa-solid fa-user" style="color: #000000; font-size:25px;"></i><?php echo $cuenta; ?></button>
-                        <div class="dropdown-content">
-                            <a id="menu1" href="cerrar_sesion.php">Cerrar Sesión</a>
-                        </div>
-                    </div>
-                <?php }else{
-                  ?>
-                  <div class="dropdown">
-                        <button class="dropbtn"><i class="fa-regular fa-circle-user" style="color: #000000; font-size:28px;"></i></button>
-                        <div class="dropdown-content">
-                            <a id="menu1" href="login.php">Iniciar Sesión</a>
-                            <a href="registro.php">Registrarse</a>
-                        </div>
-                    </div>
-                  <?php
-                } ?>
                 </nav>
             </div>
         </div>
