@@ -26,7 +26,7 @@
 
     </style>
 </head>
-<body style="margin-top:140;">
+<body>
     <main>
 		<section class="regresar">
 			<a href="./index.php">
