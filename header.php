@@ -44,9 +44,9 @@
                       <div class="dropdown">
                           <button class="dropbtn">Admin</button>
                           <div class="dropdown-content">
-                              <a id="menu1" href="altastienda.php">Agregar productos</a>
-                              <a id="menu1" href="cambiostienda.php">Editar productos</a>
-                              <a id="menu1" href="bajastienda.php">Eliminar productos</a>
+                              <a id="menu1" href="a.php">Agregar productos</a>
+                              <a id="menu1" href="c.php">Editar productos</a>
+                              <a id="menu1" href="b.php">Eliminar productos</a>
                           </div>
                       </div>
                     <?php } 

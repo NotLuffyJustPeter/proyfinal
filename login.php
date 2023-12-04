@@ -196,15 +196,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "<script>Swal.fire('Credenciales incorrectas o captcha inválido')</script>";
         }
     }
-
-    if(!empty($_POST["remember"])){
-        setcookie("cuenta",$_POST["cuenta"],time()+3600);
-        setcookie("password",$_POST["password"],time()+3600);
-    } else {
-        setcookie("cuenta","");
-        setcookie("password","");
-    }
-
     $conn->close();
 }
 ?>

@@ -60,7 +60,6 @@ if ($dataResult) {
                     <summary>Descripción</summary>
                     <p><?php echo $descripcionE ?></p>
                 </details>
-                <button class="buy"><i class="fa-solid fa-plus" style="color: #080808;"></i></button>
             </div>
         <?php
         }
