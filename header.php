@@ -42,7 +42,7 @@
                     if(isset($_SESSION["cuenta"])){
                       if($cuenta == "admin"){?>
                       <div class="dropdown">
-                          <button class="dropbtn">Admin</button>
+                          <button class="dropbtn"> Control de la tienda </button>
                           <div class="dropdown-content">
                               <a id="menu1" href="altastienda.php">Agregar productos</a>
                               <a id="menu1" href="cambiostienda.php">Editar productos</a>
@@ -58,7 +58,7 @@
                 $cuenta = $_SESSION["cuenta"];
                 ?>
                 <div class="dropdown">
-                        <button class="dropbtn"><i class="fa-solid fa-user" style="color: #000000; font-size:25px;"></i><?php echo $cuenta; ?></button>
+                        <button class="dropbtn"><i class="fa-solid fa-user" style="color: #000000; font-size:25px;"></i><?php echo ' ' . $cuenta; ?></button>
                         <div class="dropdown-content">
                             <a id="menu1" href="cerrar_sesion.php">Cerrar Sesión</a>
                         </div>
