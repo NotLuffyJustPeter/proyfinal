@@ -53,13 +53,11 @@ if ($dataResult) {
                     ?>
 
                 </p>
-                <button class="editar-button" onclick="editarProducto(<?php echo $id; ?>)">Editar Producto <?php echo $id ?></button>
-                <div id="editarP"></div>
-
                 <details>
                     <summary>Descripción</summary>
                     <p><?php echo $descripcionE ?></p>
                 </details>
+                <button class="editar-button" onclick="editarProducto(<?php echo $id; ?>)">Editar Producto <?php echo $id ?></button>
             </div>
         <?php
         }

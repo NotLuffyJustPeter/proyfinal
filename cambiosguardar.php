@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nombreEditar = $_POST["nombre"];
     $precioEditar = $_POST["precio"];
     $imagen = $_FILES["imagen"]["name"];
-    $existenciaEditar = $_POST["existencia"];
+    $existenciaEditar = $_POST["cantidad"];
     $descuentoEditar = $_POST["descuento"];
     $descripcionEditar = $_POST["descripcion"];
     $categoriaEditar = $_POST["categoria"];
@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $actualizarConsulta->bind_param("sdiissssi", $nombreEditar, $precioEditar, $existenciaEditar, $descuentoEditar, $descripcionEditar, $categoriaEditar, $subcategoriaEditar, $imagen, $idProducto);
 
     if ($actualizarConsulta->execute()) {
-        header("Location: tienda.php");
+        header("Location: c.php");
         exit(); 
     } else {
         echo "Error al guardar cambios: " . $actualizarConsulta->error;

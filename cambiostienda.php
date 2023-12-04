@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $consultaImagen->bind_param("i", $idProducto);
         $consultaImagen->execute();
         $resultadoImagen = $consultaImagen->get_result();
-        $imagenAntigua = $resultadoImagen->fetch_assoc()['imagen'];
+        $imagenAntigua = $resultadoImagen->fetch_assoc()['imagen']['name'];
         $imagen = $imagenAntigua;
         $consultaImagen->close();
     }
@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if ($actualizarConsulta->execute()) {
         echo "Cambios guardados correctamente.";
-        header("Location: tienda.php");  // Redirigir después de guardar cambios
+        header("Location: tienda.php");  
     } else {
         echo "Error al guardar cambios: " . $actualizarConsulta->error;
     }
@@ -104,7 +104,11 @@ if (isset($_GET['id'])) {
                 <details>
                     <summary>Descripción</summary>
                     <input type="text" name="descripcion" placeholder="Descripcion" value="<?php echo $productoEditar['descripcion']; ?>" required><br>
-                    <input type="text" name="categoria" placeholder="Categoria" value="<?php echo $productoEditar['categoria']; ?>" required>
+                    <label for="categoria">Categoría:</label>
+                    <select name="categoria" id="categoria" required>
+                        <option value="men">Men</option>
+                        <option value="woman">Women</option>
+                    </select><br>
                     <input type="text" name="subcategoria" placeholder="Subcategoria" value="<?php echo $productoEditar['subcategoria']; ?>" required>
                 </details>
                 <button type="submit">Guardar Cambios</button><br>
