@@ -2,10 +2,10 @@
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 03-12-2023 a las 21:33:34
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.2.4
+-- Host: 127.0.0.1
+-- Generation Time: Dec 04, 2023 at 04:42 AM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `sirenegaze`
+-- Database: `sirenegaze`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `inventario`
+-- Table structure for table `inventario`
 --
 
 CREATE TABLE `inventario` (
@@ -40,7 +40,7 @@ CREATE TABLE `inventario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `inventario`
+-- Dumping data for table `inventario`
 --
 
 INSERT INTO `inventario` (`Id_producto`, `nombre`, `descripcion`, `cantidad`, `precio`, `imagen`, `descuento`, `categoria`, `subcategoria`) VALUES
@@ -56,7 +56,7 @@ INSERT INTO `inventario` (`Id_producto`, `nombre`, `descripcion`, `cantidad`, `p
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Table structure for table `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -72,39 +72,46 @@ CREATE TABLE `usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `usuarios`
+-- Dumping data for table `usuarios`
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `cuenta`, `email`, `pregunta_seleccionada`, `respuesta_pregunta`, `password`, `intentos_fallidos`, `cuenta_habilitada`) VALUES
 (5, 'Alan Kaled', 'AKGO', 'alan22518prog@gmail.com', 2, 'max', '9MxrcsPP0A+UI7/wOX173A==', 0, 1),
 (6, 'Omar Reyes', 'ReyRamirez', 'luck@gmail.com', 1, 'Pedro', '3GQLH601iMtrCXTruZrKFg==', 0, 1),
-(7, 'Prueba', 'prueba', 'prueba@gmail.com', 1, 'max', '9MxrcsPP0A+UI7/wOX173A==', 2, 0);
+(7, 'Prueba', 'prueba', 'prueba@gmail.com', 1, 'max', '9MxrcsPP0A+UI7/wOX173A==', 2, 0),
+(8, 'Pedro Delgado', '1234567890', 'pedroromangd@gmail.com', 2, 'Figaro', 'RFmv93BnzE5IasCs6WrM6g==', 0, 1);
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `inventario`
+-- Indexes for table `inventario`
 --
 ALTER TABLE `inventario`
   ADD PRIMARY KEY (`Id_producto`);
 
 --
--- Indices de la tabla `usuarios`
+-- Indexes for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `usuarios`
+-- AUTO_INCREMENT for table `inventario`
+--
+ALTER TABLE `inventario`
+  MODIFY `Id_producto` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
