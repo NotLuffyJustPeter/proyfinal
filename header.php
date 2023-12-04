@@ -60,9 +60,9 @@
         if(isset($_SESSION["cuenta"])){
           if($cuenta == "admin"){?>
             <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-              <li class="nav-item activate"><a href="#" class="nav-link">Agregar productos</a></li>
-              <li class="nav-item"><a href="#" class="nav-link">Editar productos</a></li>
-              <li class="nav-item"><a href="#" class="nav-link">Eliminar productos</a></li>
+              <li class="nav-item activate"><a href="a.php" class="nav-link">Agregar productos</a></li>
+              <li class="nav-item"><a href="c.php" class="nav-link">Editar productos</a></li>
+              <li class="nav-item"><a href="b.php" class="nav-link">Eliminar productos</a></li>
             </ul>
         <?php } 
           }
