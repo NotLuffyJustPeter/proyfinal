@@ -45,3 +45,19 @@
     font-family: 'Cormorant_Infant', sans-serif;
 
 }
+
+.estiloeditar{
+    font-size: 18px;
+    position: absolute;
+	top: 50%;
+	left: 56%;
+	transform: translate(-50%, -50%);
+}
+
+/* .body{
+    background-image: url(../imagenes/editar.jpg);
+    background-size: cover;
+    background-repeat: no-repeat; 
+    background-position: center; 
+    background-attachment: fixed;
+} */

@@ -19,7 +19,7 @@
     }
 ?>
 
-<div class="tienda" style="display: grid; grid-template-columns: repeat(4, 1fr); margin: 100 50px;">
+<div class="tienda estiloeditar" style="display: grid; grid-template-columns: repeat(4, 1fr); margin: 100 50px;">
     <form id="formularioAgregar" method="post" enctype="multipart/form-data" action="altastienda.php">
         <div class="contenedor">
             <!-- <h5 style="font-weight: bold;"><?php // echo 'Id del Producto' ?></h5>
