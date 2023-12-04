@@ -40,7 +40,6 @@
                     </div>
                     <?php 
                 //Ya inicio sesion
-                <!-- Nombre de usuario e inicio de sesion -->
                 if(isset($_SESSION["cuenta"])){
                 $cuenta = $_SESSION["cuenta"];
                 ?>
