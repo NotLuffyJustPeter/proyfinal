@@ -38,7 +38,11 @@
             <details>
                 <summary>Descripción</summary>
                 <input type="text" name="descripcion" placeholder="Descripcion" required><br>
-                <input type="text" name="categoria" placeholder="Categoria" required>
+                <label for="categoria">Categoría:</label>
+                <select name="categoria" id="categoria" required>
+                    <option value="men">Men</option>
+                    <option value="women">Women</option>
+                </select><br>
                 <input type="text" name="subcategoria" placeholder="Subcategoria" required >
             </details>
             <button type="submit">Agregar Producto</button><br>
