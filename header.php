@@ -29,8 +29,8 @@
                         <button class="dropbtn">Tienda</button>
                         <div class="dropdown-content">
                             <a id="menu1" href="woman.php">Woman</a>
-                            <a href="men.php">Men</a>
-                            <a href="tienda.php">Todos</a>
+                            <a id="menu1" href="men.php">Men</a>
+                            <a id="menu1" href="tienda.php">Todos</a>
                         </div>
                     </div>
                     
@@ -44,9 +44,9 @@
                       <div class="dropdown">
                           <button class="dropbtn">Admin</button>
                           <div class="dropdown-content">
-                              <a id="#" href="woman.php">Agregar productos</a>
-                              <a href="#">Editar productos</a>
-                              <a href="#">Eliminar productos</a>
+                              <a id="menu1" href="altastienda.php">Agregar productos</a>
+                              <a id="menu1" href="cambiostienda.php">Editar productos</a>
+                              <a id="menu1" href="bajastienda.php">Eliminar productos</a>
                           </div>
                       </div>
                     <?php } 
