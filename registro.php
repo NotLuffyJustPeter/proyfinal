@@ -1,6 +1,3 @@
-<?php
-    include 'header.php'
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -184,8 +181,4 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $conn->close();
 }
-?>
-
-<?php
-    include 'footer.php'
 ?>
