@@ -43,13 +43,13 @@
                 if(isset($_SESSION["cuenta"])){
                 $cuenta = $_SESSION["cuenta"];
                 ?>
-                <div class="dropdown" style="display: flex; flex-direction: row; align-items: center;">
-                    <button class="dropbtn icono"><i class="fa-solid fa-user" style="color: #000000; font-size:18px;"></i><?php echo '&nbsp' . $cuenta; ?></button>
-                    <div class="dropdown-content">
-                        <a id="menu1" href="cerrar_sesion.php">Cerrar Sesión</a>
-                    </div>
+                <div class="dropdown display:flex: flex-direction:row; align-content: center;">
+                        <button class="dropbtn icono"><i class="fa-solid fa-user" style="color: #000000; font-size:18px;"></i><?php echo '&nbsp' . $cuenta; ?></button>
+                        <div class="dropdown-content">
+                            <a id="menu1" href="cerrar_sesion.php">Cerrar Sesión</a>
+                        </div>
                 </div>
-
+                    <!-- Nombre de usuario e inicio de sesion -->
                     <?php }else{
                       ?>
                       <div class="dropdown icono">
@@ -68,9 +68,9 @@
                       <div class="dropdown">
                           <button class="dropbtn"> Control </button>
                           <div class="dropdown-content">
-                              <a id="menu1" href="a.php">Agregar productos</a>
-                              <a id="menu1" href="c.php">Editar productos</a>
-                              <a id="menu1" href="b.php">Eliminar productos</a>
+                              <a id="menu1" href="altastienda.php">Agregar productos</a>
+                              <a id="menu1" href="cambiostienda.php">Editar productos</a>
+                              <a id="menu1" href="bajastienda.php">Eliminar productos</a>
                           </div>
                       </div>
                     <?php } 
