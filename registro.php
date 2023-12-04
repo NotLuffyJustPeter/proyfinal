@@ -47,7 +47,7 @@
             <div class="contenedor__login-register">
                 <form id="registroForm" action="registro.php" method="post" class="formulario__register">
                     <h2>Registro</h2>
-
+                    
                     <div class="registrosl">
                         <label for="nombre">Nombre:</label>
                         <input type="text" class="form-control" id="nombre" name="nombre" required>
