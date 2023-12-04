@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/testimonios.css">
     <link rel="stylesheet" href="css/acercade.css">
+    <link rel="icon" sizes="180x180" href="imagenes/logoic.ico">
 </head>
 <body>
 <?php include("header.php") ?> 

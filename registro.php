@@ -9,6 +9,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link rel="stylesheet" href="css/iniciar_sesion.css">
+    <link rel="icon" sizes="180x180" href="imagenes/logoic.ico">
     <style>
         .caja__trasera-register{
             width: 80%;

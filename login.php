@@ -1,3 +1,4 @@
+<link rel="icon" sizes="180x180" href="imagenes/logoic.ico">
 <?php
     session_start();
 

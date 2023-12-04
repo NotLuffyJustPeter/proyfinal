@@ -2,6 +2,7 @@
 <header>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="css/styt.css">
+    <!-- <link rel="icon" sizes="180x180" href="imagenes/logoic.ico"> -->
 </header>
 <?php
 require 'header.php';
