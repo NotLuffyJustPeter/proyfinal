@@ -41,7 +41,7 @@
                 <label for="categoria">Categoría:</label>
                 <select name="categoria" id="categoria" required>
                     <option value="men">Men</option>
-                    <option value="women">Women</option>
+                    <option value="woman">Women</option>
                 </select><br>
                 <input type="text" name="subcategoria" placeholder="Subcategoria" required >
             </details>
