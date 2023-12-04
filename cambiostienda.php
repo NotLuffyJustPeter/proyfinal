@@ -61,11 +61,13 @@ if (isset($_GET['id'])) {
                 <details>
                     <summary>Descripción</summary>
                     <input type="text" name="descripcion" placeholder="Descripcion" value="<?php echo $productoEditar['descripcion']; ?>" required><br>
+
                     <label for="categoria">Categoría:</label>
                     <select name="categoria" id="categoria" required>
-                        <option value="men">Men</option>
-                        <option value="woman">Women</option>
+                        <option value="men" <?php echo ($productoEditar['categoria'] == 'men') ? 'selected' : ''; ?>>Men</option>
+                        <option value="woman" <?php echo ($productoEditar['categoria'] == 'woman') ? 'selected' : ''; ?>>Women</option>
                     </select><br>
+
                     <input type="text" name="subcategoria" placeholder="Subcategoria" value="<?php echo $productoEditar['subcategoria']; ?>" required>
                 </details>
                 <button type="submit">Guardar Cambios</button><br>
