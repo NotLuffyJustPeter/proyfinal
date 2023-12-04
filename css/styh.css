@@ -50,8 +50,8 @@ a:hover{
     color: black;
 }
 
-.menu1{
-    padding: 20px;
+.icono{
+    padding-left: 15px;
 }
 
 #header1{
@@ -86,12 +86,32 @@ a:hover{
 }
 
 #menu{
-    width: 750px;
+    /* Entre mas grande el width mas espacio entre los elementos */
+    width: 700px;
     display: flex;
     flex-direction:row;
     justify-content:space-around;
     align-items:center;
 }
+
+
+/* Media query para pantallas con un ancho mínimo de 600 píxeles */
+@media screen and (min-width: 1270px) {
+    #menu{
+        /* Entre mas grande el width mas espacio entre los elementos */
+        width: 700px;
+    }
+}
+
+/* Media query para pantallas con un ancho mínimo de 900 píxeles */
+@media screen and (min-width: 1350px) {
+    #menu{
+        /* Entre mas grande el width mas espacio entre los elementos */
+        width: 1030px;
+        
+    }
+}
+
 
 /* combinator */
 .encabezado ~ nav{
@@ -111,7 +131,7 @@ a:hover{
 }
 
 .menu1{
-    padding: 5 20px;
+    margin-left: 35px;
 }
 
 /* Elemeno extra */
