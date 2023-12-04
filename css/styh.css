@@ -54,6 +54,10 @@ a:hover{
     padding: 20px;
 }
 
+.icono{
+    padding-left: 45px;
+}
+
 #header1{
     position: fixed;
     top: 0;
@@ -86,7 +90,8 @@ a:hover{
 }
 
 #menu{
-    width: 750px;
+    /* Entre mas grande el width mas espacio entre los elementos */
+    width: 850px;
     display: flex;
     flex-direction:row;
     justify-content:space-around;

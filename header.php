@@ -34,25 +34,26 @@
                         </div>
                     </div>
                     
-                    <div class="enc">
+                    <div class="enc icono">
                       <i class="fa-solid fa-cart-shopping" style="color: #000000; font-size:25px;"></i>
                       <div style="font-size:17px;">0</div>
                     </div>
                     <?php 
                 //Ya inicio sesion
+                <!-- Nombre de usuario e inicio de sesion -->
                 if(isset($_SESSION["cuenta"])){
                 $cuenta = $_SESSION["cuenta"];
                 ?>
-                <div class="dropdown">
-                        <button class="dropbtn"><i class="fa-solid fa-user" style="color: #000000; font-size:15px;"></i><?php echo '&nbsp' . $cuenta; ?></button>
-                        <div class="dropdown-content">
-                            <a id="menu1" href="cerrar_sesion.php">Cerrar Sesión</a>
-                        </div>
+                <div class="dropdown" style="display: flex; flex-direction: row; align-items: center;">
+                    <button class="dropbtn icono"><i class="fa-solid fa-user" style="color: #000000; font-size:18px;"></i><?php echo '&nbsp' . $cuenta; ?></button>
+                    <div class="dropdown-content">
+                        <a id="menu1" href="cerrar_sesion.php">Cerrar Sesión</a>
                     </div>
-                    <!-- Nombre de usuario e inicio de sesion -->
+                </div>
+
                     <?php }else{
                       ?>
-                      <div class="dropdown">
+                      <div class="dropdown icono">
                             <button class="dropbtn"><i class="fa-regular fa-circle-user" style="color: #000000; font-size:28px;"></i></button>
                             <div class="dropdown-content">
                                 <a id="menu1" href="login.php">Iniciar Sesión</a>
