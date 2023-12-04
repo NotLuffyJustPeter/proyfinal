@@ -29,8 +29,8 @@ a:hover{
 
 /* pseudo-elements */
 ::selection{
-    color: rgb(143, 137, 137);
-    background-color: black;
+    color: rgb(0, 0, 0);
+    background-color: rgba(200, 163, 163, 0.171);
 }
 
 #logo {

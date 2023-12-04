@@ -12,7 +12,7 @@
             <div class="box">
                 <h2>Ubicación</h2>
                 <p><i class="fa-solid fa-map-pin" style="color: white;"></i> Avenida Universidad 940</p>
-                <p><i class="fa-solid fa-splotch" style="color: white; font-size:13px;"></i> Style speaks louder than words.</p>
+                <p><i class="fa-solid fa-splotch fa-flip" style="color: white; font-size:13px;"></i> Style speaks louder than words.</p>
                 <h2></h2>
                 <p></p>
             </div>
