@@ -20,49 +20,6 @@ if ($conn->connect_error) {
     die("Error de conexión: " . $conn->connect_error);
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-    $idProducto = $_POST["Id_producto"];
-    $nombre = $_POST["nombre"];
-    $descripcion = $_POST["descripcion"];
-    $cantidad = $_POST["cantidad"];
-    $precio = $_POST["precio"];
-    $descuento = $_POST["descuento"];
-    $categoria = $_POST["categoria"];
-    $subcategoria = $_POST["subcategoria"];
-
-    // Procesar la imagen si se proporciona
-    if (!empty($_FILES["imagen"]["name"])) {
-        $imagen = $_FILES["imagen"]["name"];
-        $rutaTemporal = $_FILES['imagen']['tmp_name'];
-        $carpetaDestino = 'imagenes/';
-        $rutaCompleta = $carpetaDestino . $imagen;
-        move_uploaded_file($rutaTemporal, $rutaCompleta);
-    } else {
-        // Si no se proporciona una nueva imagen, mantener la imagen existente
-        $consultaImagen = $conn->prepare("SELECT imagen FROM $tabla WHERE Id_producto = ?");
-        $consultaImagen->bind_param("i", $idProducto);
-        $consultaImagen->execute();
-        $resultadoImagen = $consultaImagen->get_result();
-        $imagenAntigua = $resultadoImagen->fetch_assoc()['imagen'];
-        $imagen = $imagenAntigua;
-        $consultaImagen->close();
-    }
-
-    // Actualizar los datos en la base de datos
-    $actualizarConsulta = $conn->prepare("UPDATE $tabla SET nombre = ?, descripcion = ?, cantidad = ?, precio = ?, descuento = ?, categoria = ?, subcategoria = ?, imagen = ? WHERE Id_producto = ?");
-    $actualizarConsulta->bind_param("ssidisss", $nombre, $descripcion, $cantidad, $precio, $descuento, $categoria, $subcategoria, $imagen);
-
-    if ($actualizarConsulta->execute()) {
-        echo "Cambios guardados correctamente.";
-        header("Location: tienda.php");  // Redirigir después de guardar cambios
-    } else {
-        echo "Error al guardar cambios: " . $actualizarConsulta->error;
-    }
-
-    $actualizarConsulta->close();
-}
-
 // Obtener los datos actuales del producto
 if (isset($_GET['id'])) {
     $idProductoEditar = $_GET['id'];
@@ -86,7 +43,7 @@ if (isset($_GET['id'])) {
 <html lang="es">
 
 <body>
-    <div class="tienda" style="display: grid; grid-template-columns: repeat(4, 1fr); margin: 100 50px;">
+    <div class="tienda estiloeditar" style="display: grid; grid-template-columns: repeat(4, 1fr); margin: 100 50px;">
         <form method="post" enctype="multipart/form-data" action="cambiosguardar.php">
             <div class="contenedor">
                 <h5 style="font-weight: bold;">Editar Producto <?php echo $idProductoEditar ?></h5>
@@ -104,7 +61,11 @@ if (isset($_GET['id'])) {
                 <details>
                     <summary>Descripción</summary>
                     <input type="text" name="descripcion" placeholder="Descripcion" value="<?php echo $productoEditar['descripcion']; ?>" required><br>
-                    <input type="text" name="categoria" placeholder="Categoria" value="<?php echo $productoEditar['categoria']; ?>" required>
+                    <label for="categoria">Categoría:</label>
+                    <select name="categoria" id="categoria" required>
+                        <option value="men">Men</option>
+                        <option value="woman">Women</option>
+                    </select><br>
                     <input type="text" name="subcategoria" placeholder="Subcategoria" value="<?php echo $productoEditar['subcategoria']; ?>" required>
                 </details>
                 <button type="submit">Guardar Cambios</button><br>

@@ -19,7 +19,7 @@
     }
 ?>
 
-<div class="tienda" style="display: grid; grid-template-columns: repeat(4, 1fr); margin: 100 50px;">
+<div class="tienda estiloeditar" style="display: grid; grid-template-columns: repeat(4, 1fr); margin: 100 50px;">
     <form id="formularioAgregar" method="post" enctype="multipart/form-data" action="altastienda.php">
         <div class="contenedor">
             <!-- <h5 style="font-weight: bold;"><?php // echo 'Id del Producto' ?></h5>
@@ -38,7 +38,11 @@
             <details>
                 <summary>Descripción</summary>
                 <input type="text" name="descripcion" placeholder="Descripcion" required><br>
-                <input type="text" name="categoria" placeholder="Categoria" required>
+                <label for="categoria">Categoría:</label>
+                <select name="categoria" id="categoria" required>
+                    <option value="men">Men</option>
+                    <option value="woman">Women</option>
+                </select><br>
                 <input type="text" name="subcategoria" placeholder="Subcategoria" required >
             </details>
             <button type="submit">Agregar Producto</button><br>

@@ -20,6 +20,7 @@ $sql = "DELETE FROM inventario WHERE Id_producto = $idProducto";
 
 if ($conn->query($sql) === TRUE) {
     echo "Producto eliminado correctamente.";
+    header("Location: b.php");
 } else {
     echo "Error al eliminar el producto: " . $conn->error;
 }

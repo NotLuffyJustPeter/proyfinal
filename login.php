@@ -1,8 +1,4 @@
 <?php
-    include 'header.php'
-?>
-
-<?php
     session_start();
 
     // Función para generar el captcha
@@ -52,7 +48,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
     <link rel="stylesheet" href="css/iniciar_sesion.css">
 </head>
-<body style="margin-top:120px; a{color:black;}">
+<body style="a{color:black;}">
 	<main>
 		<section class="regresar">
 			<a href="./index.php">
@@ -199,8 +195,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn->close();
 }
 ?>
-
-<?php
-    include 'footer.php'
-?>
-

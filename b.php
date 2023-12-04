@@ -54,13 +54,14 @@ if ($dataResult) {
                     ?>
 
                 </p>
-                <button onclick="eliminarProducto(<?php echo $id ?>)">Eliminar Producto <?php echo $id ?></button>
-                <div id="mensajeEliminar"></div>
-
                 <details>
                     <summary>Descripción</summary>
                     <p><?php echo $descripcion ?></p>
                 </details>
+                
+                <button onclick="eliminarProducto(<?php echo $id ?>)">Eliminar Producto <?php echo $id ?></button>
+                <div id="mensajeEliminar"></div>
+                
             </div>
         <?php
         }
