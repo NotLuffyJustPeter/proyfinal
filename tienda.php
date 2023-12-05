@@ -58,7 +58,6 @@ if ($dataResult) {
             echo 'Cantidad en existencia: ' . $cantidad . '<br>';
         }
         
-        
         if($descuento==0){
             echo 'Sin descuento';
         }else{

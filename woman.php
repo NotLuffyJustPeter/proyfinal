@@ -53,7 +53,13 @@ if ($dataResult) {
             <img src="<?php echo 'imagenes/' . $imagen ?>" alt="" >
         </div>
         <h5 style="font-weight: bold;"><?php echo $nombre ?></h5>
-        <p><?php echo 'MXN ' . $precio . '<br>Cantidad en existencia: ' . $cantidad . '<br>';
+        <p><?php echo 'MXN ' . $precio . '<br>';
+        if($cantidad==0){
+            echo 'Agotado<br>';
+        }else{
+            echo 'Cantidad en existencia: ' . $cantidad . '<br>';
+        }
+        
         if($descuento==0){
             echo 'Sin descuento';
         }else{
