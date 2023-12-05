@@ -45,7 +45,7 @@
           <div class="slide swiper-slide">
             <img src="imagenes/omar.jpg" alt="" class="image" />
             <p class="fs-4">
-             Me Gustan la programacion
+            Trabajar en este proyecto fue una experiencia enriquecedora. El equipo fue excepcional, cada uno aportó su creatividad y dedicación, ¡y el resultado final es impresionante!
             </p>
             <div class="details">
               <span class="name">Omar Reyes Ramirez</span>
@@ -55,7 +55,7 @@
           <div class="slide swiper-slide">
             <img src="imagenes/Alan.jpg" alt="" class="image" />
             <p class="fs-4">
-              Estoy orgulloso de trabajar en InovaTech, por que es una empresa mexicana que va a la vanguardia y que esta en constante evolucion para competir a nivel global.
+            Fue un placer formar parte de este equipo. Todos compartimos una visión, trabajamos en armonía y logramos algo grandioso. ¡Estoy orgulloso del equipo que creamos y del impacto que nuestra página está teniendo!
             </p>
             <div class="details">
               <span class="name">Alan Kaled Guerrero Ortiz</span>
@@ -65,7 +65,7 @@
           <div class="slide swiper-slide">
             <img src="imagenes/pedro.jpg" alt="" class="image" />
             <p class="fs-4">
-              He tenido la oportunidad de comprtir son gente de InovaTech de todo el mundo y he senstido la misma empatia, carisma y actitud de servicios a los demas. Eso es lo que te hace amar a InovaTech su calidez humana.
+            La colaboración y el ambiente en el equipo fueron increíbles. Todos estábamos alineados con la misión de crear una página de calidad, y el compañerismo hizo que el proceso fuera maravilloso. ¡Fue un placer trabajar aquí!
             </p>
 
 
@@ -78,7 +78,7 @@
           <div class="slide swiper-slide">
             <img src="imagenes/aaron.jpg" alt="" class="image" />
             <p class="fs-4">
-              He tenido la oportunidad de comprtir son gente de InovaTech de todo el mundo y he senstido la misma empatia, carisma y actitud de servicios a los demas. Eso es lo que te hace amar a InovaTech su calidez humana.
+            El equipo fue clave en el éxito de esta página. El ambiente de trabajo era tan positivo y motivador que cada día fue una oportunidad para crear algo increíble. ¡Disfruté mucho siendo parte de este grupo!
             </p>
 
 
@@ -92,7 +92,7 @@
           <div class="slide swiper-slide">
             <img src="imagenes/isidro.jpg" alt="" class="image" />
             <p class="fs-4">
-              He tenido la oportunidad de comprtir son gente de InovaTech de todo el mundo y he senstido la misma empatia, carisma y actitud de servicios a los demas. Eso es lo que te hace amar a InovaTech su calidez humana.
+            Este equipo fue más que colegas, éramos un equipo unido por la pasión de crear algo especial. Fue un placer trabajar con personas tan talentosas y comprometidas. ¡La página es el resultado de un gran trabajo en equipo!
             </p>
 
 
@@ -107,7 +107,7 @@
           <div class="slide swiper-slide">
             <img src="imagenes/xitlali.jpg" alt="" class="image" />
             <p class="fs-4">
-              He tenido la oportunidad de comprtir son gente de InovaTech de todo el mundo y he senstido la misma empatia, carisma y actitud de servicios a los demas. Eso es lo que te hace amar a InovaTech su calidez humana.
+            Trabajar en este proyecto fue una experiencia gratificante. El equipo demostró un alto nivel de profesionalismo y compromiso. ¡Formar parte de este equipo y ver cómo creció nuestro proyecto es algo que siempre recordaré con cariño!
             </p>
 
 
