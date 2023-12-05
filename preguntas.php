@@ -6,58 +6,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    @font-face {
-        font-family: 'Cormorant_Infant';
-        src: url('/fonts/Cormorant_Infant/CormorantInfant-Light.ttf') format('truetype');
-    }
-    body {
-        font-family: 'Cormorant_Infant', sans-serif;
-        font-size:18px;
-        /* display:flex;
-        flex-direction:column; */
-        /* display: grid;
-        grid-template-columns: repeat(1, 1fr);
-        grid-gap:0px; */
-    }
-    .pregunta{
-        padding: 20px;
-        border: 2px solid black;
-        border-radius: 10px;
-        font-size: 1.6rem;
-        text-align: center;
-        background-color: #f5dcdc;
-        transition: .5s;
-        border-collapse: collapse;
-        margin: 20px;
-    }
-    .pregunta:hover{
-        scale: 1.1;
-        cursor: pointer
-    }
+    <title>Preguntas frecuentes</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        @font-face {
+            font-family: 'Cormorant_Infant';
+            src: url('/fonts/Cormorant_Infant/CormorantInfant-Light.ttf') format('truetype');
+        }
+        body {
+            font-family: 'Cormorant_Infant', sans-serif;
+            font-size:18px;
+            /* display:flex;
+            flex-direction:column; */
+            /* display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            grid-gap:0px; */
+        }
+        .pregunta{
+            padding: 20px;
+            border: 2px solid black;
+            border-radius: 10px;
+            font-size: 1.6rem;
+            text-align: center;
+            background-color: #f5dcdc;
+            transition: .5s;
+            border-collapse: collapse;
+            margin: 20px;
+        }
+        .pregunta:hover{
+            scale: 1.1;
+            cursor: pointer
+        }
 
-    .pregunta a{
-        text-decoration: none;
-        color: black;
-    }
-    .respuesta{
-        display: none;
-        background-color: #f8f9fa;
-        padding: 20px;
-        border: 2px solid black;
-        border-radius: 10px;
-        font-size: 1.6rem;
-        text-align: center;
-        border-collapse: collapse;
-        margin: 0 20px;
-    }
-    .respuesta:hover{
-        cursor: pointer;
-    }
-    
-  </style>
+        .pregunta a{
+            text-decoration: none;
+            color: black;
+        }
+        .respuesta{
+            display: none;
+            background-color: #f8f9fa;
+            padding: 20px;
+            border: 2px solid black;
+            border-radius: 10px;
+            font-size: 1.6rem;
+            text-align: center;
+            border-collapse: collapse;
+            margin: 0 20px;
+        }
+        .respuesta:hover{
+            cursor: pointer;
+        }
+        
+    </style>
 </head>
 <body style="margin-top: 100px;">
 <h1 style="text-align:center;">P r e g u n t a s&nbsp&nbsp   f r e c u e n t e s</h1>
