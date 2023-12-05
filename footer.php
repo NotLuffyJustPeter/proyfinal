@@ -11,7 +11,7 @@
             </div>
             <div class="box">
                 <h2>Ubicación</h2>
-                <p><i class="fa-solid fa-map-pin" style="color: white;"></i> Avenida Universidad 940</p>
+                <a style="a:hover{white;}" href="https://maps.app.goo.gl/cJLhC2DBKUUwpd3i9"><i class="fa-solid fa-map-pin" style="color: white;"></i> Avenida Universidad 940</a>
                 <p><i class="fa-solid fa-splotch fa-flip" style="color: white; font-size:13px;"></i> Style speaks louder than words.</p>
                 <h2></h2>
                 <p></p>
