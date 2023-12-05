@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+=======
+<?php session_start();?>
+<?php
+    include 'header.php';
+?>
+>>>>>>> 4491a805b86a533fdb8faae39e6f9dda32fd296e
 <!DOCTYPE html>
 <html lang="en">
 <head>
