@@ -50,6 +50,7 @@ if ($dataResult) {
         <div class="con">
             <img src="<?php echo 'imagenes/' . $imagen ?>" alt="" >
         </div>
+        <h5 style="font-weight: bold;"><?php echo 'ID: ' . $id ?></h5>
         <h5 style="font-weight: bold;"><?php echo $nombre ?></h5>
         <p><?php echo 'MXN ' . $precio . '<br>';
         if($cantidad==0){
