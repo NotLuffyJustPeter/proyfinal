@@ -10,11 +10,13 @@ body{
 }
 
 .contenedor_form{
+    margin-top: 100px;
     width: 700px;
     height: 500px;
     background-image: url(../imagenes/form2.jpg);
     padding: 100px;
     padding-top: 50px;
+    color: #fff;
 }
 
 .overlay {

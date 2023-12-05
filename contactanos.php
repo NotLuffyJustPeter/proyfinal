@@ -1,6 +1,3 @@
-<?php
-    include 'header.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +16,9 @@
 
 </head>
 <body>
+<?php
+    include 'header.php';
+?>
     <div class="contenedor_form">
         <div class="overlay">
             <form id="contacto" action="enviar.php" method="post">
