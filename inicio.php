@@ -1,5 +1,6 @@
 <?php session_start(); ?>
 <head>
+  <title>SireneGaze</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
@@ -93,19 +94,19 @@
     <h1 class="subtitulo1">W &nbsp&nbspO &nbsp&nbspM &nbsp&nbspA &nbsp&nbspN</h1>
     <div class="bloque4">
       <div class="zoom">
-        <img src="imagenes/woman_pantalon.jpg" >
+      <a href="woman.php"><img src="imagenes/woman_pantalon.jpg" ></a>
       </div>
       <div class="zoom">
-        <img src="imagenes/woman_blusa.jpg" >
+      <a href="woman.php"><img src="imagenes/woman_blusa.jpg" ></a>
       </div>
       <div class="zoom">
-        <img src="imagenes/woman_sueter.jpg" >
+      <a href="woman.php"><img src="imagenes/woman_sueter.jpg" ></a>
       </div>
       <div class="zoom">
-        <img src="imagenes/woman_chamarra.jpg" >
+      <a href="woman.php"><img src="imagenes/woman_chamarra.jpg" ></a>
       </div>
       <div class="zoom">
-        <img src="imagenes/woman_vestido.jpg" >
+      <a href="woman.php"><img src="imagenes/woman_vestido.jpg" ></a>
       </div>
 
         <h4>Pantalones</h4>
@@ -120,19 +121,19 @@
         <div class="blanco"></div>
         <div class="blanco"></div>
         <div class="zoom">
-          <img src="imagenes/man_camisa.jpg" >
+        <a href="men.php"><img src="imagenes/man_camisa.jpg" ></a>
         </div>
         <div class="zoom">
-          <img src="imagenes/man_camisa_mc.jpg" >
+        <a href="men.php"><img src="imagenes/man_camisa_mc.jpg" ></a>
         </div>
         <div class="zoom">
-          <img src="imagenes/man_chamarra.jpg" >
+        <a href="men.php"><img src="imagenes/man_chamarra.jpg" ></a>
         </div>
         <div class="zoom">
-          <img src="imagenes/man_pantalon.jpg">
+        <a href="men.php"><img src="imagenes/man_pantalon.jpg"></a>
         </div>
         <div class="zoom">
-          <img src="imagenes/man_sudadera.jpg" >
+        <a href="men.php"><img src="imagenes/man_sudadera.jpg" ></a>
         </div>
         <div class="blanco"></div>
         <div class="blanco"></div>

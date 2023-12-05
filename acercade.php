@@ -3,8 +3,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>Conocenos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>acerca de</title>
     <link rel="stylesheet" href="css/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/testimonios.css">
     <link rel="stylesheet" href="css/acercade.css">
