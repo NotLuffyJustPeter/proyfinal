@@ -1,16 +1,12 @@
-<<<<<<< HEAD
-=======
-<?php session_start();?>
-<?php
-    include 'header.php';
-?>
->>>>>>> 4491a805b86a533fdb8faae39e6f9dda32fd296e
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Contactanos</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/contactanos.css">
+    <title>contactanos</title>
     <style>
       body{
         display: flex;

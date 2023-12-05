@@ -3,12 +3,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>Conocenos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
     <link rel="stylesheet" href="css/swiper-bundle.min.css">
     <link rel="stylesheet" href="css/testimonios.css">
     <link rel="stylesheet" href="css/acercade.css">
     <link rel="icon" sizes="180x180" href="imagenes/logoic.ico">
+    <style>
+      @font-face {
+          font-family: 'Cormorant_Infant';
+          src: url('/fonts/Cormorant_Infant/CormorantInfant-Light.ttf') format('truetype');
+      }
+      *{
+        font-family: 'Cormorant_Infant';
+      }
+    </style>
 </head>
 <body>
 <?php include("header.php") ?> 
