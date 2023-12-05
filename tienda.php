@@ -79,3 +79,7 @@ if ($dataResult) {
 }
 
 ?>
+</div>
+<?php
+    include 'footer.php';
+?>
