@@ -62,6 +62,15 @@
 	transform: translate(-50%, -50%);
 }
 
+.precio{
+    font-weight: bold;
+}
+
+.oferta{
+    color:red; 
+    text-decoration:line-through;
+}
+
 /* .body{
     background-image: url(../imagenes/editar.jpg);
     background-size: cover;

@@ -55,7 +55,14 @@ if ($dataResult) {
         </div>
         <h5 style="font-weight: bold;"><?php echo 'ID: ' . $id ?></h5>
         <h5 style="font-weight: bold;"><?php echo $nombre ?></h5>
-        <p><?php echo 'MXN ' . $precio . '<br>';
+        <p><?php
+        if($descuento!=0){
+            $descuento_decimal = $descuento/100;
+            echo '<span class="oferta">MXN ' . $precio . '</span><br>';
+            echo '<span class="precio">MXN ' . $precio - ($precio * $descuento_decimal) . '</span><br>';
+        }else{
+            echo '<span class="precio">MXN ' . $precio . '</span><br>';
+        }
         if($cantidad==0){
             echo 'Agotado<br>';
         }else{
