@@ -94,6 +94,32 @@ body{
     font-family: 'Lexend_Tera';
 }
 
+.bloque3{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 280px;
+    margin-bottom: 60px;
+    background-image: url(../imagenes/fondo_des.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: #ffffff;
+    padding: 40px;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 0;
+}
+
+.desct{
+    font-size: 30px;
+}
+
+.desct2{
+    padding-right: 40px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 180px;
+}
+
 
 
 .bloque4{

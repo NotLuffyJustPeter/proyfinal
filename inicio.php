@@ -90,6 +90,12 @@
         </div>
     </div>
 
+    <div class="bloque3">
+    <p class="desct">C ó d i g o &nbsp&nbspd e &nbsp&nbspd e s c u e n t o : SGFS23</p>
+    <p class="desct2">10%</p>
+    <p class="desct">E N&nbsp&nbsp T O D A&nbsp &nbspL A&nbsp&nbsp T I E N D A</p>
+    </div>
+
 
     <h1 class="subtitulo1">W &nbsp&nbspO &nbsp&nbspM &nbsp&nbspA &nbsp&nbspN</h1>
     <div class="bloque4">
