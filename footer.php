@@ -10,11 +10,9 @@
                 </figure>
             </div>
             <div class="box">
-                <h2>Ubicación</h2>
-                <a style="a:hover{white;}" href="https://maps.app.goo.gl/cJLhC2DBKUUwpd3i9"><i class="fa-solid fa-map-pin" style="color: white;"></i> Avenida Universidad 940</a>
+                <h2>U b i c a c i ó n</h2>
+                <a href="https://maps.app.goo.gl/cJLhC2DBKUUwpd3i9"><i class="fa-solid fa-map-pin" style="color: white;"></i> Avenida Universidad 940</a>
                 <p><i class="fa-solid fa-splotch fa-flip" style="color: white; font-size:13px;"></i> Style speaks louder than words.</p>
-                <h2></h2>
-                <p></p>
             </div>
             <div class="box">
                 <h2>S i g u e n o s</h2>
@@ -27,7 +25,7 @@
             </div>
         </div>
         <div class="grupo-2">
-            <small>&copy; 2023 <b>Sirenegaze</b> - Todos los Derechos Reservados.</small>
+            <small>P r o y e c t o &nbspA c a d é m i c o<br>&copy; 2023 <b>Sirenegaze</b> - Todos los Derechos Reservados.</small>
         </div>
     </footer>
 
