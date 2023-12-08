@@ -2,6 +2,7 @@
 <header>
     <title>Men</title>
     <link rel="stylesheet" href="css/styt.css">
+    <link rel="stylesheet" href="css/tienda.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
 </header>
 <?php
@@ -30,7 +31,7 @@ if ($dataResult) {
     $dataResult->data_seek(0);
     
     ?><h1 class="subtitulo2" style="margin:100px; ">M&nbsp&nbspE&nbsp&nbspN</h1>
-    <div class="tienda" style="display: grid; grid-template-columns: repeat(4, 1fr); margin: 100 50px;">
+    <div class="tienda contenedor-tienda" >
     <?php
 
     while ($row = $dataResult->fetch_assoc()) {

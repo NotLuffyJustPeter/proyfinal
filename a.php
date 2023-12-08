@@ -2,6 +2,7 @@
 <header>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="css/styt.css">
+    <link rel="stylesheet" href="css/altas.css">
 </header>
 
 <?php
@@ -19,19 +20,17 @@
     }
 ?>
 
-<div class="tienda estiloeditar" style="display: grid; grid-template-columns: repeat(4, 1fr); margin: 100 50px;">
+<div class="contenedor-altas" >
     <form id="formularioAgregar" method="post" enctype="multipart/form-data" action="altastienda.php">
-        <div class="contenedor">
-            <!-- <h5 style="font-weight: bold;"><?php // echo 'Id del Producto' ?></h5>
-            <input type="number" name="Id_producto" placeholder="ID PRODUCTO" required> -->
-            <img id="imagenPrevia" src="imagenes/ejemploformulario.png" alt="" class="con" style="max-width: 300px; max-height: 300px;">
+        <div class="contenedor-altas2">
+            <img id="imagenPrevia" src="imagenes/ejemploformulario.png" alt="" class="con" >
             <input type="file" name="imagen" accept="image/jpeg, image/png" required onchange="mostrarVistaPrevia(this)"><br>
             <h5 style="font-weight: bold;"><?php echo 'Nombre de la prenda' ?>
             <input type="text" name="nombre" placeholder="Nombre" required><br>
             </h5>
             <p><?php echo 'Precio MXN:'  , '<br>'; ?>
             <input type="number" name="precio" placeholder="Precio" required>
-            <?php echo 'Cantidad en existencia: '  , '<br>'; ?>
+            <?php echo '<br> Cantidad en existencia: '  , '<br>'; ?>
             <input type="number" name="cantidad" placeholder="Cantidad" required><br>
             <?php echo 'Descuento <br><input type="number" name="descuento" value="0" required> %'; ?>
             <br></p>
@@ -45,7 +44,7 @@
                 </select><br>
                 <input type="text" name="subcategoria" placeholder="Subcategoria" required >
             </details>
-            <button type="submit">Agregar Producto</button><br>
+            <button class="btn btn-success " type="submit">Agregar Producto</button><br>
         </div>
     </form>
     <div id="mensajeAgregar"></div>
