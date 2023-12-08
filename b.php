@@ -5,8 +5,8 @@ session_start();
 <header>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="css/styt.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+    <link rel="stylesheet" href="css/tienda.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>  
 </header>
 
 <?php
@@ -28,7 +28,15 @@ $dataResult = $conn->query($dataQuery);
 if ($dataResult) {
     $dataResult->data_seek(0);
     ?>
-    <div class="tienda" style="display: grid; grid-template-columns: repeat(4, 1fr); margin: 100 50px;">
+
+    <style>
+        .btn2{
+            margin-top: 10px;
+            height: 50px;
+            background-color: #D73F4B;
+        }
+    </style>
+    <div class="tienda contenedor-tienda" >
         <?php
         while ($row = $dataResult->fetch_assoc()) {
             // Asignar valores a variables
@@ -59,7 +67,7 @@ if ($dataResult) {
                     <p><?php echo $descripcion ?></p>
                 </details>
                 
-                <button onclick="eliminarProducto(<?php echo $id ?>)">Eliminar Producto <?php echo $id ?></button>
+                <button class="btn btn-danger btn2" onclick="eliminarProducto(<?php echo $id ?>)">Eliminar Producto <?php echo $id ?></button>
                 <div id="mensajeEliminar"></div>
                 
             </div>

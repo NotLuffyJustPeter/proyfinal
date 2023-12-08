@@ -18,11 +18,23 @@
         .caja__trasera-login{
             width: 30%;
         }
+ 
         .formulario__register{
             left: 320px;
         }
         .contenedor__login-register{
             top: -225px;
+        }
+
+        
+        
+        @media screen and (max-width: 1000px){
+            .formulario__register{
+                left: 34px;
+            }
+            .contenedor__login-register{
+                top: -25px;
+            }
         }
 
     </style>
