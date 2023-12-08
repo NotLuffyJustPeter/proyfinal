@@ -26,6 +26,18 @@
             font-size: 20px;
             font-weight: 600 !important;
         }
+
+        .btn-recuperar{
+            margin-top: 20px;
+        }
+
+        @media screen and (max-width: 1000px) {
+            .contenedor__login-register{
+                top: 25px;
+            }
+
+
+        }
     </style>
 </head>
 <body>
@@ -63,7 +75,7 @@
                     <label for="repetir-password">Repetir Contraseña:</label>
                     <input type="password" class="form-control" id="repetir-password" name="repetir-password" required>
                 </div> 
-                <center><button type="submit" class="btn btn-primary" id="recuperar-btn">Recuperar Contraseña</button></center>
+                <center><button type="submit" class="btn btn-primary btn-recuperar" id="recuperar-btn">Recuperar Contraseña</button></center>
             </form>
         </div>
         </center>

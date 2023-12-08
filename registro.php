@@ -35,6 +35,17 @@
             .contenedor__login-register{
                 top: -25px;
             }
+
+            .caja__trasera a{
+                padding: 20px;
+            }
+        }
+
+        @media screen and (max-width: 600px){
+            .caja__trasera a{
+                padding: 5px;
+            }
+            
         }
 
     </style>
@@ -51,7 +62,8 @@
 				<div class="caja__trasera-login">
 					<h3>¿Ya tienes una cuenta?</h3>
 					<p>Inicia sesión para entrar a la página</p>
-					<button id="btn__iniciar-sesion"><a href="login.php">Iniciar Sesion</a></button>
+                  
+				    <center><button id="btn__iniciar-sesion"><a href="login.php">Iniciar Sesion</a></button> </center>	
 				</div>
 				<div class="caja__trasera-register">
 				</div>

@@ -3,7 +3,15 @@
 <header>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="css/styt.css">
+    <link rel="stylesheet" href="css/altas.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        .contenedor-altas2 button{
+            background-color: #8AB4F8;
+            font-weight: 1000;
+            font-size: 1.2rem;
+        }
+    </style>
 </header>
 
 <?php
@@ -43,18 +51,19 @@ if (isset($_GET['id'])) {
 <html lang="es">
 
 <body>
-    <div class="tienda estiloeditar" style="display: grid; grid-template-columns: repeat(4, 1fr); margin: 100 50px;">
+<div class="contenedor-altas">
+    <div class="tienda ">
         <form method="post" enctype="multipart/form-data" action="cambiosguardar.php">
-            <div class="contenedor">
+            <div class="contenedor-altas2">
                 <h5 style="font-weight: bold;">Editar Producto <?php echo $idProductoEditar ?></h5>
                 <input type="hidden" name="Id_producto" value="<?php echo $productoEditar['Id_producto']; ?>">
-                <img id="imagenPrevia" src="<?php echo 'imagenes/' . $productoEditar['imagen']; ?>" alt="" class="con" style="max-width: 300px; max-height: 300px;">
+                <img id="imagenPrevia" src="<?php echo 'imagenes/' . $productoEditar['imagen']; ?>" alt="" class="con">
                 <input type="file" name="imagen" accept="image/jpeg, image/png" onchange="mostrarVistaPrevia(this)"><br>
                 <h5 style="font-weight: bold;">Nombre de la prenda</h5>
                 <input type="text" name="nombre" placeholder="Nombre" value="<?php echo $productoEditar['nombre']; ?>" required><br>
                 <p><?php echo 'Precio MXN:'  , '<br>'; ?>
                 <input type="number" name="precio" placeholder="Precio" value="<?php echo $productoEditar['precio']; ?>" required>
-                <?php echo 'Cantidad en existencia: '  , '<br>'; ?>
+                <?php echo ' <br> Cantidad en existencia: '  , '<br>'; ?>
                 <input type="number" name="cantidad" placeholder="Cantidad" value="<?php echo $productoEditar['cantidad']; ?>" required><br>
                 <?php echo 'Descuento <br><input type="number" name="descuento" value="' . $productoEditar['descuento'] . '" required> %'; ?>
                 <br></p>
@@ -73,6 +82,7 @@ if (isset($_GET['id'])) {
                 <button type="submit">Guardar Cambios</button><br>
             </div>
         </form>
+</div>  
 
         <script>
             function mostrarVistaPrevia(input) {
