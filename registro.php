@@ -151,7 +151,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // El usuario no existe, realizar el registro
         $stmt_insertar = $conn->prepare("INSERT INTO usuarios (nombre, cuenta, email, pregunta_seleccionada, respuesta_pregunta, password) VALUES (?, ?, ?, ?, ?, ?)");
         $stmt_insertar->bind_param("ssssss", $nombre, $cuenta, $email, $preguntaSeleccionada, $respuestaPregunta, $encryptedPassword);
-
+        include("header.php"); 
         if ($stmt_insertar->execute()) {
             // Registro exitoso
             echo '<script>
@@ -161,7 +161,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         icon: "success",
                         confirmButtonText: "Aceptar"
                     }).then(function() {
-                        window.location = "index.php";
+                        window.location = "bienvenida.php?nombre=' . urlencode($nombre) . '&correo=' . urlencode($email) . '";
                     });
                 </script>';
         } else {
