@@ -18,7 +18,7 @@
                 <h2>S i g u e n o s</h2>
                 <div class="red-social">
                     <a href="https://www.facebook.com/" class="facebook fa fa-facebook "></a>
-                    <a href="https://www.instagram.com/" class="fa fa-instagram instagram"></a>
+                    <a href="https://www.instagram.com/sirenegazeuaa/" class="fa fa-instagram instagram"></a>
                     <a href="https://twitter.com/?lang=es" class="fa fa-twitter twiter"></a>
                     <a href="https://www.youtube.com/" class="fa fa-youtube youtube"></a>
                 </div>
