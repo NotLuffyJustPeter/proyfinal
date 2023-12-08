@@ -39,13 +39,18 @@
             .caja__trasera a{
                 padding: 20px;
             }
+            .caja__trasera-login{
+                width: 40%;
+            }
         }
 
         @media screen and (max-width: 600px){
             .caja__trasera a{
                 padding: 5px;
             }
-            
+            .caja__trasera-login{
+                width: 50%;
+            }
         }
 
     </style>

@@ -48,6 +48,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-... (valor del hash) ..." crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
     <link rel="stylesheet" href="css/iniciar_sesion.css">
+    <style>
+        @media screen and (max-width: 768px) {
+        }
+    </style>
 </head>
 <body style="a{color:black;}">
 	<main>

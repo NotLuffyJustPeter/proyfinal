@@ -76,8 +76,8 @@ if (isset($_GET['id'])) {
                         <option value="men" <?php echo ($productoEditar['categoria'] == 'men') ? 'selected' : ''; ?>>Men</option>
                         <option value="woman" <?php echo ($productoEditar['categoria'] == 'woman') ? 'selected' : ''; ?>>Women</option>
                     </select><br>
-
-                    <input type="text" name="subcategoria" placeholder="Subcategoria" value="<?php echo $productoEditar['subcategoria']; ?>" required>
+                    <label for="subcategoria">Subcategoria</label>
+                    <input type="text" name="subcategoria" value="<?php echo $productoEditar['subcategoria']; ?>" required>
                 </details>
                 <button type="submit">Guardar Cambios</button><br>
             </div>

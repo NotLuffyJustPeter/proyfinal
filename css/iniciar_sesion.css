@@ -246,6 +246,9 @@ main{
 		flex-direction: column;
 		margin: auto;
 	}
+	.caja__trasera-register{
+		width: 40%;
+	}
 
 	.caja__trasera div{
 		margin:0px;
@@ -260,12 +263,22 @@ main{
 	.contenedor__login-register form{
 		position: relative;
 	}
+	.caja__trasera-login {
+		width: 50%;
+	}
 }
 
 @media screen  and (max-width: 650px) {
 	.caja__trasera{
-		max-width: 250px;
+		max-width: 300px;
 		height: 400px;
+	}
+	.caja__trasera-login {
+		width: 50%;
+	}
+
+	.caja__trasera-register{
+		width: 60%;
 	}
 
 	.registrosl{

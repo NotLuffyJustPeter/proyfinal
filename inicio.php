@@ -14,7 +14,7 @@
         grid-gap:0px;
         /* background-color: rgba(0, 0, 0, 0.078); */
         background-color: black;
-        margin: 50px;
+        /* margin: 50px; */
     }
     .uno{
         grid-column: span 1; /* El primer elemento ocupa una columna */
@@ -25,29 +25,45 @@
     .tres{
         grid-column: span 1; /* El segundo elemento ocupa dos columnas */
     }
+    .start{
+      color: black;
+      margin-left: 500px;
+      margin-top: 0px;"
+    }
+
+    @media screen and (max-width: 600px) {
+      .start{
+        margin: 30px;
+      }
+    }
+
+
     </style>
 </head>
 <body>
+
+
     <div class="bloque1">
-        <div class="texto">
+      <div class="texto">
             <h1 class="t1">F A S H I O N</h1>
             <h1 class="t2">N E V E R</h1>
             <h1 class="t2" style="margin-left: 180px;">S L E E P S</h1>
-            <i class="fa-solid fa-splotch fa-flip" style="color: black; margin-left: 500px; margin-top: 0px;"></i>
+            <i class="fa-solid fa-splotch fa-flip start" ></i>
             <br>
             <img class="logo2" src="imagenes/Log.png" alt="" class="logo">
 
             <h5>Explora el mundo de la moda. En nuestra tienda online, cada prenda es una declaración de estilo. Encuentra lo que te define y eleva tu guardarropa.</h5>
-
-        </div>
-        <div class="imagenes">
+            
+          </div>
+          <div class="imagenes">
             <img class="b1" src="imagenes/imginicio2.jpg" alt="" class="jess">
             <img class="b1" src="imagenes/jess2.jpg" alt="" class="jess">
             <img class="b1" src="imagenes/imginicio6.jpg" alt="" class="jess">
             <img class="b1" src="imagenes/imginicio4.jpg" alt="" class="jess">
+          </div>
         </div>
-    </div>
-
+        
+    
     <div class="bloque2">
         <div class="uno">
           <video width="100%" height="100%" autoplay loop muted>
@@ -160,19 +176,41 @@
         .bloque6{
           display: flex;
           flex-direction: row;
+          align-items: center;
           justify-content:center;
         }
+
         .bloque6_uno{
           width:600px;
           /* display: flex;
           flex-direction: row;
           justify-content:center; */
         }
+
+        @media screen and (max-width: 1200px) {
+            .bloque6{
+                flex-direction: column;
+            }    
+            .bloque6_uno{
+              padding: 40px;
+              width: auto;
+            }
+        }
+        
         .tex6{
           padding-left:40px;
           font-size:20px;
           text-align:right;
         }
+        @media screen and (max-width: 600px) {
+            .tex6{
+              padding-left:0px;
+              font-size:14px;
+              /* text-align:center; */
+            }
+          
+        }
+
       </style>
 
         <div class="bloque6_uno">
