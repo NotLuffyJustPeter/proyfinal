@@ -14,9 +14,12 @@ body{
     width: 700px;
     height: 500px;
     background-image: url(../imagenes/form2.jpg);
+    background-repeat: no-repeat;
     padding: 100px;
     padding-top: 50px;
     color: #fff;
+    margin-bottom: 50px;
+   
 }
 
 .overlay {
@@ -25,6 +28,7 @@ body{
     background-color: rgba(0, 0, 0, 0.7); /* Color gris semitransparente */
     padding: 100px;
     padding-top: 50px;
+  
 }
 
 #contacto{ 
@@ -97,3 +101,47 @@ body{
 #contacto button[type="submit"]:active {
     box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
 } 
+
+@media screen and (max-width: 910px) {
+   .overlay{
+    width: 500px;
+    /* height: 400px; */
+    padding: 50px;
+    /* display: flex;
+    justify-content: center;
+    background-position: left; */
+    /* align-items: center; */
+   }
+
+   .contenedor_form{
+    width: 500px;
+    /* height: 400px; */
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    padding: 50px;
+   }
+}
+
+
+@media screen and (max-width: 600px) {
+    .overlay{
+     width: 350px;
+     /* height: 200px; */
+     padding: 25px;
+     /* display: flex;
+     justify-content: center;
+     background-position: left; */
+     /* align-items: center; */
+    }
+ 
+    .contenedor_form{
+     width: 350px;
+     /* height: 200px; */
+     /* display: flex;
+     justify-content: center;
+     align-items: center; */
+     padding: 25px;
+     margin-bottom: 50px;
+    }
+ }
