@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php // session_start(); ?>
 <head>
   <title>SireneGaze</title>
     <meta charset="UTF-8">

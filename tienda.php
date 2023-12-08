@@ -3,6 +3,7 @@
     <title>Tienda Online</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="css/styt.css">
+    <link rel="stylesheet" href="css/tienda.css">
     <!-- <link rel="icon" sizes="180x180" href="imagenes/logoic.ico"> -->
 </header>
 <?php
@@ -30,7 +31,7 @@ if ($dataResult) {
     $dataResult->data_seek(0);
     
     ?>
-    <div class="tienda" style="display: grid; grid-template-columns: repeat(4, 1fr); margin: 100 50px;">
+    <div class="tienda contenedor-tienda" >
     <?php
 
     while ($row = $dataResult->fetch_assoc()) {
