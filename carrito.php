@@ -38,14 +38,13 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
                 <tr>
                     <th>ID</th>
                     <th>Imagen</th>
+                    <th>Nombre</th>
                     <th>Cantidad</th>
-                    <!-- Agrega más columnas según sea necesario -->
                 </tr>
             </thead>
             <tbody>
                 <?php
                 foreach ($carrito as $productoId => $detallesProducto) {
-                    // Consulta para obtener detalles del producto desde la base de datos
                     $query = "SELECT * FROM $tabla WHERE Id_producto = $productoId";
                     $result = $conn->query($query);
 
@@ -56,7 +55,6 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
                         echo '<td><img src="imagenes/' . $row['imagen'] . '" alt="imagen no cargada"></td>';
                         echo '<td>' . $row['nombre'] . '</td>';
                         echo '<td>' . $detallesProducto['cantidad'] . '</td>';
-                        // Agrega más columnas según sea necesario
                         echo '</tr>';
                     }
                 }
