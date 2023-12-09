@@ -56,21 +56,16 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
             <tbody>
                 <?php
                 foreach ($carrito as $productoId => $detallesProducto) {
-                    // Consulta para obtener detalles del producto desde la base de datos
                     $query = "SELECT * FROM $tabla WHERE Id_producto = $productoId";
                     $result = $conn->query($query);
 
                     if ($result->num_rows > 0) {
                         $row = $result->fetch_assoc();
                         echo '<tr>';
-                        echo '<td class="align-middle px-4 can">' . $row['Id_producto'] . '</td>';
-                        echo '<td class="align-middle px-4"><img class="img_carrito" src="imagenes/' . $row['imagen'] . '" alt="imagen no cargada"></td>';
-                        echo '<td class="align-middle px-4">' . $row['nombre'] . '</td>';
-                        echo '<td class="align-middle px-4">' . $row['descripcion'] . '</td>';
-                        echo '<td class="align-middle px-4 can"> $' . $row['precio'] . '</td>';
-                        echo '<td class="align-middle px-4 can">' . $detallesProducto['cantidad'] . '</td>';
-                        echo '<td class="align-middle px-4 can"> $' . $row['precio'] * $detallesProducto['cantidad'] . '</td>';
-                        echo '<td class="align-middle px-4 can"><button><i class="fa-regular fa-trash-can" style="color: #000000; font-size:25px;"></i></button></td>';
+                        echo '<td>' . $row['Id_producto'] . '</td>';
+                        echo '<td><img src="imagenes/' . $row['imagen'] . '" alt="imagen no cargada"></td>';
+                        echo '<td>' . $row['nombre'] . '</td>';
+                        echo '<td>' . $detallesProducto['cantidad'] . '</td>';
                         // Agrega más columnas según sea necesario
                         echo '</tr>';
                     }

@@ -65,11 +65,10 @@ if ($dataResult) {
             }else{
                 echo '<span class="precio">MXN ' . $precio . '</span><br>';
             }
-            
             if($cantidad == 0){
                 echo 'Agotado<br>';
             }else{
-                echo 'Cantidad en existencia: ' . $cantidad . '<br>';
+                echo 'Cantidad en existencia: ' . (isset($_SESSION['carrito'][$id]['cantidad']) ? $cantidad - (isset($_SESSION['carrito'][$id]['cantidad']) ? $_SESSION['carrito'][$id]['cantidad']: 0) : $cantidad) . '<br>';
             }
             
             if($descuento == 0){
@@ -110,6 +109,13 @@ if ($dataResult) {
 
                 if (respuesta.success) {
                     window.location.reload();
+                }else{
+                    Swal.fire({
+                    icon: 'info',
+                    title: 'Sin existencias',
+                    text: 'Ya no hay más productos en existencias.',
+                    confirmButtonText: 'OK'
+                    });
                 }
             }
         };

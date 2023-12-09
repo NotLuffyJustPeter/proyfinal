@@ -54,20 +54,22 @@ if ($dataResult) {
         </div>
         <h5 style="font-weight: bold;"><?php echo 'ID: ' . $id ?></h5>
         <h5 style="font-weight: bold;"><?php echo $nombre ?></h5>
-        <p><?php 
-        if($descuento!=0){
+        <p>
+        <?php 
+        if($descuento != 0){
             $descuento_decimal = $descuento/100;
             echo '<span class="oferta">MXN ' . $precio . '</span><br>';
             echo '<span class="precio">MXN ' . $precio - ($precio * $descuento_decimal) . '</span><br>';
         }else{
             echo '<span class="precio">MXN ' . $precio . '</span><br>';
         }
-        if($cantidad==0){
+        if($cantidad == 0){
             echo 'Agotado<br>';
         }else{
-            echo 'Cantidad en existencia: ' . $cantidad . '<br>';
+            echo 'Cantidad en existencia: ' . (isset($_SESSION['carrito'][$id]['cantidad']) ? $cantidad - (isset($_SESSION['carrito'][$id]['cantidad']) ? $_SESSION['carrito'][$id]['cantidad']: 0) : $cantidad) . '<br>';
         }
-        if($descuento==0){
+        
+        if($descuento == 0){
             echo 'Sin descuento';
         }else{
             echo 'Descuento del ' . $descuento . '%';
@@ -77,18 +79,66 @@ if ($dataResult) {
             <summary>Descripción</summary>
             <p><?php echo $descripcion ?></p>
         </details>
-        <button class="buy"><i class="fa-solid fa-plus" style="color: #080808;"></i></button>
+        <?php if(isset($_SESSION["cuenta"])){ ?>
+            <button class="buy" onclick="agregarAlCarrito(<?php echo $id; ?>)"><i class="fa-solid fa-plus" style="color: #080808;"></i></button>
+        <?php }else{ ?>
+            <button class="buy" onclick="mensaje()"><i class="fa-solid fa-plus" style="color: #080808;"></i></button>
+        <?php }?>
         </div>
-        
     <?php
         }
     }
 } else {
         echo "Error al obtener datos de la tabla: " . $conn->error;  
 }
-
 ?>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script>
+    function agregarAlCarrito(productoId) {
+        var xhr = new XMLHttpRequest();
+
+        xhr.open("POST", "agregarcarrito.php", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var respuesta = JSON.parse(xhr.responseText);
+
+                if (respuesta.success) {
+                    window.location.reload();
+                }else{
+                    Swal.fire({
+                    icon: 'info',
+                    title: 'Sin existencias',
+                    text: 'Ya no hay más productos en existencias.',
+                    confirmButtonText: 'OK'
+                    });
+                }
+            }
+        };
+
+        xhr.send("producto_id=" + productoId);
+    }
+
+    function mensaje() {
+        Swal.fire({
+            title: '¡Inicia sesión!',
+            text: 'Debes iniciar sesión para agregar productos al carrito.',
+            icon: 'info',
+            showCancelButton: true,
+            confirmButtonText: 'Ir a iniciar sesión',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = 'login.php';
+            }
+        });
+    }
+</script>
+
+
 <?php
     include 'footer.php';
 ?>
