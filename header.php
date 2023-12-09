@@ -37,8 +37,13 @@
                     </div>
                     
                     <div class="enc icono">
-                      <i class="fa-solid fa-cart-shopping" style="color: #000000; font-size:25px;"></i>
-                      <div style="font-size:17px;">0</div>
+                      <a href="carrito.php"><i class="fa-solid fa-cart-shopping" style="color: #000000; font-size:25px;"></i></a>
+                      <div style="font-size:17px;"><?php if(isset($_SESSION["cuenta"]) && isset($_SESSION["contador"])){
+                          echo $_SESSION["contador"];
+                        }else{ 
+                          echo "0";
+                        }?>
+                      </div>
                     </div>
                     <?php 
                 //Ya inicio sesion
