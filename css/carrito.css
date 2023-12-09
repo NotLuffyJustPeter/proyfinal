@@ -1,0 +1,44 @@
+@font-face {
+    font-family: 'Big_Sholuders_Inline_Text';
+    src: url('../fonts/Big_Shoulders_Inline_Text/static/BigShouldersInlineText-Bold.ttf') format('truetype');
+}  
+
+@font-face {
+    font-family: 'Lexend_Tera';
+    src: url('../fonts/Lexend_Tera/static/LexendTera-Bold.ttf') format('truetype');
+}
+.carrito{
+    margin: 200px;
+    margin-top: 40px;
+}
+
+.prod{
+    margin-top: 50px;
+    font-size: 25px;
+    font-family: 'Cormorant_Infant', sans-serif;
+    /* border-collapse: separate;
+    border-spacing: 40px;  */
+}
+
+.can{
+    text-align: center;
+}
+
+.titulo{
+    font-family: 'Big_Sholuders_Inline_Text', sans-serif;
+    text-align: center;
+}
+
+.img_carrito{
+    width: 150px;
+    height: 200px;
+}
+
+button{
+    border: none;
+    background-color: white;
+}
+
+button:hover{
+    background-color: none;
+}
