@@ -43,6 +43,7 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
         
             <thead>
                 <tr>
+<<<<<<< HEAD
                     <th class="px-3 can">ID</th>
                     <th class="px-3 can">Imagen</th>
                     <th class="px-3 can">Producto</th>
@@ -51,6 +52,12 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
                     <th class="px-3 can">Cantidad</th>
                     <th class="px-3 can">Subtotal</th>
                     <!-- Agrega más columnas según sea necesario -->
+=======
+                    <th>ID</th>
+                    <th>Imagen</th>
+                    <th>Nombre</th>
+                    <th>Cantidad</th>
+>>>>>>> 642a41feac01a5f4b4c00fe3dd48d21dec32de5c
                 </tr>
             </thead>
             <tbody>
@@ -62,17 +69,33 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
                     if ($result->num_rows > 0) {
                         $row = $result->fetch_assoc();
                         echo '<tr>';
+<<<<<<< HEAD
+                        echo '<td class="align-middle px-4 can">' . $row['Id_producto'] . '</td>';
+                        echo '<td class="align-middle px-4"><img class="img_carrito" src="imagenes/' . $row['imagen'] . '" alt="imagen no cargada"></td>';
+                        echo '<td class="align-middle px-4">' . $row['nombre'] . '</td>';
+                        echo '<td class="align-middle px-4">' . $row['descripcion'] . '</td>';
+                        echo '<td class="align-middle px-4 can"> $' . $row['precio'] . '</td>';
+                        echo '<td class="align-middle px-4 can">' . $detallesProducto['cantidad'] . '</td>';
+                        echo '<td class="align-middle px-4 can"> $' . $row['precio'] * $detallesProducto['cantidad'] . '</td>';
+                        echo '<td class="align-middle px-4 can"><button><i class="fa-regular fa-trash-can" style="color: #000000; font-size:25px;"></i></button></td>';
+                        // Agrega más columnas según sea necesario
+=======
                         echo '<td>' . $row['Id_producto'] . '</td>';
                         echo '<td><img src="imagenes/' . $row['imagen'] . '" alt="imagen no cargada"></td>';
                         echo '<td>' . $row['nombre'] . '</td>';
                         echo '<td>' . $detallesProducto['cantidad'] . '</td>';
-                        // Agrega más columnas según sea necesario
+>>>>>>> 642a41feac01a5f4b4c00fe3dd48d21dec32de5c
                         echo '</tr>';
                     }
                     $total = $row['precio'] * $detallesProducto['cantidad'] + $total;
                 }
                 echo '<tr>';
                     echo '<td colspan="6" style="text-align:center;">T&nbsp O &nbspT&nbsp A&nbsp L</td>';
+                    // echo '<td></td>';
+                    // echo '<td></td>';
+                    // echo '<td></td>';
+                    // echo '<td></td>';
+                    // echo '<td></td>';
                     echo '<td class="can">$' . $total .'</td>';
                     echo '<td></td>';
                     echo '</tr>';
