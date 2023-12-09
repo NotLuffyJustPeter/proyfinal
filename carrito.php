@@ -73,11 +73,6 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
                 }
                 echo '<tr>';
                     echo '<td colspan="6" style="text-align:center;">T&nbsp O &nbspT&nbsp A&nbsp L</td>';
-                    // echo '<td></td>';
-                    // echo '<td></td>';
-                    // echo '<td></td>';
-                    // echo '<td></td>';
-                    // echo '<td></td>';
                     echo '<td class="can">$' . $total .'</td>';
                     echo '<td></td>';
                     echo '</tr>';
