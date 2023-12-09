@@ -43,7 +43,6 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
         
             <thead>
                 <tr>
-                    <th class="px-3 can">ID</th>
                     <th class="px-3 can">Imagen</th>
                     <th class="px-3 can">Producto</th>
                     <th class="px-3 can">Descripcion</th>
@@ -62,7 +61,6 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
                     if ($result->num_rows > 0) {
                         $row = $result->fetch_assoc();
                         echo '<tr>';
-                        echo '<td class="align-middle px-4 can">' . $row['Id_producto'] . '</td>';
                         echo '<td class="align-middle px-4"><img class="img_carrito" src="imagenes/' . $row['imagen'] . '" alt="imagen no cargada"></td>';
                         echo '<td class="align-middle px-4">' . $row['nombre'] . '</td>';
                         echo '<td class="align-middle px-4">' . $row['descripcion'] . '</td>';
@@ -76,12 +74,7 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
                     $total = $row['precio'] * $detallesProducto['cantidad'] + $total;
                 }
                 echo '<tr>';
-                    echo '<td colspan="6" style="text-align:center;">T&nbsp O &nbspT&nbsp A&nbsp L</td>';
-                    // echo '<td></td>';
-                    // echo '<td></td>';
-                    // echo '<td></td>';
-                    // echo '<td></td>';
-                    // echo '<td></td>';
+                    echo '<td colspan="5" style="text-align:center;">T&nbsp O &nbspT&nbsp A&nbsp L</td>';
                     echo '<td class="can">$' . $total .'</td>';
                     echo '<td></td>';
                     echo '</tr>';
