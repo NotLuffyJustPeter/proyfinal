@@ -78,6 +78,7 @@
                               <a id="menu1" href="a.php">Agregar productos</a>
                               <a id="menu1" href="c.php">Editar productos</a>
                               <a id="menu1" href="b.php">Eliminar productos</a>
+                              <a id="menu1" href="graficas.php">Graficas</a>
                           </div>
                       </div>
                     <?php } 
