@@ -148,7 +148,6 @@ $total = $_SESSION['total'];
 </style>
 <body>
 <div class="container">
-<h4>Vas a pagar $<?php echo $total ?></h4>
 <h4 class="flex-grow mb-4">Selecciona tu metodo de Pago</h4>
 	<form action="">
 		<div class="payment">
@@ -182,6 +181,7 @@ $total = $_SESSION['total'];
     <div class="row justify-content-center">
         <div class="col-md-6">
             <form class="mx-auto">
+                <h4>Vas a pagar $<?php echo $total ?></h4>
                 <div class="form-group">
                     <label for="nombre" class="my-2">Nombre Completo (en la Tarjeta)</label>
                     <input type="text" class="form-control" id="nombre" placeholder="Nombre Completo" required>
@@ -233,7 +233,7 @@ $total = $_SESSION['total'];
 					<div class="opps-brand"><img src="imagenes/oxxopay.png" alt="OXXOPay"></div>
 					<div class="opps-ammount">
 						<h3>Monto a pagar</h3>
-						<h2>$ 5,750.00 <sup>MXN</sup></h2>
+						<h2>$<?php echo $total ?><sup>MXN</sup></h2>
 						<p>OXXO cobrará una comisión adicional al momento de realizar el pago.</p>
 					</div>
 				</div>
