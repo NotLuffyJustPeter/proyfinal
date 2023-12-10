@@ -1,6 +1,4 @@
-<?php session_start();
-require 'header.php';
-?>
+
 <header>
     <title>Tienda Online</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
@@ -32,6 +30,9 @@ require 'header.php';
 </header>
 
 <body>
+<?php session_start();
+require 'header.php';
+?>
     <button style="margin-top:80px; margin-left:80px;" class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
         <i class="fa-solid fa-sliders" style="color: #000000; font-size:25px; margin-bottom:30px;"></i>
     </button>
