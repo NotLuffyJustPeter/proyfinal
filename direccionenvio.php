@@ -1,8 +1,3 @@
-<header>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-    <link rel="stylesheet" href="css/styt.css">
-    <link rel="stylesheet" href="css/altas.css">
-</header>
 <?php
 session_start();
 if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
@@ -15,6 +10,9 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
 <head>
 	<title>Dirección de envio</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+	<link rel="stylesheet" href="css/styt.css">
+	<link rel="stylesheet" href="css/altas.css">
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
