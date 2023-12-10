@@ -14,7 +14,7 @@ $cuponesValidos = [
 
 if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
     $subtotal = $_SESSION['subtotal'];
-    $_SESSION['total']=$subtotal;
+    $_SESSION['total'] = $subtotal;
     $carrito = $_SESSION['carrito'];
 
     $descuentototal = $_SESSION['descuentototal'];
@@ -24,26 +24,76 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
     $database = "sirenegaze";
     $tabla = "inventario";
 
+    $temp=0;
     $descuento = 0;
     $totalCarrito = 0;
     $totalcupon = 0;
     $impuestos = 0;
     $gastosEnvio = 0;
 
-
     $conn = new mysqli($servername, $username, $password, $database);
 
     if ($conn->connect_error) {
         die("Error de conexión: " . $conn->connect_error);
     }
+    if($_SESSION['pais']==='MEX' || $_SESSION['pais']==='USA'){
+        $paisHolder=$_SESSION['pais'];
+    }else{
+        $_SESSION['pais']=="default";
+    }
+    if($_SESSION['subtotal'] < 1500){
+        $gastosEnvio=300;
+    }
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['codigoDescuento'])) {
         $codigo = $_POST['codigo'];
+        if($_SESSION['pais']==="default"){
+            echo '<script type="text/javascript">
+            var mensaje = "¡Primero selecciona un país!";
+            alert(mensaje);
+
+            setTimeout(function() {
+                window.location.href = "desglosecompra.php";
+            }, 500);
+            </script>';
+        }
+        
         if (array_key_exists($codigo, $cuponesValidos)) {
             
             $descuento = $cuponesValidos[$codigo];
-            $totalCarrito = $subtotal; 
-            $totalcupon = $totalCarrito - ($totalCarrito * $descuento / 100);
-            $_SESSION['total'] = $totalcupon;
+            $totalCarrito = $subtotal;
+            $temp=$totalCarrito * $descuento / 100;
+            $_SESSION['total'] = $_SESSION['total'] - $temp;
+        }
+    }
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Verifica si se recibieron datos por POST
+        if (isset($_POST['pais'])) {
+            $pais = $_POST['pais']; // Obtiene el país seleccionado
+            if ($pais === 'USA') {
+                $impuestos = $_SESSION['subtotal'] * 0.0625;
+                $_SESSION['total'] = $subtotal + $impuestos;
+                $_SESSION['pais']='USA';
+            } else if ($pais === 'MEX') {
+                $impuestos = $_SESSION['subtotal'] * 0.16;
+                $_SESSION['total'] = $subtotal + $impuestos;
+                $_SESSION['pais']='MEX';
+            }
+        }
+    }
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['checar'])) {
+        if ($_SESSION['pais']==="default") {
+            echo '<script type="text/javascript">
+            var mensaje = "¡Primero selecciona un país!";
+            alert(mensaje);
+
+            setTimeout(function() {
+                window.location.href = "desglosecompra.php";
+            }, 500);
+            </script>';
+        }else{
+            $_SESSION['total'] = $_SESSION['total'] + $gastosEnvio; 
+            header("Location: direccionenvio.php");
+            exit();
         }
     }
 }
@@ -60,6 +110,14 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyZqBAYB1B/BKQxIepqXarGBjDAJ7f6dU6" crossorigin="anonymous">
     <title>Procesar Pago</title>
 </head>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $('#pais').change(function() {
+            $('#formDireccion').submit(); // Envía el formulario al seleccionar un país
+        });
+    });
+    </script>
     <style>
         body {
             background-color: #f4f4f4;
@@ -79,10 +137,10 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <h3> <a href="direccionenvio.php">Paso 2-></a>  Paso 3-></h3>
+            <h3> <a href="desglosecompra.php">Paso 1-></a></h3>
             <h3>Detalle de Pago</h3>
             
-            <form class="mx-auto" action="direccionenvio.php">
+            
                 <div class="form-group">
                 <?php 
                 foreach ($carrito as $productoId => $detallesProducto) {
@@ -132,19 +190,28 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
                 ?>
                 </div>
                 <div class="form-group">
-                    <p>Subtotal: $<?php echo $subtotal; ?></p>
-                    <!-- <p>Descuento del cupón: $<?php //echo $descuento; ?></p>
-                    <p>Total con descuento: $<?php //echo $totalConDescuento; ?></p>
-                    <p>Impuestos (<?php //echo ($impuestos * 100); ?>%): $<?php //echo $totalConImpuestos - $totalConDescuento; ?></p>
-                    <p>Gastos de envío: $<?php //echo //$gastosEnvio; ?></p> -->
-                    <h2>Total a Pagar: $<?php echo $_SESSION['total']; ?></h2>
+                    <p>Subtotal: $<?php echo $subtotal;?></p>
+                    <p>Descuento del cupón: $<?php echo $descuento; ?></p>
+                    <form class="mx-auto" id="formDireccion" method="post">
+                        <div class="form-group">
+                            <label for="pais">País:</label>
+                            <select id="pais" name="pais" required>
+                            <?php $paisHolder=$_SESSION['pais'];?>
+                                <option value=""><?php echo $paisHolder; ?></option>
+                                <option value="USA">Estados Unidos</option>
+                                <option value="MEX">México</option>
+                            </select>
+                        </div>
+                    </form>
+                    <p title="Los impuestos son aplicados al subtotal">Impuestos aplicados: $<?php echo $impuestos; ?></p> 
+                    <p>Gastos de envío: $<?php echo $gastosEnvio; ?></p>
+                    <h2>Total a Pagar: $<?php echo $_SESSION['total'] + $gastosEnvio; ?></h2>
                 </div>
-                
+                <form class="mx-auto" method="post">
                 <div class="form-group">
+                    <button type="submit" name="checar" class="btn btn-primary">Siguiente</button>
                 </div>
-                
-                <button type="submit" class="btn btn-primary">Guardar</button>
-            </form>
+                </form>
             <form class="mx-auto" method="post">
                 <div class="form-group">
                     <input type="text" id="codigo" name="codigo" placeholder="Promo code">
@@ -154,7 +221,6 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
         </div>
     </div>
 </div>
-
 <?php include 'footer.php'; ?>
 
 </body>
