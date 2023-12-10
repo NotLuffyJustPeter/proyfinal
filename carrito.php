@@ -3,7 +3,8 @@ session_start();
 
 if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
     $carrito = $_SESSION['carrito'];
-
+    $_SESSION['subtotal'] = 0;
+    $_SESSION['descuentototal']=0;
     $servername = "localhost";
     $username = "root";
     $password = "";
@@ -11,6 +12,7 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
     $tabla = "inventario";
     $total = 0;
     $precio_final=0;
+    $dcto=0;
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -64,6 +66,7 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
                                 echo '<td class="align-middle px-4">' . $row['nombre'] . '</td>';
                                 echo '<td class="align-middle px-4">' . $row['descripcion'] . '</td>';
                                 if($row['descuento']!=0){
+                                    $dcto = ($row['precio']*$row['descuento']/100) + $dcto;
                                     $precio_final = ($row['precio'] - $row['precio']*$row['descuento']/100);
                                     echo '<td class="align-middle px-4 can" style="color:red";> $' . $precio_final . '</td>';
                                 }else{
@@ -83,6 +86,8 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
                         echo '<td class="can">$' . $total .'</td>';
                         echo '<td></td>';
                         echo '</tr>';
+                        $_SESSION['subtotal']=$total;
+                        $_SESSION['descuentototal']=$dcto;
                         ?>
                 </tbody>
             </table>
