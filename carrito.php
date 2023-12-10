@@ -86,14 +86,8 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
                     ?>
             </tbody>
         </table>
-<<<<<<< HEAD
-    </div>
-        <center><button class="editar-button">Realizar Compra</button></center>
-    </div>
-=======
         <center><button class="editar-button" onclick="realizarCompra()">Realizar Pedido</button></center>
         </div>
->>>>>>> a5c9aaa62df0473483569470608f7939155b5f70
         <script>
             function realizarCompra() {
                 window.location.href = "desglosecompra.php";
