@@ -84,6 +84,7 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
                 ?>
             </tbody>
         </table>
+        <center><button class="editar-button">Realizar Compra</button></center>
         </div>
         <script>
             function eliminar(productoId) {
