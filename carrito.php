@@ -11,6 +11,7 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
     $dbname = "sirenegaze";
     $tabla = "inventario";
     $total = 0;
+    $precio_final=0;
 
     // Crear conexión
     $conn = new mysqli($servername, $username, $password, $dbname);
@@ -64,14 +65,33 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
                         echo '<td class="align-middle px-4"><img class="img_carrito" src="imagenes/' . $row['imagen'] . '" alt="imagen no cargada"></td>';
                         echo '<td class="align-middle px-4">' . $row['nombre'] . '</td>';
                         echo '<td class="align-middle px-4">' . $row['descripcion'] . '</td>';
-                        echo '<td class="align-middle px-4 can"> $' . $row['precio'] . '</td>';
+
+                        
+                        if($row['descuento']!=0){
+                            $precio_final = ($row['precio'] - $row['precio']*$row['descuento']/100);
+                            echo '<td class="align-middle px-4 can" style="color:red";> $' . $precio_final . '</td>';
+                        }else{
+                            $precio_final = $row['precio'];
+                            echo '<td class="align-middle px-4 can"> $' . $precio_final . '</td>';
+                        }
+
+
+                        // if($descuento != 0){
+                        //     $descuento_decimal = $descuento/100;
+                        //     echo '<span class="oferta">MXN ' . $precio . '</span><br>';
+                        //     echo '<span class="precio">MXN ' . $precio - ($precio * $descuento_decimal) . '</span><br>';
+                        // }else{
+                        //     echo '<span class="precio">MXN ' . $precio . '</span><br>';
+                        // }
+
+
                         echo '<td class="align-middle px-4 can">' . $detallesProducto['cantidad'] . '</td>';
-                        echo '<td class="align-middle px-4 can"> $' . $row['precio'] * $detallesProducto['cantidad'] . '</td>';
+                        echo '<td class="align-middle px-4 can"> $' . $precio_final * $detallesProducto['cantidad'] . '</td>';
                         echo '<td class="align-middle px-4 can"><button><i class="fa-regular fa-trash-can" style="color: #000000; font-size:25px;"></i></button></td>';
                         // Agrega más columnas según sea necesario
                         echo '</tr>';
                     }
-                    $total = $row['precio'] * $detallesProducto['cantidad'] + $total;
+                    $total = $precio_final* $detallesProducto['cantidad'] + $total;
                 }
                 echo '<tr>';
                     echo '<td colspan="6" style="text-align:center;">T&nbsp O &nbspT&nbsp A&nbsp L</td>';
