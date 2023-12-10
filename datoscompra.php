@@ -1,6 +1,9 @@
 <?php session_start(); 
 
-require 'header.php';?>
+require 'header.php';
+$total = $_SESSION['total'];
+?>
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -145,6 +148,7 @@ require 'header.php';?>
 </style>
 <body>
 <div class="container">
+<h4>Vas a pagar $<?php echo $total ?></h4>
 <h4 class="flex-grow mb-4">Selecciona tu metodo de Pago</h4>
 	<form action="">
 		<div class="payment">
