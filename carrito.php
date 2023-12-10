@@ -36,25 +36,27 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
         <div class="carrito">
 
         <h1 class="titulo">C a r r i t o &nbsp&nbsp  d e  &nbsp&nbspc o m p r a s</h1>
-        <table class="table table-borderless table-hover prod">
-        
-            <thead>
-                <tr>
-                    <th class="px-3 can">Imagen</th>
-                    <th class="px-3 can">Producto</th>
-                    <th class="px-3 can">Descripcion</th>
-                    <th class="px-3 can">Precio</th>
-                    <th class="px-3 can">Cantidad</th>
-                    <th class="px-3 can">Subtotal</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
+        <div class="table-responsive">
+
+            <table class="table table-borderless table-hover prod">
+                
+                <thead>
+                    <tr>
+                        <th class="px-3 can">Imagen</th>
+                        <th class="px-3 can">Producto</th>
+                        <th class="px-3 can">Descripcion</th>
+                        <th class="px-3 can">Precio</th>
+                        <th class="px-3 can">Cantidad</th>
+                        <th class="px-3 can">Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
                 foreach ($carrito as $productoId => $detallesProducto) {
                     if($detallesProducto['cantidad'] != 0){
                         $query = "SELECT * FROM $tabla WHERE Id_producto = $productoId";
                         $result = $conn->query($query);
-
+                        
                         if ($result->num_rows > 0) {
                             $row = $result->fetch_assoc();
                             echo '<tr>';
@@ -81,11 +83,12 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
                     echo '<td class="can">$' . $total .'</td>';
                     echo '<td></td>';
                     echo '</tr>';
-                ?>
+                    ?>
             </tbody>
         </table>
+    </div>
         <center><button class="editar-button">Realizar Compra</button></center>
-        </div>
+    </div>
         <script>
             function eliminar(productoId) {
                 var xhr = new XMLHttpRequest();
