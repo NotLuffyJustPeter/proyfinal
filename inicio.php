@@ -116,7 +116,7 @@
     <h1 class="subtitulo1">W &nbsp&nbspO &nbsp&nbspM &nbsp&nbspA &nbsp&nbspN</h1>
     <div class="bloque4">
       <div class="zoom">
-      <a href="woman.php"><img src="imagenes/woman_pantalon.jpg" ></a>
+      <a href="woman.php"><img src="imagenes/woman_pantalon.jpg"></a>
       </div>
       <div class="zoom">
       <a href="woman.php"><img src="imagenes/woman_blusa.jpg" ></a>
@@ -124,24 +124,29 @@
       <div class="zoom">
       <a href="woman.php"><img src="imagenes/woman_sueter.jpg" ></a>
       </div>
+      <h4 class="ap">Pantalones</h4>
+      <h4 class="ap">Blusas</h4>
+      <h4 class="ap">Sueteres</h4>
       <div class="zoom">
       <a href="woman.php"><img src="imagenes/woman_chamarra.jpg" ></a>
       </div>
       <div class="zoom">
       <a href="woman.php"><img src="imagenes/woman_vestido.jpg" ></a>
       </div>
-
-        <h4>Pantalones</h4>
-        <h4>Blusas</h4>
-        <h4>Sueteres</h4>
-        <h4>Chamarras</h4>
-        <h4>Vestidos</h4>
+      <h4 class="ap"></h4>
+      <h4 class="ap">Chamarras</h4>
+      <h4 class="ap">Vestidos</h4>
+        <h4 class="nop">Pantalones</h4>
+        <h4 class="nop">Blusas</h4>
+        <h4 class="nop">Sueteres</h4>
+        <h4 class="nop">Chamarras</h4>
+        <h4 class="nop">Vestidos</h4>
     </div>
     <h1 class="subtitulo2">M &nbspE &nbspN</h1>
     <div class="bloque5">
-        <div class="blanco"></div>
-        <div class="blanco"></div>
-        <div class="blanco"></div>
+        <div class="blanco nop"></div>
+        <div class="blanco nop"></div>
+        <div class="blanco nop"></div>
         <div class="zoom">
         <a href="men.php"><img src="imagenes/man_camisa.jpg" ></a>
         </div>
@@ -151,23 +156,29 @@
         <div class="zoom">
         <a href="men.php"><img src="imagenes/man_chamarra.jpg" ></a>
         </div>
+        <!-- Aparecen al quiebre de pantalla -->
         <div class="zoom">
         <a href="men.php"><img src="imagenes/man_pantalon.jpg"></a>
         </div>
         <div class="zoom">
         <a href="men.php"><img src="imagenes/man_sudadera.jpg" ></a>
         </div>
-        <div class="blanco"></div>
-        <div class="blanco"></div>
-        <div class="blanco"></div>
+        <div class="blanco nop"></div>
+        <div class="blanco nop"></div>
+        <div class="blanco nop"></div>
         
-        <div class="blanco"></div>
-        <div class="blanco"></div>
-        <h4>Camisas</h4>
-        <h4>Playeras</h4>
-        <h4>Chamarras</h4>
-        <h4>Pantalones</h4>
-        <h4>Sudaderas</h4>
+        <div class="blanco nop"></div>
+        <div class="blanco nop"></div>
+        <h4 class="ap"></h4>
+        <h4 class="ap">Chamarras</h4>
+        <h4 class="ap">Vestidos</h4>
+
+        <!-- Desaparecen al quiebre de pantalla -->
+        <h4 class="nop">Camisas</h4>
+        <h4 class="nop">Playeras</h4>
+        <h4 class="nop">Chamarras</h4>
+        <h4 class="nop">Pantalones</h4>
+        <h4 class="nop">Sudaderas</h4>
     </div>
     
 
