@@ -55,6 +55,14 @@ button:hover{
     font-size: 30px;
 }
 
+@media screen and (max-width: 1000px) {
+    .carrito_vacio{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+    
+}
+
 
 .editar-button{
     padding: 15px 150px;
