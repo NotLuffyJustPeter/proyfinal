@@ -65,39 +65,66 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
             background-color: #f4f4f4;
             padding-top: 90px;
         }
+        table {
+            width: 55%;
+            border-collapse: collapse;
+            border: 1px solid black; /* Establece el borde de la tabla */
+        }
+        td {
+            padding: 8px; /* Añade relleno a las celdas para separar el contenido del borde */
+        }
     </style>
 <body>
 
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <h3> <a href="direccionenvio.php">Paso 2-></a>  Paso 3 -></h3>
+            <h3> <a href="direccionenvio.php">Paso 2-></a>  Paso 3-></h3>
             <h3>Detalle de Pago</h3>
             
-            <form class="mx-auto">
+            <form class="mx-auto" action="direccionenvio.php">
                 <div class="form-group">
                 <?php 
                 foreach ($carrito as $productoId => $detallesProducto) {
                     echo '<div class="form-group">';
-                
+                    
                     if($detallesProducto['cantidad'] != 0){
                         $query = "SELECT * FROM $tabla WHERE Id_producto = $productoId";
                         $result = $conn->query($query);
 
                         if ($result->num_rows > 0) {
                             $row = $result->fetch_assoc();
+                            echo '<table>';
                             echo '<tr>';
-                            echo $row['nombre'] . '  ';
-                            echo $row['descripcion'] . '  ';
-                            if($row['descuento']!=0){
-                                $precio_final = ($row['precio'] - $row['precio']*$row['descuento']/100);
-                            }else{
+                            echo '<td rowspan=5><img class="img_carrito" src="imagenes/' . $row['imagen'] . '" alt="imagen no cargada" width="70" height="90"></td>';
+                            echo '</tr>';
+                            echo '<tr>';
+                            echo '<td>' . $detallesProducto['cantidad'] . ' pz</td>';
+                            echo '<td> </td>';
+                            echo '<td> </td>';
+                            echo '</tr>';
+                            echo '<tr>';
+                            echo '<td>' . $row['nombre'] . '</td>';
+                            echo '<td> </td>';
+                            echo '<td> </td>';
+                            echo '</tr>';
+                            echo '<tr>';
+                            echo '<td>' . $row['descripcion'] . '</td>';
+                            echo '<td> </td>';
+                            echo '<td> </td>';
+                            echo '</tr>';
+                            if ($row['descuento'] != 0) {
+                                $precio_final = ($row['precio'] - $row['precio'] * $row['descuento'] / 100);
+                            } else {
                                 $precio_final = $row['precio'];
                             }
-                            echo $detallesProducto['cantidad'] . '  ';
-                            echo '$' . $precio_final * $detallesProducto['cantidad'] . '  ';
-                            echo '<img class="img_carrito" src="imagenes/' . $row['imagen'] . '" alt="imagen no cargada" width="50" height="50">';
-                            echo '<button onclick="eliminar(' . $row['Id_producto'] . ')"><i class="fa-regular fa-trash-can" style="color: #000000; font-size:11px;"></i></button>';
+                            echo '<tr>';
+                            echo '<td>$' . $precio_final * $detallesProducto['cantidad'] . '</td>';
+                            echo '<td> </td>';
+                            echo '<td> </td>';
+                            echo '</tr>';
+                            echo '</table>';
+
                         }
                     }
                      echo '</div>';
