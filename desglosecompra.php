@@ -37,8 +37,11 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
     }
     if($_SESSION['pais']==='MEX' || $_SESSION['pais']==='USA')
         $paisHolder=$_SESSION['pais'];
-    if($_SESSION['subtotal'] < 1500)
-        $gastosEnvio=300;
+    if ($_SESSION['subtotal'] < 1500) {
+            $gastosEnvio = 200;
+        } else {
+            $gastosEnvio = 0; 
+        }
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['codigoDescuento'])) {
         $codigo = $_POST['codigo'];
         if($_SESSION['impuestos']===0){
