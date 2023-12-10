@@ -1,5 +1,14 @@
-<?php session_start(); 
-require 'header.php';?>
+<header>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styt.css">
+    <link rel="stylesheet" href="css/altas.css">
+</header>
+<?php
+session_start();
+if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
+	$paisSeleccionado = $_SESSION['pais'];
+}
+?>
 
 <!DOCTYPE html>
 <html>
@@ -16,13 +25,13 @@ require 'header.php';?>
 </head>
 
 <body>
-    
+		<?php include 'header.php'; ?>
 		<div class="col-md-4 container bg-default">
-			
-			<h4 class="my-4">
+			<h3><a href="desglosecompra.php">Paso 1-> </a> <a href="direccionenvio.php">Paso 2-></a></h3>
+			<h3 class="my-4">
 					Direccion de envio
-			</h4>
-			<form>
+			</h3>
+			<form >
 				<div class="form-row">
 					<div class="col-md-6 form-group">
 						<label for="firstname">Nombre</label>
@@ -76,15 +85,8 @@ require 'header.php';?>
 
 				<div class="row">
             <div class="col-md-4 form-group">
-                <label for="Pais">País</label>
-                <select type="text" class="form-control" id="Pais">
-                    <option value>Selecciona...</option>
-                    <option>México</option>
-                    <option>Estados Unidos</option>
-                </select>
-                <div class="invalid-feedback">
-                    Selecciona un país válido.
-                </div>
+				<label for="pais">País:</label>
+    			<input type="text" id="pais" name="pais" value="<?php echo htmlspecialchars($paisSeleccionado); ?>" readonly>
             </div>
 
             <div class="col-md-4 form-group">
@@ -116,20 +118,20 @@ require 'header.php';?>
 					<label for="same-adress" class="form-check-label"></label>					
 					</div>
           <br>
-					<button id="btnContinuarPago" class="btn btn-danger bt-lg btn-block" type="submit">Continuar al método de pago</button>
+					<button id="btnContinuarPago" class="btn btn-danger bt-lg btn-block" type="submit" onsubmit="validarFormulario()">Continuar al método de pago</button>
 
 			</form>
 		</div>
     <script>
-      document.getElementById("btnContinuarPago").addEventListener("click", function(event) {
-        // Validar campos del formulario
-        if (!validarFormulario()) {
-          event.preventDefault(); 
-          return;
-        }
-        var nuevaPagina = "datoscompra.php";
-        window.location.href = nuevaPagina;
-      });
+       document.getElementById("btnContinuarPago").addEventListener("click", function(event) {
+         // Validar campos del formulario
+         if (!validarFormulario()) {
+           event.preventDefault(); 
+           return false;
+         }
+         var nuevaPagina = "datoscompra.php";
+         window.location.href = nuevaPagina;
+        });
 
       function validarFormulario() {
         var nombre = document.getElementById("firstname").value;
@@ -145,11 +147,9 @@ require 'header.php';?>
           });
           return false;
         }
-        return true;
+		return true;
       }
     </script>
-  
+	<?php include 'footer.php'; ?>
 </body>
 </html>
-
-<?php include 'footer.php'; ?>
