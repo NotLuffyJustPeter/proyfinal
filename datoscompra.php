@@ -154,43 +154,65 @@ $total = $_SESSION['total'];
         }
         
 </style>
+<script>
+        // Función para mostrar u ocultar los detalles de pago
+        function togglePaymentDetails(option) {
+            var cardDetails = document.getElementById('cardDetails');
+            var cashDetails = document.getElementById('cashDetails');
+
+            // Ocultar ambos detalles
+            cardDetails.style.display = 'none';
+            cashDetails.style.display = 'none';
+
+            // Mostrar el detalle correspondiente a la opción seleccionada
+            if (option === 'debito') {
+                cardDetails.style.display = 'block';
+            } else if (option === 'credito') {
+                cashDetails.style.display = 'block';
+            }
+        }
+    </script>
 <body>
 <?php require 'header.php';?>
-<div class="container">
-<h3><a href="desglosecompra.php">Paso 1-> </a> <a href="direccionenvio.php">Paso 2-></a> <a href="datoscompra.php">Paso 3-></a></h3>
-<h4 class="flex-grow mb-4">Selecciona tu metodo de Pago</h4>
-	<form action="">
-		<div class="payment">
-			<div class="payment-select">
-				<div class="payment-select-header">
-					<div class="payment-select-radio">
-						<input type="radio"  id="debito" name="pay" value="debito"> 
-					<label for="debito">Tarjeta</label>
-					</div>
-					<div class="payment-select-logo">
-                    <i class="fa fa-money-check mr-1"></i> Crédito / Débito</span>
-					</div>
-				</div>
-			</div>
-			<div class="payment-select">
-				<div class="payment-select-header">
-					<div class="payment-select-radio">
-						<input type="radio"  id="credito" name="pay" value="credito"> 
-					<label for="credito">Efectivo</label>
-					</div>
-					<div class="payment-select-logo">
-                        <i class="fa fa-money-bill mr-1"></i> OXXO</span>
-					</div>
-				</div>
-			</div>
-		</div>
-	</form>
-</div>
+<div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h3><a href="desglosecompra.php">Paso 1-> </a> <a href="direccionenvio.php">Paso 2-></a> <a href="datoscompra.php">Paso 3-></a></h3>
+                <h4 class="flex-grow mb-4">Selecciona tu metodo de Pago</h4>
+                <form action="" onchange="togglePaymentDetails(this.pay.value)">
+                    <div class="payment">
+                        <div class="payment-select">
+                            <div class="payment-select-header">
+                                <div class="payment-select-radio">
+                                    <input type="radio" id="debito" name="pay" value="debito"> 
+                                    <label for="debito">Tarjeta</label>
+                                </div>
+                                <div class="payment-select-logo">
+                                    <i class="fa fa-money-check mr-1"></i> Crédito / Débito</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="payment-select">
+                            <div class="payment-select-header">
+                                <div class="payment-select-radio">
+                                    <input type="radio" id="credito" name="pay" value="credito"> 
+                                    <label for="credito">Efectivo</label>
+                                </div>
+                                <div class="payment-select-logo">
+                                    <i class="fa fa-money-bill mr-1"></i> OXXO</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <form class="mx-auto" action="venta.php" >
+            <form class="mx-auto" id="cardDetails" style="display: none;"  action="venta.php">
                 <h4>Vas a pagar $<?php echo $total ?></h4>
                 <div class="form-group">
                     <label for="nombre" class="my-2">Nombre Completo (en la Tarjeta)</label>
@@ -237,6 +259,7 @@ $total = $_SESSION['total'];
 
 	<body>
 		<div class="opps">
+        <form class="mx-auto" id="cashDetails" style="display: none;"  action="venta.php">
 			<div class="opps-header">
 				<div class="opps-reminder">Ficha digital. No es necesario imprimir.</div>
 				<div class="opps-info">
@@ -265,6 +288,7 @@ $total = $_SESSION['total'];
                 <br>
                 <button type="submit" class="btn btn-danger">Confirmar Pago en efectivo</button>
 			</div>
+            </form>
 		</div>
 
 
