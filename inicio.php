@@ -134,6 +134,25 @@
           text-align:right;
         }
         @media screen and (max-width: 600px) {
+          .t1{
+              margin-top: 20px;
+              margin-left: 0px;
+              font-size: 50px;
+              font-family: 'Tourney';
+          }
+          .estre{
+            display: none;
+          }
+
+          .estrella{
+            display: block;
+          }
+          
+          .t2{
+              font-size: 40px;
+              margin-left: 0px;
+              font-family: 'Lexend_Tera';
+          }
             .tex6{
               padding-left:0px;
               font-size:14px;
@@ -181,21 +200,20 @@
       <div class="texto">
             <h1 class="t1">F A S H I O N</h1>
             <h1 class="t2">N E V E R</h1>
-            <h1 class="t2" style="margin-left: 180px;">S L E E P S</h1>
+            <h1 class="t2 estre" style="margin-left: 180px;">S L E E P S</h1>
+            <h1 class="t2 estrella">S L E E P S</h1>
             <i class="fa-solid fa-splotch fa-flip start" ></i>
             <br>
             <img class="logo2" src="imagenes/Log.png" alt="" class="logo">
-
             <h5>Explora el mundo de la moda. En nuestra tienda online, cada prenda es una declaración de estilo. Encuentra lo que te define y eleva tu guardarropa.</h5>
-            
-          </div>
+      </div>
           <div class="imagenes">
             <img class="b1" src="imagenes/imginicio2.jpg" alt="" class="jess">
             <img class="b1" src="imagenes/jess2.jpg" alt="" class="jess">
             <img class="b1" src="imagenes/imginicio6.jpg" alt="" class="jess">
             <img class="b1" src="imagenes/imginicio4.jpg" alt="" class="jess">
           </div>
-        </div>
+      </div>
         
     
     <div class="bloque2">

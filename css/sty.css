@@ -44,6 +44,10 @@ body{
     background-color: rgb(255, 255, 255);
 }
 
+.estrella{
+    display: none;
+}
+
 
 .logo2{
     margin: 30px;
@@ -145,6 +149,14 @@ body{
         grid-template-rows: 1fr 1fr;
         margin-bottom: 500px;
     }    
+
+    .t1{
+        margin-left: 0px;
+    }
+    
+    .t2{
+        margin-left: 40px;
+    }
 
     .bloque3{
         flex-direction: column;
