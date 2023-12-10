@@ -27,7 +27,7 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
 <body>
 		<?php include 'header.php'; ?>
 		<div class="col-md-4 container bg-default">
-			<h3><a href="desglosecompra.php">Paso 1-> </a> <a href="direccionenvio.php">Paso 2-></a></h3>
+			<h3><a href="desglosecompra.php">Paso 1-> </a> <a href="direccionenvio.php">Paso 2-></a> <a href="datoscompra.php">Paso 3-></a> </h3>
 			<h3 class="my-4">
 					Direccion de envio
 			</h3>
@@ -85,8 +85,7 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
 
 				<div class="row">
             <div class="col-md-4 form-group">
-				<label for="pais">País:</label>
-    			<input type="text" id="pais" name="pais" value="<?php echo htmlspecialchars($paisSeleccionado); ?>" readonly>
+				<p><?php echo htmlspecialchars($paisSeleccionado); ?></p> 
             </div>
 
             <div class="col-md-4 form-group">
@@ -118,16 +117,17 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
 					<label for="same-adress" class="form-check-label"></label>					
 					</div>
           <br>
-					<button id="btnContinuarPago" class="btn btn-danger bt-lg btn-block" type="submit" onsubmit="validarFormulario()">Continuar al método de pago</button>
+					<button id="btnContinuarPago" class="btn btn-danger bt-lg btn-block" type="submit">Continuar al método de pago</button>
 
 			</form>
 		</div>
     <script>
        document.getElementById("btnContinuarPago").addEventListener("click", function(event) {
          // Validar campos del formulario
+		 validarFormulario();
          if (!validarFormulario()) {
            event.preventDefault(); 
-           return false;
+           return;
          }
          var nuevaPagina = "datoscompra.php";
          window.location.href = nuevaPagina;
