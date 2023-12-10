@@ -23,30 +23,25 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
     $password = "";
     $database = "sirenegaze";
     $tabla = "inventario";
-
-    $temp=0;
     $descuento = 0;
     $totalCarrito = 0;
     $totalcupon = 0;
     $impuestos = 0;
     $gastosEnvio = 0;
+    $temp2 = 0;
 
     $conn = new mysqli($servername, $username, $password, $database);
 
     if ($conn->connect_error) {
         die("Error de conexión: " . $conn->connect_error);
     }
-    if($_SESSION['pais']==='MEX' || $_SESSION['pais']==='USA'){
+    if($_SESSION['pais']==='MEX' || $_SESSION['pais']==='USA')
         $paisHolder=$_SESSION['pais'];
-    }else{
-        $_SESSION['pais']=="default";
-    }
-    if($_SESSION['subtotal'] < 1500){
+    if($_SESSION['subtotal'] < 1500)
         $gastosEnvio=300;
-    }
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['codigoDescuento'])) {
         $codigo = $_POST['codigo'];
-        if($_SESSION['pais']==="default"){
+        if($_SESSION['impuestos']===0){
             echo '<script type="text/javascript">
             var mensaje = "¡Primero selecciona un país!";
             alert(mensaje);
@@ -61,8 +56,8 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
             
             $descuento = $cuponesValidos[$codigo];
             $totalCarrito = $subtotal;
-            $temp=$totalCarrito * $descuento / 100;
-            $_SESSION['total'] = $_SESSION['total'] - $temp;
+            $_SESSION['cupon']=$totalCarrito * $descuento / 100;
+            $_SESSION['total'] = $_SESSION['total'] - $_SESSION['cupon'];
         }
     }
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -71,17 +66,17 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
             $pais = $_POST['pais']; // Obtiene el país seleccionado
             if ($pais === 'USA') {
                 $impuestos = $_SESSION['subtotal'] * 0.0625;
-                $_SESSION['total'] = $subtotal + $impuestos;
                 $_SESSION['pais']='USA';
+                $_SESSION['impuestos']=$impuestos;
             } else if ($pais === 'MEX') {
                 $impuestos = $_SESSION['subtotal'] * 0.16;
-                $_SESSION['total'] = $subtotal + $impuestos;
+                $_SESSION['impuestos']=$impuestos;
                 $_SESSION['pais']='MEX';
             }
         }
     }
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['checar'])) {
-        if ($_SESSION['pais']==="default") {
+        if ($_SESSION['impuestos']===0) {
             echo '<script type="text/javascript">
             var mensaje = "¡Primero selecciona un país!";
             alert(mensaje);
@@ -91,9 +86,8 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
             }, 500);
             </script>';
         }else{
-            $_SESSION['total'] = $_SESSION['total'] + $gastosEnvio; 
+            $_SESSION['total'] = $_SESSION['total'] + $gastosEnvio + $_SESSION['impuestos'] - $_SESSION['cupon'];
             header("Location: direccionenvio.php");
-            exit();
         }
     }
 }
@@ -191,7 +185,7 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
                 </div>
                 <div class="form-group">
                     <p>Subtotal: $<?php echo $subtotal;?></p>
-                    <p>Descuento del cupón: $<?php echo $descuento; ?></p>
+                    <p>Descuento del cupón al subtotal: $<?php echo $_SESSION['cupon']; ?></p> 
                     <form class="mx-auto" id="formDireccion" method="post">
                         <div class="form-group">
                             <label for="pais">País:</label>
@@ -203,9 +197,10 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
                             </select>
                         </div>
                     </form>
-                    <p title="Los impuestos son aplicados al subtotal">Impuestos aplicados: $<?php echo $impuestos; ?></p> 
+                    <p title="Los impuestos son aplicados al subtotal">Impuestos aplicados: $<?php echo $_SESSION['impuestos']; ?></p>
+                    
                     <p>Gastos de envío: $<?php echo $gastosEnvio; ?></p>
-                    <h2>Total a Pagar: $<?php echo $_SESSION['total'] + $gastosEnvio; ?></h2>
+                    <h2>Total a Pagar: $<?php echo $_SESSION['total'] + $gastosEnvio + $_SESSION['impuestos'];?></h2>
                 </div>
                 <form class="mx-auto" method="post">
                 <div class="form-group">
