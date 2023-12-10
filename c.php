@@ -39,34 +39,51 @@ if ($dataResult) {
     <div class="tienda contenedor-tienda" >
         <?php
         while ($row = $dataResult->fetch_assoc()) {
-            // Asignar valores a variables
-            $id = $row['Id_producto'];
-            $nombreE = $row['nombre'];
-            $descripcionE = $row['descripcion'];
-            $cantidadE = $row['cantidad'];
-            $precioE = $row['precio'];
-            $imagenE = $row['imagen'];
-            $descuentoE = $row['descuento'];
-            $categoriaE = $row['categoria'];
-            $subcategoriaE = $row['subcategoria'];
-            ?>
-            <div class="contenedor">
-                <img src="<?php echo 'imagenes/' . $imagenE ?>" alt="" class="con">
-                <h5 style="font-weight: bold;"><?php echo $nombreE ?></h5>
-                <p><?php echo 'MXN ' . $precioE . '<br>Cantidad en existencia: ' . $cantidadE . '<br>';
-                    if ($descuentoE == 0) {
-                        echo 'Sin descuento';
-                    } else {
-                        echo 'Descuento del ' . $descuentoE . '%';
-                    }
-                    ?>
+        // Asignar valores a variables
+        $id = $row['Id_producto'];
+        $nombre = $row['nombre'];
+        $descripcion = $row['descripcion'];
+        $cantidad = $row['cantidad'];
+        $precio = $row['precio'];
+        $imagen = $row['imagen'];
+        $descuento = $row['descuento'];
+        $categoria = $row['categoria'];
+        $subcategoria = $row['subcategoria'];
 
-                </p>
-                <details>
-                    <summary>Descripción</summary>
-                    <p><?php echo $descripcionE ?></p>
-                </details>
-                <button class="editar-button" onclick="editarProducto(<?php echo $id; ?>)">Editar Producto <?php echo $id ?></button>
+        ?>
+        
+        <div class="contenedor">
+            <div class="con">
+                <img src="<?php echo 'imagenes/' . $imagen ?>" alt="" >
+            </div>
+            <h5 style="font-weight: bold;"><?php echo 'ID: ' . $id ?></h5>
+            <h5 style="font-weight: bold;"><?php echo $nombre ?></h5>
+            <p>
+            <?php
+            if($descuento != 0){
+                $descuento_decimal = $descuento / 100;
+                echo '<span class="oferta">MXN ' . $precio . '</span><br>';
+                echo '<span class="precio">MXN ' . $precio - ($precio * $descuento_decimal) . '</span><br>';
+            }else{
+                echo '<span class="precio">MXN ' . $precio . '</span><br>';
+            }
+            if($cantidad == 0){
+                echo 'Agotado<br>';
+            }else{
+                echo 'Cantidad en existencia: ' . (isset($_SESSION['carrito'][$id]['cantidad']) ? $cantidad - (isset($_SESSION['carrito'][$id]['cantidad']) ? $_SESSION['carrito'][$id]['cantidad']: 0) : $cantidad) . '<br>';
+            }
+            
+            if($descuento == 0){
+                echo 'Sin descuento';
+            }else{
+                echo 'Descuento del ' . $descuento . '%';
+            }
+            ?></p>
+            <details>
+                <summary>Descripción</summary>
+                <p><?php echo $descripcion ?></p>
+            </details>
+            <button class="editar-button" onclick="editarProducto(<?php echo $id; ?>)">Editar Producto <?php echo $id ?></button>
             </div>
         <?php
         }
