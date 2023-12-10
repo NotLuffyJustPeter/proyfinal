@@ -148,7 +148,7 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
                             $row = $result->fetch_assoc();
                             echo '<table>';
                             echo '<tr>';
-                            echo '<td rowspan=5><img class="img_carrito" src="imagenes/' . $row['imagen'] . '" alt="imagen no cargada" width="70" height="90"></td>';
+                            echo '<td rowspan=5><img class="img_carrito" src="imagenes/' . $row['imagen'] . '" alt="imagen no cargada" width="130" height="180"></td>';
                             echo '</tr>';
                             echo '<tr>';
                             echo '<td>' . $detallesProducto['cantidad'] . ' pz</td>';
@@ -185,7 +185,10 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
                 </div>
                 <div class="form-group">
                     <p>Subtotal: $<?php echo $subtotal;?></p>
-                    <p>Descuento del cupón al subtotal: $<?php echo $_SESSION['cupon']; ?></p> 
+                    <div class="form-group">
+                    <p>Descuento del cupón al subtotal: $<?php echo $_SESSION['cupon']; ?></p>
+                    </div>
+                    <div class="form-group">
                     <form class="mx-auto" id="formDireccion" method="post">
                         <div class="form-group">
                             <label for="pais">País:</label>
@@ -197,10 +200,16 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
                             </select>
                         </div>
                     </form>
-                    <p title="Los impuestos son aplicados al subtotal">Impuestos aplicados: $<?php echo $_SESSION['impuestos']; ?></p>
-                    
+                    </div>
+                    <div class="form-group">
+                        <p title="Los impuestos son aplicados al subtotal">Impuestos aplicados: (6.25% USA 16% Mex) $<?php echo $_SESSION['impuestos']; ?></p>
+                    </div>
+                    <div class="form-group">
                     <p>Gastos de envío: $<?php echo $gastosEnvio; ?></p>
-                    <h2>Total a Pagar: $<?php echo $_SESSION['total'] + $gastosEnvio + $_SESSION['impuestos'];?></h2>
+                    </div>
+                    <div class="form-group">
+                        <h2>Total a Pagar: $<?php echo $_SESSION['total'] + $gastosEnvio + $_SESSION['impuestos'];?></h2>
+                    </div>
                 </div>
                 <form class="mx-auto" method="post">
                 <div class="form-group">
