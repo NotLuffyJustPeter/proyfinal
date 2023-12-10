@@ -3,7 +3,9 @@ session_start();
 
 if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
     $carrito = $_SESSION['carrito'];
+    $_SESSION['impuestos']=0;
     $_SESSION['subtotal'] = 0;
+    $_SESSION['cupon']=0;
     $_SESSION['descuentototal']=0;
     $servername = "localhost";
     $username = "root";
