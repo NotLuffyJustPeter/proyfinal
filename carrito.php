@@ -88,7 +88,7 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
         </div>
         <script>
             function realizarCompra() {
-                window.location.href = "datoscompra.php";
+                window.location.href = "desglosecompra.php";
             }
         </script>
         <script>
