@@ -112,3 +112,4 @@ if ($dataResult) {
     }
 </script>
 
+<?php include 'footer.php'; ?>

@@ -8,13 +8,12 @@
     src: url('../fonts/Lexend_Tera/static/LexendTera-Bold.ttf') format('truetype');
 }
 .carrito{
-    margin: 200px;
-    margin-top: 40px;
+    margin: 150px;
 }
 
 .prod{
     margin-top: 50px;
-    font-size: 25px;
+    font-size: 20px;
     font-family: 'Cormorant_Infant', sans-serif;
     /* border-collapse: separate;
     border-spacing: 40px;  */
@@ -41,4 +40,17 @@ button{
 
 button:hover{
     background-color: none;
+}
+
+.vacio{
+    width: 400px;
+}
+
+.carrito_vacio{
+    display: grid;
+    grid-template-columns: 30% 50%;
+    place-items: center;
+    justify-content: space-evenly;
+    font-family: 'Cormorant_Infant';
+    font-size: 30px;
 }

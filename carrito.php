@@ -10,6 +10,7 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
     $dbname = "sirenegaze";
     $tabla = "inventario";
     $total = 0;
+    $precio_final=0;
 
     $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -31,8 +32,7 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
     </head>
     <body>
         <?php include 'header.php'; ?>
-        <br><br><br>
-        <br><br>
+        
         <div class="carrito">
 
         <h1 class="titulo">C a r r i t o &nbsp&nbsp  d e  &nbsp&nbspc o m p r a s</h1>
@@ -61,22 +61,23 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
                             echo '<td class="align-middle px-4"><img class="img_carrito" src="imagenes/' . $row['imagen'] . '" alt="imagen no cargada"></td>';
                             echo '<td class="align-middle px-4">' . $row['nombre'] . '</td>';
                             echo '<td class="align-middle px-4">' . $row['descripcion'] . '</td>';
-                            echo '<td class="align-middle px-4 can"> $' . $row['precio'] . '</td>';
+                            if($row['descuento']!=0){
+                                $precio_final = ($row['precio'] - $row['precio']*$row['descuento']/100);
+                                echo '<td class="align-middle px-4 can" style="color:red";> $' . $precio_final . '</td>';
+                            }else{
+                                $precio_final = $row['precio'];
+                                echo '<td class="align-middle px-4 can"> $' . $precio_final . '</td>';
+                            }
                             echo '<td class="align-middle px-4 can">' . $detallesProducto['cantidad'] . '</td>';
-                            echo '<td class="align-middle px-4 can"> $' . $row['precio'] * $detallesProducto['cantidad'] . '</td>';
+                            echo '<td class="align-middle px-4 can"> $' . $precio_final * $detallesProducto['cantidad'] . '</td>';
                             echo '<td class="align-middle px-4 can"><button onclick="eliminar(' . $row['Id_producto'] . ')"><i class="fa-regular fa-trash-can" style="color: #000000; font-size:25px;"></i></button></td>';
                             echo '</tr>';
                         }
-                        $total = $row['precio'] * $detallesProducto['cantidad'] + $total;
+                        $total = $precio_final* $detallesProducto['cantidad'] + $total;
                     }
                 }
                 echo '<tr>';
-                    echo '<td colspan="6" style="text-align:center;">T&nbsp O &nbspT&nbsp A&nbsp L</td>';
-                    // echo '<td></td>';
-                    // echo '<td></td>';
-                    // echo '<td></td>';
-                    // echo '<td></td>';
-                    // echo '<td></td>';
+                    echo '<td colspan="5" style="text-align:center;">T&nbsp O &nbspT&nbsp A&nbsp L</td>';
                     echo '<td class="can">$' . $total .'</td>';
                     echo '<td></td>';
                     echo '</tr>';
@@ -123,11 +124,17 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Carrito de compras</title>
+        <link rel="stylesheet" href="css/carrito.css">
     </head>
     <body>
         <?php include 'header.php'; ?>
-        <h1>Carrito de compras</h1>
-        <p>No hay productos en el carrito.</p>
+        <div class="carrito">
+        <h1 class="titulo">C a r r i t o &nbsp&nbsp  d e  &nbsp&nbspc o m p r a s</h1>
+        <div class="carrito_vacio">
+        <img src="imagenes/carrito_vacio.jpg" alt="img" class="vacio">
+        <p>Aún no tienes ningún artículo en el carrito, descubre todo lo que tenemos para ti<br><br><button type="button" class="btn btn-dark" onclick="window.location.href='tienda.php'">Descubrir</button></p>
+        </div>
+        </div>
         <?php include 'footer.php'; ?>
     </body>
     </html>

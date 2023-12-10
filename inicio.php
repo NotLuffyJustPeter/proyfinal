@@ -28,7 +28,7 @@
     .start{
       color: black;
       margin-left: 500px;
-      margin-top: 0px;"
+      margin-top: 0px;
     }
 
     @media screen and (max-width: 600px) {

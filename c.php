@@ -85,3 +85,5 @@ $conn->close();
         window.location.href = 'cambiostienda.php?id=' + idProducto;
     }
 </script>
+
+<?php include 'footer.php'; ?>
