@@ -185,7 +185,17 @@ a:hover{
 @media screen and (max-width: 1120px) {
     #menu{
         /* Entre mas grande el width mas espacio entre los elementos */
-        width: 400px;
+        width: 500px;
+        flex-wrap: wrap;
+        font-size: 18px;
+    }
+    
+}
+
+@media screen and (min-width: 1120px) {
+    #menu{
+        /* Entre mas grande el width mas espacio entre los elementos */
+        width: 750px;
         flex-wrap: wrap;
         font-size: 18px;
     }
@@ -194,10 +204,10 @@ a:hover{
 
 
 /* Media query para pantallas con un ancho mínimo de 600 píxeles */
-@media screen and (min-width: 1270px) {
+@media screen and (max-width: 1270px) {
     #menu{
         /* Entre mas grande el width mas espacio entre los elementos */
-        width: 700px;
+        width: 800px;
     }
 }
 
