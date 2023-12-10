@@ -84,8 +84,13 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
                 ?>
             </tbody>
         </table>
-        <center><button class="editar-button">Realizar Compra</button></center>
+        <center><button class="editar-button" onclick="realizarCompra()">Realizar Pedido</button></center>
         </div>
+        <script>
+            function realizarCompra() {
+                window.location.href = "datoscompra.php";
+            }
+        </script>
         <script>
             function eliminar(productoId) {
                 var xhr = new XMLHttpRequest();
