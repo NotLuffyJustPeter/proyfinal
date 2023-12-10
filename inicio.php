@@ -37,12 +37,146 @@
       }
     }
 
+    @media screen and (max-width: 1200px) {
+      .bloque4{
+        text-align: center;
+        display: grid;
+        grid-template-columns: auto auto auto;
+        justify-content: space-evenly;
+        align-content: space-evenly;
+        height: 640px;
+        width: 100%;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        background-color: #000000;
+    }
+
+    .nop{
+        display: none;
+    }
+
+    .ap{
+        display: block;
+        color: aliceblue;
+    }
+    .bloque5{
+      text-align: center;
+      display: grid;
+      grid-template-columns: auto auto auto;
+      justify-content:space-evenly;
+      align-content: space-evenly;
+      height: 640px;
+      margin-top: 50px;
+      margin-bottom: 50px;
+      background-color: black;
+    }
+  }
+
+  .bloque6{
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content:center;
+        }
+
+        .bloque6_uno{
+          width:600px;
+          /* display: flex;
+          flex-direction: row;
+          justify-content:center; */
+        }
+
+        @media screen and (max-width: 1200px) {
+            .bloque6{
+                flex-direction: column;
+            }    
+            .bloque6_uno{
+              padding: 40px;
+              width: auto;
+            }
+            .bloque4{
+              text-align: center;
+              display: grid;
+              grid-template-columns: auto auto auto;
+              justify-content: space-evenly;
+              align-content: space-evenly;
+              height: 640px;
+              width: 100%;
+              margin-top: 50px;
+              margin-bottom: 50px;
+              background-color: #000000;
+          }
+
+          .nop{
+              display: none;
+          }
+
+          .ap{
+              display: block;
+              color: aliceblue;
+          }
+          .bloque5{
+            text-align: center;
+            display: grid;
+            grid-template-columns: auto auto auto;
+            justify-content:space-evenly;
+            align-content: space-evenly;
+            height: 640px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            background-color: black;
+          }
+        }
+        
+        .tex6{
+          padding-left:40px;
+          font-size:20px;
+          text-align:right;
+        }
+        @media screen and (max-width: 600px) {
+            .tex6{
+              padding-left:0px;
+              font-size:14px;
+              /* text-align:center; */
+            }
+          
+            .bloque4{
+              text-align: center;
+              display: grid;
+              grid-template-columns: auto;
+              justify-content: space-evenly;
+              align-content: space-evenly;
+              height: 1300px;
+              width: 100%;
+              margin-top: 50px;
+              margin-bottom: 50px;
+              background-color: white;
+          }
+
+          .nop{
+              display: none;
+          }
+
+          .ap{
+              display: none;
+              /* color: aliceblue; */
+          }
+          .bloque5{
+            text-align: center;
+            display: grid;
+            grid-template-columns: auto;
+            justify-content:space-evenly;
+            align-content: space-evenly;
+            height: 1300px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            background-color: white;
+          }
+        }
 
     </style>
 </head>
 <body>
-
-
     <div class="bloque1">
       <div class="texto">
             <h1 class="t1">F A S H I O N</h1>
@@ -157,6 +291,9 @@
         <a href="men.php"><img src="imagenes/man_chamarra.jpg" ></a>
         </div>
         <!-- Aparecen al quiebre de pantalla -->
+        <h4 class="ap">Camisetas</h4>
+        <h4 class="ap">Playeras</h4>
+        <h4 class="ap">Chamarras</h4>
         <div class="zoom">
         <a href="men.php"><img src="imagenes/man_pantalon.jpg"></a>
         </div>
@@ -169,12 +306,12 @@
         
         <div class="blanco nop"></div>
         <div class="blanco nop"></div>
-        <h4 class="ap"></h4>
-        <h4 class="ap">Chamarras</h4>
-        <h4 class="ap">Vestidos</h4>
 
+        <h4 class="ap"></h4>
+        <h4 class="ap">Pantalones</h4>
+        <h4 class="ap">Sudaderas</h4>
         <!-- Desaparecen al quiebre de pantalla -->
-        <h4 class="nop">Camisas</h4>
+        <h4 class="nop">Camisetas</h4>
         <h4 class="nop">Playeras</h4>
         <h4 class="nop">Chamarras</h4>
         <h4 class="nop">Pantalones</h4>
@@ -184,43 +321,7 @@
 
     <div class="bloque6">
       <style>
-        .bloque6{
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          justify-content:center;
-        }
-
-        .bloque6_uno{
-          width:600px;
-          /* display: flex;
-          flex-direction: row;
-          justify-content:center; */
-        }
-
-        @media screen and (max-width: 1200px) {
-            .bloque6{
-                flex-direction: column;
-            }    
-            .bloque6_uno{
-              padding: 40px;
-              width: auto;
-            }
-        }
         
-        .tex6{
-          padding-left:40px;
-          font-size:20px;
-          text-align:right;
-        }
-        @media screen and (max-width: 600px) {
-            .tex6{
-              padding-left:0px;
-              font-size:14px;
-              /* text-align:center; */
-            }
-          
-        }
 
       </style>
 
