@@ -9,7 +9,6 @@
 }
 .carrito{
     margin: 150px;
-    margin-top: 40px;
 }
 
 .prod{
@@ -41,4 +40,17 @@ button{
 
 button:hover{
     background-color: none;
+}
+
+.vacio{
+    width: 400px;
+}
+
+.carrito_vacio{
+    display: grid;
+    grid-template-columns: 30% 50%;
+    place-items: center;
+    justify-content: space-evenly;
+    font-family: 'Cormorant_Infant';
+    font-size: 30px;
 }
