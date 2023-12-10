@@ -15,7 +15,7 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
 <head>
 	<title>Dirección de envio</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <style>
   body{
@@ -85,7 +85,11 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
 
 				<div class="row">
             <div class="col-md-4 form-group">
-				<p><?php echo htmlspecialchars($paisSeleccionado); ?></p> 
+			<label for="pais">País:</label>
+			<input type="text" id="pais" name="pais" value="<?php echo htmlspecialchars($paisSeleccionado); ?>" disabled>
+			<div class="invalid-feedback">
+                    Seleccione un pais válido.
+                </div>
             </div>
 
             <div class="col-md-4 form-group">
@@ -117,39 +121,42 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
 					<label for="same-adress" class="form-check-label"></label>					
 					</div>
           <br>
-					<button id="btnContinuarPago" class="btn btn-danger bt-lg btn-block" type="submit">Continuar al método de pago</button>
+		 	 <button id="btnContinuarPago" class="btn btn-danger bt-lg btn-block" type="button" onclick="validarFormulario()">Continuar al método de pago</button>
 
 			</form>
 		</div>
-    <script>
-       document.getElementById("btnContinuarPago").addEventListener("click", function(event) {
-         // Validar campos del formulario
-		 validarFormulario();
-         if (!validarFormulario()) {
-           event.preventDefault(); 
-           return;
-         }
-         var nuevaPagina = "datoscompra.php";
-         window.location.href = nuevaPagina;
-        });
+		<script>
+            function validarFormulario() {
+                var formularioCompleto = validarCampos();
 
-      function validarFormulario() {
-        var nombre = document.getElementById("firstname").value;
-        var apellido = document.getElementById("lastname").value;
-        var usuario = document.getElementById("username").value;
-        var email = document.getElementById("email").value;
-        var direccion = document.getElementById("adress").value;
-        if (nombre === "" || apellido === "" || usuario === "" || email === "" || direccion === "") {
-          Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'Por favor, completa todos los campos obligatorios.'
-          });
-          return false;
-        }
-		return true;
-      }
-    </script>
+                if (formularioCompleto) {
+                    window.location.href = "datoscompra.php";
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Completa todos los campos del formulario.',
+                    });
+                }
+            }
+
+            function validarCampos() {
+                var nombre = document.getElementById('firstname').value;
+                var apellido = document.getElementById('lastname').value;
+                var usuario = document.getElementById('username').value;
+                var email = document.getElementById('email').value;
+                var direccion = document.getElementById('adress').value;
+                var ciudad = document.getElementById('Ciudad').value;
+                var codigoPostal = document.getElementById('CodigoPostal').value;
+                // Agrega más campos según sea necesario
+
+                if (nombre && apellido && usuario && email && direccion && ciudad && codigoPostal /* Agrega más condiciones según sea necesario */) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        </script>
 	<?php include 'footer.php'; ?>
 </body>
 </html>
