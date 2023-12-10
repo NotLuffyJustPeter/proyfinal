@@ -1,3 +1,8 @@
+<header>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styt.css">
+    <link rel="stylesheet" href="css/altas.css">
+</header>
 <?php session_start(); 
 
 require 'header.php';
@@ -144,10 +149,15 @@ $total = $_SESSION['total'];
             border-radius: 4px;
             background: #ffffff;
         }
+        h3{
+            text-align: center;
+        }
         
 </style>
 <body>
+<?php require 'header.php';?>
 <div class="container">
+<h3><a href="desglosecompra.php">Paso 1-> </a> <a href="direccionenvio.php">Paso 2-></a> <a href="datoscompra.php">Paso 3-></a></h3>
 <h4 class="flex-grow mb-4">Selecciona tu metodo de Pago</h4>
 	<form action="">
 		<div class="payment">
@@ -180,7 +190,7 @@ $total = $_SESSION['total'];
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <form class="mx-auto">
+            <form class="mx-auto" action="venta.php" >
                 <h4>Vas a pagar $<?php echo $total ?></h4>
                 <div class="form-group">
                     <label for="nombre" class="my-2">Nombre Completo (en la Tarjeta)</label>
