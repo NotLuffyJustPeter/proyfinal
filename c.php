@@ -66,7 +66,7 @@ if ($dataResult) {
                     <summary>Descripción</summary>
                     <p><?php echo $descripcionE ?></p>
                 </details>
-                <button class="editar-button btn2" onclick="editarProducto(<?php echo $id; ?>)">Editar Producto <?php echo $id ?></button>
+                <button class="editar-button" onclick="editarProducto(<?php echo $id; ?>)">Editar Producto <?php echo $id ?></button>
             </div>
         <?php
         }
