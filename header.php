@@ -28,7 +28,7 @@
                     <a class="menu1" href="preguntas.php">Ayuda</a>
                     <a class="menu1" href="contactanos.php">Contactanos</a>
                     <div class="dropdown">
-                        <button class="dropbtn">Tienda</button>
+                        <button class="dropbtn"><a>Tienda</a></button>
                         <div class="dropdown-content">
                             <a id="menu1" href="woman.php">Woman</a>
                             <a id="menu1" href="men.php">Men</a>
@@ -51,7 +51,7 @@
                 $cuenta = $_SESSION["cuenta"];
                 ?>
                 <div class="dropdown icono">
-                        <button class="dropbtn icono"><i class="fa-solid fa-user" style="color: #000000; font-size:23px;"></i><?php echo '&nbsp' . $cuenta; ?></button>
+                        <button class="dropbtn icono"><i class="fa-solid fa-user" style="color: #000000; font-size:23px;"></i><?php echo '&nbsp' . $cuenta?></button>
                         <div class="dropdown-content">
                             <a id="menu1" href="cerrar_sesion.php">Cerrar Sesión</a>
                         </div>
@@ -73,7 +73,7 @@
                     if(isset($_SESSION["cuenta"])){
                       if($cuenta == "admin"){?>
                       <div class="dropdown">
-                          <button class="dropbtn"> Control </button>
+                          <button class="dropbtn"><a>Control</a></button>
                           <div class="dropdown-content">
                               <a id="menu1" href="a.php">Agregar productos</a>
                               <a id="menu1" href="c.php">Editar productos</a>

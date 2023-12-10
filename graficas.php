@@ -56,15 +56,19 @@
         .charts-container {
             display: flex;
             justify-content: center;
+            align-items: center;
             margin: 20px;
             flex-grow: 1; 
         }
 
         .chart {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             padding-top: 90px;
             margin-right: 10px;
-            width: 800px;
-            height: 600px;
+            width: 500px;
+            height: 500px;
         }
 
         #chartMen {
@@ -75,6 +79,14 @@
             background-color: #f1f1f1;
             padding: 10px;
             text-align: center;
+        }
+
+       
+
+        @media  screen and (max-width: 1000px) {
+            .charts-container{
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -96,13 +108,18 @@
             var option = {
                 title: {
                     text: title,
+                    textStyle: {
+                    fontSize: 24,
+                    fontWeight: 'bold'
+                },
+                  
                 },
                 tooltip: {
                     trigger: 'item',
                     formatter: '{b}: {c} productos'
                 },
                 legend: {
-                    top: '5%',
+                    top: '30',
                     left: 'center'
                 },
                 series: [{

@@ -35,60 +35,62 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
         
         <div class="carrito">
 
-        <h1 class="titulo">C a r r i t o &nbsp&nbsp  d e  &nbsp&nbspc o m p r a s</h1>
-        <table class="table table-borderless table-hover prod">
-        
-            <thead>
-                <tr>
-                    <th class="px-3 can">Imagen</th>
-                    <th class="px-3 can">Producto</th>
-                    <th class="px-3 can">Descripcion</th>
-                    <th class="px-3 can">Precio</th>
-                    <th class="px-3 can">Cantidad</th>
-                    <th class="px-3 can">Subtotal</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                foreach ($carrito as $productoId => $detallesProducto) {
-                    if($detallesProducto['cantidad'] != 0){
-                        $query = "SELECT * FROM $tabla WHERE Id_producto = $productoId";
-                        $result = $conn->query($query);
+            <h1 class="titulo">C a r r i t o &nbsp&nbsp  d e  &nbsp&nbspc o m p r a s</h1>
+            <div class="table-responsive">
 
-                        if ($result->num_rows > 0) {
-                            $row = $result->fetch_assoc();
-                            echo '<tr>';
-                            echo '<td class="align-middle px-4"><img class="img_carrito" src="imagenes/' . $row['imagen'] . '" alt="imagen no cargada"></td>';
-                            echo '<td class="align-middle px-4">' . $row['nombre'] . '</td>';
-                            echo '<td class="align-middle px-4">' . $row['descripcion'] . '</td>';
-                            if($row['descuento']!=0){
-                                $precio_final = ($row['precio'] - $row['precio']*$row['descuento']/100);
-                                echo '<td class="align-middle px-4 can" style="color:red";> $' . $precio_final . '</td>';
-                            }else{
-                                $precio_final = $row['precio'];
-                                echo '<td class="align-middle px-4 can"> $' . $precio_final . '</td>';
+                <table class="table table-borderless table-hover prod">
+                    
+                    <thead>
+                        <tr>
+                            <th class="px-3 can">Imagen</th>
+                            <th class="px-3 can">Producto</th>
+                            <th class="px-3 can">Descripcion</th>
+                            <th class="px-3 can">Precio</th>
+                            <th class="px-3 can">Cantidad</th>
+                            <th class="px-3 can">Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                    foreach ($carrito as $productoId => $detallesProducto) {
+                        if($detallesProducto['cantidad'] != 0){
+                            $query = "SELECT * FROM $tabla WHERE Id_producto = $productoId";
+                            $result = $conn->query($query);
+                            
+                            if ($result->num_rows > 0) {
+                                $row = $result->fetch_assoc();
+                                echo '<tr>';
+                                echo '<td class="align-middle px-4"><img class="img_carrito" src="imagenes/' . $row['imagen'] . '" alt="imagen no cargada"></td>';
+                                echo '<td class="align-middle px-4">' . $row['nombre'] . '</td>';
+                                echo '<td class="align-middle px-4">' . $row['descripcion'] . '</td>';
+                                if($row['descuento']!=0){
+                                    $precio_final = ($row['precio'] - $row['precio']*$row['descuento']/100);
+                                    echo '<td class="align-middle px-4 can" style="color:red";> $' . $precio_final . '</td>';
+                                }else{
+                                    $precio_final = $row['precio'];
+                                    echo '<td class="align-middle px-4 can"> $' . $precio_final . '</td>';
+                                }
+                                echo '<td class="align-middle px-4 can">' . $detallesProducto['cantidad'] . '</td>';
+                                echo '<td class="align-middle px-4 can"> $' . $precio_final * $detallesProducto['cantidad'] . '</td>';
+                                echo '<td class="align-middle px-4 can"><button onclick="eliminar(' . $row['Id_producto'] . ')"><i class="fa-regular fa-trash-can" style="color: #000000; font-size:25px;"></i></button></td>';
+                                echo '</tr>';
                             }
-                            echo '<td class="align-middle px-4 can">' . $detallesProducto['cantidad'] . '</td>';
-                            echo '<td class="align-middle px-4 can"> $' . $precio_final * $detallesProducto['cantidad'] . '</td>';
-                            echo '<td class="align-middle px-4 can"><button onclick="eliminar(' . $row['Id_producto'] . ')"><i class="fa-regular fa-trash-can" style="color: #000000; font-size:25px;"></i></button></td>';
-                            echo '</tr>';
+                            $total = $precio_final* $detallesProducto['cantidad'] + $total;
                         }
-                        $total = $precio_final* $detallesProducto['cantidad'] + $total;
                     }
-                }
-                echo '<tr>';
-                    echo '<td colspan="5" style="text-align:center;">T&nbsp O &nbspT&nbsp A&nbsp L</td>';
-                    echo '<td class="can">$' . $total .'</td>';
-                    echo '<td></td>';
-                    echo '</tr>';
-                ?>
-            </tbody>
-        </table>
-        <center><button class="editar-button" onclick="realizarCompra()">Realizar Pedido</button></center>
+                    echo '<tr>';
+                        echo '<td colspan="5" style="text-align:center;">T&nbsp O &nbspT&nbsp A&nbsp L</td>';
+                        echo '<td class="can">$' . $total .'</td>';
+                        echo '<td></td>';
+                        echo '</tr>';
+                        ?>
+                </tbody>
+            </table>
+            <center><button class="editar-button" onclick="realizarCompra()">Realizar Pedido</button></center>
         </div>
         <script>
             function realizarCompra() {
-                window.location.href = "datoscompra.php";
+                window.location.href = "desglosecompra.php";
             }
         </script>
         <script>
@@ -118,6 +120,7 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
                 xhr.send("producto_id=" + productoId);
             }
         </script>
+        </div>
         <?php include 'footer.php'; ?>
     </body>
     </html>
