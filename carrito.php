@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-// Verificar si hay productos en el carrito
 if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
     $carrito = $_SESSION['carrito'];
 
@@ -12,10 +11,8 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
     $tabla = "inventario";
     $total = 0;
 
-    // Crear conexión
     $conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Verificar la conexión
     if ($conn->connect_error) {
         die("Error de conexión: " . $conn->connect_error);
     }
@@ -49,29 +46,29 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
                     <th class="px-3 can">Precio</th>
                     <th class="px-3 can">Cantidad</th>
                     <th class="px-3 can">Subtotal</th>
-                    <!-- Agrega más columnas según sea necesario -->
                 </tr>
             </thead>
             <tbody>
                 <?php
                 foreach ($carrito as $productoId => $detallesProducto) {
-                    $query = "SELECT * FROM $tabla WHERE Id_producto = $productoId";
-                    $result = $conn->query($query);
+                    if($detallesProducto['cantidad'] != 0){
+                        $query = "SELECT * FROM $tabla WHERE Id_producto = $productoId";
+                        $result = $conn->query($query);
 
-                    if ($result->num_rows > 0) {
-                        $row = $result->fetch_assoc();
-                        echo '<tr>';
-                        echo '<td class="align-middle px-4"><img class="img_carrito" src="imagenes/' . $row['imagen'] . '" alt="imagen no cargada"></td>';
-                        echo '<td class="align-middle px-4">' . $row['nombre'] . '</td>';
-                        echo '<td class="align-middle px-4">' . $row['descripcion'] . '</td>';
-                        echo '<td class="align-middle px-4 can"> $' . $row['precio'] . '</td>';
-                        echo '<td class="align-middle px-4 can">' . $detallesProducto['cantidad'] . '</td>';
-                        echo '<td class="align-middle px-4 can"> $' . $row['precio'] * $detallesProducto['cantidad'] . '</td>';
-                        echo '<td class="align-middle px-4 can"><button><i class="fa-regular fa-trash-can" style="color: #000000; font-size:25px;"></i></button></td>';
-                        // Agrega más columnas según sea necesario
-                        echo '</tr>';
+                        if ($result->num_rows > 0) {
+                            $row = $result->fetch_assoc();
+                            echo '<tr>';
+                            echo '<td class="align-middle px-4"><img class="img_carrito" src="imagenes/' . $row['imagen'] . '" alt="imagen no cargada"></td>';
+                            echo '<td class="align-middle px-4">' . $row['nombre'] . '</td>';
+                            echo '<td class="align-middle px-4">' . $row['descripcion'] . '</td>';
+                            echo '<td class="align-middle px-4 can"> $' . $row['precio'] . '</td>';
+                            echo '<td class="align-middle px-4 can">' . $detallesProducto['cantidad'] . '</td>';
+                            echo '<td class="align-middle px-4 can"> $' . $row['precio'] * $detallesProducto['cantidad'] . '</td>';
+                            echo '<td class="align-middle px-4 can"><button onclick="eliminar(' . $row['Id_producto'] . ')"><i class="fa-regular fa-trash-can" style="color: #000000; font-size:25px;"></i></button></td>';
+                            echo '</tr>';
+                        }
+                        $total = $row['precio'] * $detallesProducto['cantidad'] + $total;
                     }
-                    $total = $row['precio'] * $detallesProducto['cantidad'] + $total;
                 }
                 echo '<tr>';
                     echo '<td colspan="6" style="text-align:center;">T&nbsp O &nbspT&nbsp A&nbsp L</td>';
@@ -87,7 +84,33 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
             </tbody>
         </table>
         </div>
+        <script>
+            function eliminar(productoId) {
+                var xhr = new XMLHttpRequest();
 
+                xhr.open("POST", "eliminarcarrito.php", true);
+                xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4 && xhr.status == 200) {
+                        var respuesta = JSON.parse(xhr.responseText);
+
+                        if (respuesta.success) {
+                            window.location.reload();
+                        }else{
+                            Swal.fire({
+                            icon: 'info',
+                            title: 'Sin existencias',
+                            text: 'Ya no hay más productos en existencias.',
+                            confirmButtonText: 'OK'
+                            });
+                        }
+                    }
+                };
+
+                xhr.send("producto_id=" + productoId);
+            }
+        </script>
         <?php include 'footer.php'; ?>
     </body>
     </html>
