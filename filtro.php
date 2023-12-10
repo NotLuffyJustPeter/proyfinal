@@ -1,3 +1,10 @@
+<style>
+    @font-face {
+    font-family: 'Cormorant_Infant';
+    src: url('fonts/Cormorant_Infant/CormorantInfant-Light.ttf') format('truetype');
+}    
+</style>
+
 <?php
 session_start();
 $servername = "localhost";
@@ -23,7 +30,7 @@ $var=0;
 $dataQuery = "SELECT * FROM $tabla";
 
 if ($precioMin > 0 || $precioMax < 2000) {
-    $dataQuery .= " WHERE precio BETWEEN $var AND $precioMin";
+    $dataQuery .= " WHERE precio-(precio*descuento/100) BETWEEN $var AND $precioMin";
 }
 
 $dataResult = $conn->query($dataQuery);
@@ -38,9 +45,27 @@ if ($dataResult) {
             echo '<div class="con"><img src="imagenes/' . $row['imagen'] . '" alt=""></div>';
             echo '<h5 style="font-weight: bold;">ID: ' . $row['Id_producto'] . '</h5>';
             echo '<h5 style="font-weight: bold;">' . $row['nombre'] . '</h5>';
-            echo '<p>Precio: MXN ' . $row['precio'] . '</p>';
-            echo '<p>Cantidad en existencia: ' . $row['cantidad'] . '</p>';
-            echo '<p>Descuento del: ' . $row['descuento'] . '%</p>';
+
+            if($row['descuento']!=0){
+                echo '<span style="color:red; text-decoration:line-through;">MXN ' . $row['precio'] . '</span>';
+                echo '<span style="font-weight: bold;">MXN ' . $row['precio']-($row['precio']*$row['descuento']/100) . '</span>';
+            }else{
+                echo '<span>MXN ' . $row['precio'] . '</span>';
+            }
+
+            if($row['cantidad']!=0){
+                echo '<span>Cantidad en existencia: ' . $row['cantidad'] . '</span>';
+            }
+            else{
+                echo '<span>Agotado</span>';
+            }
+
+            if($row['descuento']!=0){
+                echo '<span>Descuento del: ' . $row['descuento'] . '%</span><br>';
+            }else{
+                echo '<span>Sin descuento</span><br>';
+            }
+
             echo '<details>';
             echo '<summary>Descripción</summary>';
             echo '<p>' . $row['descripcion'] . '</p>';
@@ -53,7 +78,9 @@ if ($dataResult) {
             echo '</div>';
         }
     } else {
-        echo '<p>No se encontraron productos en este rango de precios.</p>';
+        echo '<pre style="margin-left: 300px; font-size:22px; font-family: Cormorant_Infant, sans-serif;">No se encontraron productos en este rango de precios.</pre><br>
+        <img style="width: 500px; margin-left: 100px;" src="imagenes/ganchos.jpg" alt="img" class="ganchos">
+        ';
     }
 } else {
     echo "Error al obtener datos de la tabla: " . $conn->error;  
