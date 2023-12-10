@@ -8,13 +8,13 @@
     src: url('../fonts/Lexend_Tera/static/LexendTera-Bold.ttf') format('truetype');
 }
 .carrito{
-    margin: 200px;
+    margin: 150px;
     margin-top: 40px;
 }
 
 .prod{
     margin-top: 50px;
-    font-size: 25px;
+    font-size: 20px;
     font-family: 'Cormorant_Infant', sans-serif;
     /* border-collapse: separate;
     border-spacing: 40px;  */
