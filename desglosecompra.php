@@ -270,9 +270,9 @@
         }
 
         var cuponesValidos = {
-            'SGFS23': 15,
+            'SGFS23': 10,
             'FASHION30': 20,
-            'SGFS10': 10
+            'SGFS10': 15
         };
 
         btnAplicarDescuento.addEventListener('click', function () {
