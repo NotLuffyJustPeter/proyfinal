@@ -180,12 +180,12 @@
                         </div>
                         <div class="form-group">
                             <hr>
-                            <div id="descuentoAplicadoContainer">Descuentos aplicados:  $0</div>
+                            <div id="descuentoAplicadoContainer">Descuentos aplicados: $0</div>
                             <hr>
                         </div>
 
                         <div class="form-group">
-                            <div id="impuestosContainer">Impuestos aplicados: $<?php echo (isset($_SESSION["impuestos"])) ? $_SESSION["impuestos"] : "0";?></div>
+                            <div id="impuestosContainer">Impuestos aplicados: $0</div>
                             <hr>
                         </div>
 
