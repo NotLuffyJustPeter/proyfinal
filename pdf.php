@@ -9,12 +9,10 @@ $pdf->AddPage();
 // $imagePath = 'imagenes/logo.png';
 // $pdf->Image($imagePath, 60, 10, 90);
 
-// Título
 $pdf->SetFont('Arial', 'B', 16);
 $pdf->Cell(0, 10, 'S I R E N G A Z E', 0, 1, 'C');
 $pdf->Ln(10);
 
-// Detalles de la tienda
 $pdf->SetFont('Arial', '', 12);
 $pdf->Cell(0, 10, 'SIRENGAZE MEXICO CONTRATO 1 A EN P', 0, 1);
 $pdf->Cell(0, 10, 'SEM93JDM2K42', 0, 1);
@@ -22,13 +20,11 @@ $pdf->Cell(0, 10, 'Av. Universidad 906 C.P 2930304', 0, 1);
 $pdf->Cell(0, 10, 'Tel. 5087-093', 0, 1);
 $pdf->Ln(10);
 
-// Detalles de la compra
 $pdf->Cell(0, 10, 'Detalles de la compra:', 0, 1);
 $pdf->Ln(5);
 
 $pdf->SetFont('Arial', 'B', 12);
 
-// Encabezados de la tabla
 $pdf->SetFillColor(173, 216, 230);
 $pdf->SetTextColor(0, 0, 128);
 $pdf->Cell(80, 10, "Producto", 1, 0, 'C', true);
@@ -54,7 +50,6 @@ if ($conn->connect_error) {
     die("Error de conexión: " . $conn->connect_error);
 }
 
-// Detalles de productos en la tabla
 if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
     $carrito = $_SESSION['carrito'];
 
@@ -81,12 +76,10 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
         }
     }
 
-    // Total
     $pdf->Cell(140, 10, 'Total', 1, 0, 'C');
     $pdf->Cell(30, 10, '$' . $total, 1);
     $pdf->Ln(10);
 
-    // Información adicional
     $pdf->Cell(80, 10, 'Dirreccion de envio:', 0);
     $pdf->Cell(60, 10, $_SESSION["direccion"], 0);
     $pdf->Ln();
@@ -107,7 +100,6 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
     $pdf->Cell(60, 10, $_SESSION["impuestos"], 0);
     $pdf->Ln();
 
-    // Total final
     $pdf->SetFont('Arial', 'B', 14);
     $pdf->Cell(80, 10, 'TOTAL', 1, 0, 'C');
     $pdf->Cell(60, 10, '$' . $_SESSION["total"], 1, 1, 'C');
@@ -115,7 +107,6 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
 
     $pdf->Ln(10);
 
-    // Agradecimiento y enlace para descargar PDF
     $pdf->Cell(0, 10, '*** GRACIAS POR SU COMPRA ***', 0, 1, 'C');
     $pdf->Image('imagenes/Log.png', 80, $pdf->GetY(), 50);
     $pdf->Ln(40);
