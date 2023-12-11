@@ -35,7 +35,7 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
             alert(mensaje);
 
             setTimeout(function() {
-                window.location.href = "index.php";
+                window.location.href = "ticket.php";
             }, 500);
             </script>';
 }
