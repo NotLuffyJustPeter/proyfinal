@@ -39,7 +39,7 @@
     <?php include 'header.php'; ?>
     <div class="button-container">
         <h1>Elije cómo quieres tu Ticket</h1>
-        <a href="" class="custom-button">
+        <a href="pdf.php" class="custom-button">
             <i class="fas fa-file-pdf"></i> PDF
         </a>
         <a href="" class="custom-button">
