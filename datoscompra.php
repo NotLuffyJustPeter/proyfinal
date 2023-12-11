@@ -212,7 +212,7 @@ $total = $_SESSION['total'];
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <form class="mx-auto" id="cardDetails" style="display: none;"  action="venta.php">
+            <form class="mx-auto" id="cardDetails" style="display: none;"  action="ticket.php">
                 <h4>Vas a pagar $<?php echo $total ?></h4>
                 <div class="form-group">
                     <label for="nombre" class="my-2">Nombre Completo (en la Tarjeta)</label>
@@ -259,7 +259,7 @@ $total = $_SESSION['total'];
 
 	<body>
 		<div class="opps">
-        <form class="mx-auto" id="cashDetails" style="display: none;"  action="venta.php">
+        <form class="mx-auto" id="cashDetails" style="display: none;"  action="ticket.php">
 			<div class="opps-header">
 				<div class="opps-reminder">Ficha digital. No es necesario imprimir.</div>
 				<div class="opps-info">
@@ -281,7 +281,7 @@ $total = $_SESSION['total'];
 					<li>Ve al OXXO e indica al cajero que realizarás un pago en efectivo con <strong>OXXO PAY.</strong></li>
 					<li>Proporciona tu número de referencia de pago y verifica que la información en pantalla sea correcta.</li>
 					<li>Realiza tu pago en efectivo.</li>
-					<li>Conekta te enviará un correo electrónico con la confirmación de pago.</li>
+					<li>Sirengaze te enviará un correo electrónico con la confirmación de pago.</li>
 					<li>Al confirmar tu pago, el cajero te entregará un comprobante impreso. <strong>En el podrás verificar que se haya realizado correctamente.</strong> Conserva este comprobante de pago.</li>
 				</ol>
 				<div class="opps-footnote">Al completar estos pasos recibirás un correo de <strong>Sirenegaze</strong> confirmando tu pago.</div>
