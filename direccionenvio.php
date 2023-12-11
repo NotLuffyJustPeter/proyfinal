@@ -11,6 +11,7 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
 	<title>Dirección de envio</title>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 	<link rel="stylesheet" href="css/styt.css">
 	<link rel="stylesheet" href="css/altas.css">
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -148,7 +149,15 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
                 var codigoPostal = document.getElementById('CodigoPostal').value;
                 // Agrega más campos según sea necesario
 
-                if (nombre && apellido && usuario && email && direccion && ciudad && codigoPostal /* Agrega más condiciones según sea necesario */) {
+                if (nombre && apellido && usuario && email && direccion && ciudad && codigoPostal) {
+					$.ajax({
+						type: 'POST',
+						url: 'direccion.php', 
+						data: { direccion: direccion},
+						success: function (response) {
+							console.log(response); 
+						}
+					});
                     return true;
                 } else {
                     return false;

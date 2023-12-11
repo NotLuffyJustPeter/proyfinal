@@ -17,6 +17,7 @@ $total = $_SESSION['total'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8sh+WyZqBAYB1B/BKQxIepqXarGBjDAJ7f6dU6" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <title>Formulario de Tarjeta de Crédito</title>
 
 </head>
@@ -165,9 +166,25 @@ $total = $_SESSION['total'];
             cashDetails.style.display = 'none';
 
             // Mostrar el detalle correspondiente a la opción seleccionada
-            if (option === 'debito') {
+            if (option === 'VISA' || option === 'BANCOMER') {
+                $.ajax({
+                    type: 'POST',
+                    url: 'tarjeta.php', 
+                    data: { option: option},
+                    success: function (response) {
+                        console.log(response); 
+                    }
+                });
                 cardDetails.style.display = 'block';
-            } else if (option === 'credito') {
+            } else if (option === 'OXXO') {
+                $.ajax({
+                    type: 'POST',
+                    url: 'tarjeta.php', 
+                    data: { option: option},
+                    success: function (response) {
+                        console.log(response); 
+                    }
+                });
                 cashDetails.style.display = 'block';
             }
         }
@@ -182,24 +199,28 @@ $total = $_SESSION['total'];
                 <form action="" onchange="togglePaymentDetails(this.pay.value)">
                     <div class="payment">
                         <div class="payment-select">
-                            <div class="payment-select-header">
-                                <div class="payment-select-radio">
-                                    <input type="radio" id="debito" name="pay" value="debito"> 
-                                    <label for="debito">Tarjeta</label>
-                                </div>
                                 <div class="payment-select-logo">
                                     <i class="fa fa-money-check mr-1"></i> Crédito / Débito</span>
+                                </div>
+                                <div class="payment-select-header">
+                                <div class="payment-select-radio">
+                                    <input type="radio" id="debito" name="pay" value="VISA"> 
+                                    <label for="debito">VISA</label>
+                                </div>
+                                <div class="payment-select-radio">
+                                    <input type="radio" id="debito" name="pay" value="BANCOMER"> 
+                                    <label for="debito">Bancomer</label>
                                 </div>
                             </div>
                         </div>
                         <div class="payment-select">
                             <div class="payment-select-header">
-                                <div class="payment-select-radio">
-                                    <input type="radio" id="credito" name="pay" value="credito"> 
-                                    <label for="credito">Efectivo</label>
-                                </div>
                                 <div class="payment-select-logo">
                                     <i class="fa fa-money-bill mr-1"></i> OXXO</span>
+                                </div>
+                                <div class="payment-select-radio">
+                                    <input type="radio" id="credito" name="pay" value="OXXO"> 
+                                    <label for="credito">Efectivo</label>
                                 </div>
                             </div>
                         </div>

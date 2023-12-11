@@ -248,10 +248,10 @@
 
             $.ajax({
                 type: 'POST',
-                url: 'impuestos.php', // Reemplaza esto con la ruta correcta
+                url: 'impuestos.php', 
                 data: { impuestos: impuestos.toFixed(2), pais: pais },
                 success: function (response) {
-                    console.log(response); // Puedes imprimir la respuesta del servidor en la consola
+                    console.log(response); 
                 }
             });
             
@@ -286,10 +286,10 @@
 
             $.ajax({
                 type: 'POST',
-                url: 'descuento.php', // Reemplaza esto con la ruta correcta
+                url: 'descuento.php', 
                 data: { descuentoAplicado: descuentoAplicado.toFixed(2) },
                 success: function (response) {
-                    console.log(response); // Puedes imprimir la respuesta del servidor en la consola
+                    console.log(response); 
                 }
             });
 
