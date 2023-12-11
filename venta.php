@@ -46,7 +46,7 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
                 timer: 2000,  // Controla el tiempo que se muestra la alerta (en milisegundos)
                 showConfirmButton: false
             }).then(function() {
-                window.location.href = "ticket.php";
+                window.location.href = "index.php";
             });
           </script>';
 }

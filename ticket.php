@@ -170,6 +170,9 @@
                 <i class="fas fa-file-pdf"></i> DESCARGAR PDF
             </a>
         </div>
+        <div style="margin-top:50px; margin-left: 80px;">
+            <a href="venta.php"><button type="button" class="btn btn-danger">Confirmar Pago</button></a>
+        </div>
     </div>
     
 </div> <!--Cierre del container-ticket  -->
