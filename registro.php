@@ -113,6 +113,7 @@
                         <label for="confirmPassword">Repetir Contraseña:</label>
                         <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
                     </div>
+                    <center><p><input type="checkbox" name="sus" value="1"> Ser suscribtor</p></center>
                     <center><button type="submit" class="btn btn-primary" style="margin-top:30px;">Registrarse</button></center> 
                 </form>
             </div>
@@ -149,6 +150,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $respuestaPregunta = $_POST["respuestaPregunta"];
     $password = $_POST["password"];
 
+    if (isset($_POST["sus"])) {
+        if($_POST["sus"] == "1")
+            $esSuscriptor = true;
+    } else {
+        $esSuscriptor = false;
+    }
+
     $claveSecreta = "tu_clave_secreta";
 
     $encryptedPassword = openssl_encrypt($password, 'aes-256-cbc', $claveSecreta, 0, $claveSecreta);
@@ -180,7 +188,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // El usuario no existe, realizar el registro
         $stmt_insertar = $conn->prepare("INSERT INTO usuarios (nombre, cuenta, email, pregunta_seleccionada, respuesta_pregunta, password) VALUES (?, ?, ?, ?, ?, ?)");
         $stmt_insertar->bind_param("ssssss", $nombre, $cuenta, $email, $preguntaSeleccionada, $respuestaPregunta, $encryptedPassword);
-        include("header.php"); 
+
         if ($stmt_insertar->execute()) {
             // Registro exitoso
             echo '<script>
@@ -190,7 +198,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         icon: "success",
                         confirmButtonText: "Aceptar"
                     }).then(function() {
-                        window.location = "bienvenida.php?nombre=' . urlencode($nombre) . '&correo=' . urlencode($email) . '";
+                        if(' . $esSuscriptor . '){
+                            window.location = "bienvenida.php?nombre=' . urlencode($nombre) . '&correo=' . urlencode($email) . '";
+                        } else {
+                            window.location = "index.php";
+                        }
                     });
                 </script>';
         } else {
@@ -204,7 +216,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     });
                 </script>';
         }
-
 
         $stmt_insertar->close();
     }
