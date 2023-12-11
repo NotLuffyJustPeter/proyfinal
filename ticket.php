@@ -40,7 +40,7 @@
     <div class="button-container">
         <h1>Elije cómo quieres tu Ticket</h1>
         <a href="pdf.php" class="custom-button">
-            <i class="fas fa-file-pdf"></i> PDF
+            <i class="fas fa-file-pdf"></i> PDF<?php echo $_SESSION["descuento"] ?>
         </a>
         <a href="" class="custom-button">
             <i class="fas fa-digital-tachograph"></i> DIGITAL
