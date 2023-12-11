@@ -33,6 +33,11 @@
     height: 200px;
 }
 
+.img_detalles{
+    width: 100px;
+    height: 135px;
+}
+
 button{
     border: none;
     background-color: white;
