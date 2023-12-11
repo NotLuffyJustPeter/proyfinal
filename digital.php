@@ -74,7 +74,7 @@
         <br><br>
         <p>SIRENGAZE MÉXICO CONTRATO 1 A EN P</p>
         <p>SEM93JDM2K42</p>
-        <p>Av. Universidad 906 C.P 2930304</p>
+        <p>Avenida Universidad 940, Bosques del Prado Sur, 20100 Aguascalientes, Ags.</p>
         <p>Tel. 5087-093</p>
         <br>
         <p>S I R E N G A Z E</p>
