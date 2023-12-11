@@ -1,17 +1,19 @@
+<?php
+session_start();
+?>
 <style>
     @font-face {
     font-family: 'Cormorant_Infant';
     src: url('fonts/Cormorant_Infant/CormorantInfant-Light.ttf') format('truetype');
 }    
 </style>
-
 <?php
-session_start();
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "sirenegaze";
 $tabla = "inventario";
+
 
 // Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
