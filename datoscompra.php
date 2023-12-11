@@ -251,7 +251,7 @@ $total = $_SESSION['total'];
                     </div>
                 </div>
                 <br>
-                <button type="submit" class="btn btn-danger">Realizar Pago</button>
+                <button type="submit" class="btn btn-danger">Siguiente</button>
             </form>
         </div>
     </div>

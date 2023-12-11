@@ -31,10 +31,9 @@
             $gastosEnvio = 0; 
         }
         $_SESSION["gastosEnvio"] = $gastosEnvio;
-        $_SESSION["descuento"] = 0;
 
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            $_SESSION['total'] = $_SESSION['total'] + $gastosEnvio + $_SESSION['impuestos'] - $_SESSION['cupon'];
+            $_SESSION['total'] = $_SESSION['total'] + $_SESSION["gastosEnvio"] + $_SESSION['impuestos'] - $_SESSION['descuento'];
             header("Location: direccionenvio.php");
             exit; 
         }
