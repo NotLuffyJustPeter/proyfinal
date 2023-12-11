@@ -250,7 +250,7 @@
             $.ajax({
                 type: 'POST',
                 url: 'impuestos.php', // Reemplaza esto con la ruta correcta
-                data: { impuestos: impuestos.toFixed(2) },
+                data: { impuestos: impuestos.toFixed(2), pais: pais },
                 success: function (response) {
                     console.log(response); // Puedes imprimir la respuesta del servidor en la consola
                 }
