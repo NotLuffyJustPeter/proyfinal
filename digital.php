@@ -4,18 +4,19 @@
     if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
     $carrito = $_SESSION['carrito'];
 
-    $descuentototal = $_SESSION['descuentototal'];
+    // $descuentototal = $_SESSION['descuentototal'];
     $servername = "localhost";        
     $username = "root";
     $password = "";
     $database = "sirenegaze";
     $tabla = "inventario";
     $total = 0;
-        $conn = new mysqli($servername, $username, $password, $database);
+    
+    $conn = new mysqli($servername, $username, $password, $database);
 
-        if ($conn->connect_error) {
-            die("Error de conexión: " . $conn->connect_error);
-        }
+    if ($conn->connect_error) {
+        die("Error de conexión: " . $conn->connect_error);
+    }
     }
     ?>
 <!DOCTYPE html>

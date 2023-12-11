@@ -50,6 +50,8 @@ $username = "root";
 $password = "";
 $dbname = "sirenegaze";
 $tabla = "inventario";
+$precio_final=0;
+$total=0;
 
 // Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -74,15 +76,30 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
 
                 // Agregar una fila a la tabla con estilos
                 $pdf->Cell(80, 10, $row['nombre'], 1); // Aumentar el ancho de la celda del nombre del producto
-                $pdf->Cell(30, 10, '$' . $row['precio'], 1);
+                if($row['descuento']!=0){
+                    $precio_final = ($row['precio'] - $row['precio']*$row['descuento']/100);
+                }else{
+                    $precio_final = $row['precio'];
+                }
+                $pdf->Cell(30, 10, '$' . $precio_final, 1);
                 $pdf->Cell(30, 10, $detallesProducto['cantidad'], 1);
-                $pdf->Cell(30, 10, '$' . ($row['precio'] * $detallesProducto['cantidad']), 1);
+                $pdf->Cell(30, 10, '$' . ($precio_final * $detallesProducto['cantidad']), 1);
+                $total = $precio_final*$detallesProducto['cantidad'] + $total;
                 $pdf->Ln();
             }
         }
     }
 
+    $pdf->Cell(30, 10, '$' . $total, 1);
+
+    // $pdf->Cell(30, 10, $_SESSION["descuento"], 1); // Aumentar el ancho de la celda del nombre del producto
+    // $pdf->Cell(30, 10, $_SESSION["gastosEnvio"], 1);
+    // $pdf->Cell(30, 10, $_SESSION["total"]-$_SESSION["gastosEnvio"]-$total+$_SESSION["descuento"] , 1);
+    // $pdf->Cell(30, 10, '$' . $_SESSION["total"], 1);
+
     unset($_SESSION['carrito']);
+
+ 
 
     // Puedes agregar más detalles aquí
 
