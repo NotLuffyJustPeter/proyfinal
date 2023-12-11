@@ -64,21 +64,22 @@
             color: #000 !important; /* Set text color to black */
             background-color: #fff !important; /* Set background color to white */
             border-color: #000 !important; /* Set border color to black */
-            font-size:20px;    
+            font-size:18px;    
             }
 
             td, th{
-                font-size:20px; 
+                font-size:18px; 
             }
             
         </style>
-    <body>
+    <body style="font-family: 'Cormorant_Infant', sans-serif; font-size:18px;">
     <?php include 'header.php'; ?>
+
     <div class="container mt-5">
         <div class="row justify-content-center"> 
             <div class="col-md-6">
-                <h3> <a href="desglosecompra.php">Paso 1-></a></h3>
-                <h3>Detalle de Pago</h3>
+                <h3> <a href="desglosecompra.php">Resumen <i class="fa-solid fa-chevron-right" style="color: #000000; font-size:18px;"></i></a></h3>
+                <h4>Detalle de Pago</h4>
                 
                 
                 <div class="form-group">
@@ -140,10 +141,13 @@
                 </div>
                 </div>
 
-                <hr>
+                <div class="container mt-5">
+                <div class="row justify-content-center"> 
+            <div class="col-md-6">
                 <form class="form-group" action="desglosecompra.php" method="POST">
 
                         <div class="form-group">
+                        <hr>
                             <label for="pais">País:</label>
                             <select class="form-select" aria-label="Default select example" id="pais" name="pais" required>
                                 <option value="" disabled selected>Selecciona un país</option>
@@ -171,7 +175,7 @@
                             </div>
                         </div>
 
-                        <br>
+                        
                         <hr>
 
                         <div class="form-group">
@@ -180,12 +184,12 @@
                         <div class="form-group">
                             <hr>
                             <div id="descuentoAplicadoContainer">Descuentos aplicados: $0</div>
-                            <hr>
+                            <!-- <hr> -->
                         </div>
 
                         <div class="form-group">
                             <div id="impuestosContainer">Impuestos aplicados: $0</div>
-                            <hr>
+                            <!-- <hr> -->
                         </div>
 
                         <div class="form-group">
@@ -194,17 +198,24 @@
 
                         <hr>
                         <div class="form-group">
-                            <h3><div id="totalapagar">T O T A L : <?php echo $_SESSION["total"] + $_SESSION["gastosEnvio"];?></div></h3>
+                            <h3><div id="totalapagar">T O T A L : $<?php echo $_SESSION["total"] + $_SESSION["gastosEnvio"];?></div></h3>
                         </div>
                         
-                        <div class="form-group">
+                        <!-- Alineado a la izquierda
+                            <div class="form-group">
+                            <button type="submit" name="checar" class="btn btn-dark">Siguiente</button>
+                        </div> -->
+                        <!-- Alineado a la derecha -->
+                        <div class="form-group d-flex justify-content-end">
                             <button type="submit" name="checar" class="btn btn-dark">Siguiente</button>
                         </div>
+
                     </form>   
                 </div>        
             </div>
         </div>
-    </div>
+    </div></div></div>
+                </div>
     <?php include 'footer.php'; ?>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>

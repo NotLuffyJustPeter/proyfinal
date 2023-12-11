@@ -19,17 +19,19 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
 <style>
   body{
     padding-top: 90px;
+	font-family: 'Cormorant_Infant', sans-serif;
+    font-size:20px;
   }
 </style>
 </head>
 
-<body>
+<body style="font-family: 'Cormorant_Infant', sans-serif; font-size:18px;">
 		<?php include 'header.php'; ?>
 		<div class="col-md-4 container bg-default">
-			<h3><a href="desglosecompra.php">Paso 1-> </a> <a href="direccionenvio.php">Paso 2-></a></h3>
-			<h3 class="my-4">
-					Direccion de envio
-			</h3>
+			<h3><a href="desglosecompra.php">Resumen <i class="fa-solid fa-chevron-right" style="color: #000000; font-size:18px;"></i> </a> <a href="direccionenvio.php">Envio <i class="fa-solid fa-chevron-right" style="color: #000000; font-size:18px;"></i></a></h3>
+			<h4 class="my-4">
+					Dirección de envio
+			</h4>
 			<form >
 				<div class="form-row">
 					<div class="col-md-6 form-group">
@@ -120,7 +122,7 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
 					<label for="same-adress" class="form-check-label"></label>					
 					</div>
           <br>
-		 	 <button id="btnContinuarPago" class="btn btn-danger bt-lg btn-block" type="button" onclick="validarFormulario()">Continuar al método de pago</button>
+		 	 <button id="btnContinuarPago" class="btn btn-dark bt-lg btn-block" type="button" onclick="validarFormulario()">Continuar al método de pago</button>
 
 			</form>
 		</div>

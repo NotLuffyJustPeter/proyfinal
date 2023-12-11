@@ -30,9 +30,9 @@ $total = $_SESSION['total'];
 
         h3 {
             margin-bottom: 10px;
-            font-size: 15px;
-            font-weight: 600;
-            text-transform: uppercase;
+            /* font-size: 15px; */
+            /* font-weight: 600; */
+            /* text-transform: uppercase; */
         }
 
         .opps {
@@ -189,12 +189,12 @@ $total = $_SESSION['total'];
             }
         }
     </script>
-<body>
+<body style="font-family: 'Cormorant_Infant', sans-serif; font-size:18px;">
 <?php require 'header.php';?>
 <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <h3><a href="desglosecompra.php">Paso 1-> </a> <a href="direccionenvio.php">Paso 2-></a> <a href="datoscompra.php">Paso 3-></a></h3>
+                <h3><a href="desglosecompra.php">Resumen <i class="fa-solid fa-chevron-right" style="color: #000000; font-size:18px;"></i> &nbsp</a> <a href="direccionenvio.php">Envio <i class="fa-solid fa-chevron-right" style="color: #000000; font-size:18px;"></i>&nbsp&nbsp</a><a href="datoscompra.php">Pago <i class="fa-solid fa-chevron-right" style="color: #000000; font-size:18px;"></i></a></h3>
                 <h4 class="flex-grow mb-4">Selecciona tu metodo de Pago</h4>
                 <form action="" onchange="togglePaymentDetails(this.pay.value)">
                     <div class="payment">
