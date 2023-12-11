@@ -25,7 +25,7 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
 <body>
 		<?php include 'header.php'; ?>
 		<div class="col-md-4 container bg-default">
-			<h3><a href="desglosecompra.php">Paso 1-> </a> <a href="direccionenvio.php">Paso 2-></a> <a href="datoscompra.php">Paso 3-></a> </h3>
+			<h3><a href="desglosecompra.php">Paso 1-> </a> <a href="direccionenvio.php">Paso 2-></a></h3>
 			<h3 class="my-4">
 					Direccion de envio
 			</h3>
