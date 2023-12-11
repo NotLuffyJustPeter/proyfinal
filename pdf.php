@@ -16,7 +16,7 @@ $pdf->Ln(10);
 
 // Detalles de la tienda
 $pdf->SetFont('Arial', '', 12);
-$pdf->Cell(0, 10, 'SIRENGAZE MÉXICO CONTRATO 1 A EN P', 0, 1);
+$pdf->Cell(0, 10, 'SIRENGAZE MEXICO CONTRATO 1 A EN P', 0, 1);
 $pdf->Cell(0, 10, 'SEM93JDM2K42', 0, 1);
 $pdf->Cell(0, 10, 'Av. Universidad 906 C.P 2930304', 0, 1);
 $pdf->Cell(0, 10, 'Tel. 5087-093', 0, 1);
