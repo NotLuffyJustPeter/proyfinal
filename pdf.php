@@ -1,197 +1,142 @@
 <?php
-require('fpdf/fpdf.php'); // Asegúrate de que la ruta sea correcta
+require('fpdf/fpdf.php');
 session_start();
 
-// Crear una instancia de FPDF
 $pdf = new FPDF();
 $pdf->AddPage();
 
-// Establecer la coordenada para la imagen
-$imagenX = 10;
-$imagenY = 20;
-$centrado = $pdf->GetPageWidth()/3;
-$final = $pdf->GetPageWidth();
+// Logo
+// $imagePath = 'imagenes/logo.png';
+// $pdf->Image($imagePath, 60, 10, 90);
 
-//Agregar la imagen al PDF
-$imagePath = 'imagenes/logo.png'; // Reemplaza con la ruta de tu imagen
-$pdf->Image($imagePath, 60, 25 , 100);
-
-// Establecer la fuente y tamaño de fuente
-$pdf->SetFont('Arial', 'B', 20);
-
-// Establecer la coordenada para el primer dato debajo de la imagen
-$datoX = $imagenX + 10;
-$datoY = $imagenY + 30;
-
-// Agregar el encabezado
+// Título
 $pdf->SetFont('Arial', 'B', 16);
-$pdf->Cell(0, 10, "ORDEN DE COMPRA", 0, 1, 'C');
-$pdf->Ln(50);
+$pdf->Cell(0, 10, 'S I R E N G A Z E', 0, 1, 'C');
+$pdf->Ln(10);
 
-$pdf->Cell(0, 10, 'Detalles de la compra:', 0 ,1);
+// Detalles de la tienda
+$pdf->SetFont('Arial', '', 12);
+$pdf->Cell(0, 10, 'SIRENGAZE MÉXICO CONTRATO 1 A EN P', 0, 1);
+$pdf->Cell(0, 10, 'SEM93JDM2K42', 0, 1);
+$pdf->Cell(0, 10, 'Av. Universidad 906 C.P 2930304', 0, 1);
+$pdf->Cell(0, 10, 'Tel. 5087-093', 0, 1);
+$pdf->Ln(10);
+
+// Detalles de la compra
+$pdf->Cell(0, 10, 'Detalles de la compra:', 0, 1);
+$pdf->Ln(5);
 
 $pdf->SetFont('Arial', 'B', 12);
 
-// Agregar encabezados de columna con estilos en azul
-$pdf->SetFillColor(173, 216, 230); // Color de fondo azul claro
-$pdf->SetTextColor(0, 0, 128); // Color de texto azul oscuro
-
-$pdf->Cell(80, 10, "Producto", 1, 0, 'C', true); // Aumentar el ancho de la celda del nombre del producto
+// Encabezados de la tabla
+$pdf->SetFillColor(173, 216, 230);
+$pdf->SetTextColor(0, 0, 128);
+$pdf->Cell(80, 10, "Producto", 1, 0, 'C', true);
 $pdf->Cell(30, 10, "Precio", 1, 0, 'C', true);
 $pdf->Cell(30, 10, "Cantidad", 1, 0, 'C', true);
 $pdf->Cell(30, 10, "Subtotal", 1, 1, 'C', true);
 
-$pdf->SetTextColor(0); // Restaurar el color de texto a negro
+$pdf->SetTextColor(0);
 $pdf->SetFont('Arial', '', 12);
 
-// Agregar conexión a la base de datos
+// Conexión a la base de datos
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "sirenegaze";
 $tabla = "inventario";
-$precio_final=0;
-$total=0;
+$precio_final = 0;
+$total = 0;
 
-// Crear conexión
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Verificar la conexión
 if ($conn->connect_error) {
     die("Error de conexión: " . $conn->connect_error);
 }
 
+// Detalles de productos en la tabla
 if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
     $carrito = $_SESSION['carrito'];
 
-    // Agregar detalles al PDF
     foreach ($carrito as $productoId => $detallesProducto) {
         if ($detallesProducto['cantidad'] != 0) {
-            // Obtener detalles del producto desde la base de datos
             $query = "SELECT * FROM inventario WHERE Id_producto = $productoId";
             $result = $conn->query($query);
 
             if ($result && $result->num_rows > 0) {
                 $row = $result->fetch_assoc();
 
-                // Agregar una fila a la tabla con estilos
-                $pdf->Cell(80, 10, $row['nombre'], 1); // Aumentar el ancho de la celda del nombre del producto
-                if($row['descuento']!=0){
-                    $precio_final = ($row['precio'] - $row['precio']*$row['descuento']/100);
-                }else{
+                $pdf->Cell(80, 10, $row['nombre'], 1);
+                if ($row['descuento'] != 0) {
+                    $precio_final = ($row['precio'] - $row['precio'] * $row['descuento'] / 100);
+                } else {
                     $precio_final = $row['precio'];
                 }
                 $pdf->Cell(30, 10, '$' . $precio_final, 1);
                 $pdf->Cell(30, 10, $detallesProducto['cantidad'], 1);
                 $pdf->Cell(30, 10, '$' . ($precio_final * $detallesProducto['cantidad']), 1);
-                $total = $precio_final*$detallesProducto['cantidad'] + $total;
+                $total = $precio_final * $detallesProducto['cantidad'] + $total;
                 $pdf->Ln();
             }
         }
     }
 
+    // Total
+    $pdf->Cell(140, 10, 'Total', 1, 0, 'C');
     $pdf->Cell(30, 10, '$' . $total, 1);
+    $pdf->Ln(10);
 
-    // $pdf->Cell(30, 10, $_SESSION["descuento"], 1); // Aumentar el ancho de la celda del nombre del producto
-    // $pdf->Cell(30, 10, $_SESSION["gastosEnvio"], 1);
-    // $pdf->Cell(30, 10, $_SESSION["total"]-$_SESSION["gastosEnvio"]-$total+$_SESSION["descuento"] , 1);
-    // $pdf->Cell(30, 10, '$' . $_SESSION["total"], 1);
+    // Información adicional
+    $pdf->Cell(80, 10, 'Dirreccion de envio:', 0);
+    $pdf->Cell(60, 10, $_SESSION["direccion"], 0);
+    $pdf->Ln();
 
-    unset($_SESSION['carrito']);
+    $pdf->Cell(80, 10, 'Tipo de pago:', 0);
+    $pdf->Cell(60, 10, $_SESSION["tarjeta"], 0);
+    $pdf->Ln();
 
- 
+    $pdf->Cell(80, 10, 'Descuento:', 0);
+    $pdf->Cell(60, 10, isset($_SESSION["descuento"]) ? $_SESSION["descuento"] : "0", 0);
+    $pdf->Ln();
 
-    // Puedes agregar más detalles aquí
+    $pdf->Cell(80, 10, 'Envio:', 0);
+    $pdf->Cell(60, 10, $_SESSION["gastosEnvio"], 0);
+    $pdf->Ln();
+
+    $pdf->Cell(80, 10, 'IVA:', 0);
+    $pdf->Cell(60, 10, $_SESSION["impuestos"], 0);
+    $pdf->Ln();
+
+    // Total final
+    $pdf->SetFont('Arial', 'B', 14);
+    $pdf->Cell(80, 10, 'TOTAL', 1, 0, 'C');
+    $pdf->Cell(60, 10, '$' . $_SESSION["total"], 1, 1, 'C');
+    $pdf->SetFont('Arial', '', 12);
+
+    $pdf->Ln(10);
+
+    // Agradecimiento y enlace para descargar PDF
+    $pdf->Cell(0, 10, '*** GRACIAS POR SU COMPRA ***', 0, 1, 'C');
+    $pdf->Image('imagenes/Log.png', 80, $pdf->GetY(), 50);
+    $pdf->Ln(40);
+    
+    $pdf->Cell(0, 10, 'WWW.SIRENGAZE.COM', 0, 1, 'C');
+    $pdf->Ln();
+
+    // Confirmar pago
+    // $pdf->Cell(0, 10, 'Para confirmar su pago, haga clic en el siguiente enlace:', 0, 1);
+    // $pdf->Ln();
+    // $pdf->SetFont('Arial', 'U', 12);
+    // $pdf->Cell(0, 10, 'Confirmar Pago', 0, 1, 'C', false, 'http://tu-sitio.com/venta.php');
+    // $pdf->SetFont('Arial', '', 12);
+    // $pdf->Ln(10);
 
     // Mostrar el PDF en el navegador
     $pdf->Output();
     exit();
 } else {
-    // Redirecciona a la página de carrito si no hay datos de compra
+    // Redirigir a la página de carrito si no hay datos de compra
+    header('Location: carrito.php');
+    exit();
 }
-
-
-
-// $pdf->SetFont('Arial', '', 12);
-// $pdf->SetXY($final - 129, $datoY);
-// $pdf->Cell(0, 0, "ASUNTO: SOLICITUD PARA APLICACION DE EXAMEN", 0, 1);
-
-// $pdf->SetXY($final - 107, $pdf->GetY() + 10);
-// $pdf->Cell(0, 10, "CENTRO DE ATENCION DEPARTAMENTAL", 0 ,1);
-
-// $pdf->SetXY($final -46, $pdf->GetY());
-// $pdf->Cell(0, 0, "A $fecha_actual", 0 , 1 );
-// $pdf->Cell(0,10,"",0,1);
-
-// $pdf->SetXY($datoX, $pdf->GetY() + 10);
-// $pdf->SetFont('Arial', 'B', 12);
-// $pdf->Cell(0,10, "A QUIEN SE LE INFORMA", 0 ,1);
-// $pdf->SetFont('Arial', '', 12);
-
-// $pdf->SetRightMargin(20);
-// $pdf->SetXY($datoX, $pdf->GetY() + 5);
-// $pdf->MultiCell(0, 10, "LOS DATOS PROPORCIONADOS A CONTINUACION CORRESPONDEN A EL ASPIRANTE $nombre $last_name1 $last_name2 QUE BUSCA FORMAR PARTE DE NUESTRO EQUIPO EN INOVATECH SOLUTIONS. AGRADECEMOS SU INTERES EN UNIRSE A NUESTRA ORGANIZACION Y LE INVITAMOS A COMPLETAR EL SIGUIENTE EXAMEN PARA TERMINAR DE VER SI ES LO QUE BUSCAMOS EN NUESTRO EQUIPO. LA INFORMACION PROPORCIONADA SERA TRATADA CON LA MAXIMA CONFIDENCIALIDAD Y SE UTILIZARA UNICAMENTE CON EL PROPOSITO DE EVALUACION Y CONTACTO RELACIONADO CON EL PROCESO DE SELECCION. LE AGRADECEMOS POR CONSIDERAR UNA CARRERA EN INOVATECH SOLUTIONS.", 0, 'J');
-
-// $pdf->SetXY($centrado + 16, $pdf->GetY() + 10);
-// $pdf->SetFont('Times', 'B', 15);
-// $pdf->Cell(0,10, "H A C E   M E N C I O N  A", 0 ,1);
-// $pdf->SetFont('Arial', '', 12);
-
-// $imagePath2 = 'perfil/'.$file; // Reemplaza con la ruta de tu imagen
-// $pdf->Image($imagePath2, $centrado + 25, $pdf->GetY() + 5 , 50);
-
-// $pdf->SetY($pdf->GetY() + 55);
-// $pdf->SetRightMargin(20);
-// $pdf->SetXY($datoX, $pdf->GetY() + 10);
-// $pdf->MultiCell(0, 10, "$nombre $last_name1 $last_name2 COMO POSIBLE NUEVO INTEGRANTE DE NUESTRA EMPRESA NACIDO EL $day/$month/$year CON UN DOMINIO DE LENGUAJES EN:", 0, 'J');
-// if(!empty($_POST['op'])){
-//     foreach($_POST["op"] as $op) {
-//         $pdf->SetXY($datoX,$pdf->GetY());
-//         $pdf->Cell(0, 10,"->$op",0, 1);
-//     }
-// }else{
-//     $pdf->SetFont('Times', 'B', 9);
-//     $pdf->SetXY($datoX,$pdf->GetY());
-//     $pdf->MultiCell(0, 10,"SIN DOMINIO DE LENGUAJES, LO MÁS PROBABLE ES QUE NO QUEDES EN EL TRABAJO SOLICITADO",0, 'J');
-// }
-// $pdf->SetFont('Times', '', 12);
-// $pdf->setxy($datoX, $pdf->GetY());
-// $pdf->MultiCell(0, 10, "CONTACTALO AL: $tel .EL APLICANTE $dis ES CAPAZ DE HACER VIAJES, TAMBIEN CONSULTANDO MAS A FONDO $dis2 ES CAPAZ DE QUEDARSE INDEFINIDAMENTE PARA CAMBIO DE RESIDENCIA POR EL TRABAJO Y $english CUENTA CON UN DOMINIO DEL INGLES PARA ESTE TRABAJO, ASI MISMO APLICA POR UN PUESTO DE:", 0, 'J');
-// if(!empty($_POST['op2'])){
-//     foreach($_POST["op2"] as $op) {
-//         $pdf->SetXY($datoX,$pdf->GetY());
-//         $pdf->Cell(0, 10,"->$op",0, 1);
-//     }
-// }else{
-//     $pdf->SetFont('Times', 'B', 9);
-//     $pdf->SetXY($datoX + 15,$pdf->GetY());
-//     $pdf->Cell(0, 10,"SIN PUESTOS A APLICAR, SE LE ASIGNARA EL MAS CONVENIENTE SEGUN SU PERFIL",0, 1);
-// }
-// $pdf->SetFont('Times', '', 12);
-// $pdf->SetRightMargin(20);
-// $pdf->SetXY($datoX, $pdf->GetY());
-// $pdf->MultiCell(0, 10, "UTILIZAR $llave COMO TU LLAVE DE ACCESO AL EXAMEN PREVIO A LA ADMISION", 0 ,'J');
-
-// $pdf->SetXY($centrado + 25, $pdf->GetY() + 5);
-// $pdf->SetFont('Times', 'B', 14);
-// $pdf->Cell(0,10, "A T E N T A M E N T E", 0 ,1);    
-// $pdf->SetFont('Arial', '', 11);
-
-// $imagePath2 = 'img/firma.png';// Reemplaza con la ruta de tu imagen
-// $pdf->Image($imagePath2, $centrado + 30, $pdf->GetY() - 5 , 40);
-
-// $pdf->SetFont('Arial', '', 9);
-// $pdf->SetXY($centrado + 17, $pdf->GetY() + 20);
-// $lineY = $pdf->GetY();
-// $lineX1 = $centrado + 22;
-// $lineX2 = 130; // Ancho de la línea
-// $pdf->Line($lineX1, $lineY, $lineX2, $lineY);
-// $pdf->Cell(0,10, "LIC. CARLOS JESUS CATELLANOS PERERA", 0 ,1);
-
-// $lineY = $pdf->GetY() + 10;
-// $lineX1 = 10;
-// $lineX2 = 200; // Ancho de la línea
-// $pdf->Line($lineX1, $lineY, $lineX2, $lineY);
-
-// Generar el PDF en el navegador
-$pdf->Output();
+?>
