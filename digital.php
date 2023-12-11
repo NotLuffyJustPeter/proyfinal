@@ -39,6 +39,12 @@
         .centro{
             text-align: center;
         }
+
+        .container-ticket{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
         /* td, th{
             margin:50px;
         } */
@@ -59,6 +65,9 @@
 </head>
 <body>
     <?php include 'header.php'; ?>
+
+    <div class="container-ticket">
+
     <div class="ticket">
         <h2 class="centro">S I R E N G A Z E</h2>
         <br><br>
@@ -146,6 +155,8 @@
         <img src="imagenes/Log.png" alt="" class="tic">
         <h4 class="centro">WWW.SIRENGAZE.COM</h4>
     </div>
+    
+</div> <!--Cierre del container-ticket  -->
     <?php include 'footer.php'; ?>
 </body>
 </html>
