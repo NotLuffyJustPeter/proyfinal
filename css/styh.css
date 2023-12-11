@@ -65,7 +65,7 @@ a:hover{
     justify-content:space-around; 
     font-family: 'Cormorant_Infant', sans-serif;
     font-size: 19px;
-    z-index: 1; /* Valor para asegurar que esté sobre otros elementos */
+    z-index: 100; /* Valor para asegurar que esté sobre otros elementos */
     padding: 10px;
 }  
 

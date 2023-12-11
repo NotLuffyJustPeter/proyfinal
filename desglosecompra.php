@@ -2,6 +2,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="stylesheet" href="css/styt.css">
     <link rel="stylesheet" href="css/altas.css">
+    <link rel="stylesheet" href="css/carrito.css">
 </header>
 <?php
 session_start();
@@ -117,28 +118,58 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
     </script>
     <style>
         body {
-            background-color: #f4f4f4;
+            background-color: white;
             padding-top: 90px;
+            font-family: 'Cormorant_Infant', sans-serif;
+            font-size:20px;
+            /* flex-direction:column;
+            justify-content:space-around; */
+            /* display:grid;
+            grid-template-columns: 30% 60%;
+            justify-content: center; */
+            
         }
-        table {
+        /* table {
             width: 55%;
             border-collapse: collapse;
-            border: 1px solid black; /* Establece el borde de la tabla */
+            border: 1px solid black; /* Establece el borde de la tabla 
+        } */
+        /* td {
+            padding: 8px; /* Añade relleno a las celdas para separar el contenido del borde 
+        } */
+        .accordion-button {
+        color: #000 !important; /* Set text color to black */
+        background-color: #fff !important; /* Set background color to white */
+        border-color: #000 !important; /* Set border color to black */
+        font-size:20px;    
         }
-        td {
-            padding: 8px; /* Añade relleno a las celdas para separar el contenido del borde */
+
+        td, th{
+            font-size:20px; 
+        }
+
+        .accordion{
+            /* width: 300px;
+            font-size:20px; */
         }
     </style>
 <body>
 
 <div class="container mt-5">
-    <div class="row justify-content-center">
+     <div class="row justify-content-center"> 
         <div class="col-md-6">
             <h3> <a href="desglosecompra.php">Paso 1-></a></h3>
             <h3>Detalle de Pago</h3>
             
             
-                <div class="form-group">
+            <div class="form-group">
+            <div class="accordion accordion-flush" id="accordionFlushExample1">
+            <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                Ver resumen
+                </button>
+            </h2>
                 <?php 
                 foreach ($carrito as $productoId => $detallesProducto) {
                     echo '<div class="form-group">';
@@ -149,14 +180,13 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
 
                         if ($result->num_rows > 0) {
                             $row = $result->fetch_assoc();
-                            echo '<table>';
+                            ?>
+                            <div id="flush-collapseOne" class="accordion-collapse collapse show" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample1">
+                            <div class="accordion-body">
+                            <?php
+                            echo '<table class="table table-borderless">';
                             echo '<tr>';
-                            echo '<td rowspan=5><img class="img_carrito" src="imagenes/' . $row['imagen'] . '" alt="imagen no cargada" width="130" height="180"></td>';
-                            echo '</tr>';
-                            echo '<tr>';
-                            echo '<td>' . $detallesProducto['cantidad'] . ' pz</td>';
-                            echo '<td> </td>';
-                            echo '<td> </td>';
+                            echo '<td rowspan=5><img class="img_detalles" src="imagenes/' . $row['imagen'] . '" alt="imagen no cargada" width="130" height="180"></td>';
                             echo '</tr>';
                             echo '<tr>';
                             echo '<td>' . $row['nombre'] . '</td>';
@@ -164,67 +194,106 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
                             echo '<td> </td>';
                             echo '</tr>';
                             echo '<tr>';
-                            echo '<td>' . $row['descripcion'] . '</td>';
-                            echo '<td> </td>';
-                            echo '<td> </td>';
-                            echo '</tr>';
                             if ($row['descuento'] != 0) {
-                                $precio_final = ($row['precio'] - $row['precio'] * $row['descuento'] / 100);
+                            $precio_final = ($row['precio'] - $row['precio'] * $row['descuento'] / 100);
                             } else {
-                                $precio_final = $row['precio'];
+                            $precio_final = $row['precio'];
                             }
-                            echo '<tr>';
-                            echo '<td>$' . $precio_final * $detallesProducto['cantidad'] . '</td>';
+                            echo '<td> $' . $precio_final . '</td>';
+                            echo '<td></td>';
+                            echo '</tr>';
+                            echo '<td> x' . $detallesProducto['cantidad']  . '</td>';
                             echo '<td> </td>';
-                            echo '<td> </td>';
+                            echo '<td style="font-weight: 900;">$' . $precio_final * $detallesProducto['cantidad'] . '</td>';
                             echo '</tr>';
                             echo '</table>';
-
+                            }
                         }
-                    }
-                     echo '</div>';
+                    echo '</div>';
                 }
-                ?>
-                </div>
-                <div class="form-group">
-                    <p>Subtotal: $<?php echo $subtotal;?></p>
-                    <div class="form-group">
-                    <p>Descuento del cupón al subtotal: $<?php echo $_SESSION['cupon']; ?></p>
-                    </div>
-                    <div class="form-group">
+            ?>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+            </div>
+
+            <hr>
+
+            <div class="form-group">
                     <form class="mx-auto" id="formDireccion" method="post">
-                        <div class="form-group">
                             <label for="pais">País:</label>
-                            <select id="pais" name="pais" required>
+                            <select class="form-select" aria-label="Default select example" id="pais" name="pais" required>
                             <?php $paisHolder=$_SESSION['pais'];?>
                                 <option value=""><?php echo $paisHolder; ?></option>
                                 <option value="USA">Estados Unidos</option>
                                 <option value="MEX">México</option>
                             </select>
-                        </div>
                     </form>
+            </div>
+            
+
+            <div class="accordion accordion-flush" id="accordionFlushExample2">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        ¿Tienes un código de descuento?
+                    </button>
+                </h2>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample2">
+                    <div class="accordion-body">
+                        <!-- <input type="text" class="form-control" id="floatingInput2" placeholder="">
+                        <br> -->
+                        <!-- <button type="button" class="btn btn-dark">Aplicar</button> -->
+                        <form class="mx-auto" method="post">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="floatingInput2 codigo" name="codigo" placeholder="Ingresar codigo">
+                                <br>
+                                <button type="submit" name="codigoDescuento" class="btn btn-dark">Aplicar</button>
+                            </div>
+                        </form>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+
+                <div class="form-group">
+                    <p>Subtotal: $<?php echo $subtotal;?></p>
+                </div>
+                <div class="form-group">
+                    <p>Descuento del cupón al subtotal: $<?php echo $_SESSION['cupon']; ?></p>
+                </div>
+
                     <div class="form-group">
-                        <p title="Los impuestos son aplicados al subtotal">Impuestos aplicados: (6.25% USA 16% Mex) $<?php echo $_SESSION['impuestos']; ?></p>
+                        <p title="Los impuestos son aplicados al subtotal">Impuestos aplicados (6.25% USA 16% Mex): $<?php echo $_SESSION['impuestos']; ?></p>
                     </div>
                     <div class="form-group">
                     <p>Gastos de envío: $<?php echo $gastosEnvio; ?></p>
                     </div>
+                    <hr>
                     <div class="form-group">
-                        <h2>Total a Pagar: $<?php echo $_SESSION['total'] + $gastosEnvio + $_SESSION['impuestos'];?></h2>
+                        <h3>T O T A L : $<?php echo $_SESSION['total'] + $gastosEnvio + $_SESSION['impuestos'];?></h3>
                     </div>
                 </div>
                 <form class="mx-auto" method="post">
                 <div class="form-group">
-                    <button type="submit" name="checar" class="btn btn-primary">Siguiente</button>
+                    <button type="submit" name="checar" class="btn btn-dark">Siguiente</button>
                 </div>
                 </form>
-            <form class="mx-auto" method="post">
+
+            <!-- <form class="mx-auto" method="post">
                 <div class="form-group">
                     <input type="text" id="codigo" name="codigo" placeholder="Promo code">
                     <button type="submit" name="codigoDescuento" class="btn btn-primary">Aplicar Código</button>
                 </div>
-            </form>
+            </form> -->
+            
         </div>
     </div>
 </div>
