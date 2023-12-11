@@ -42,7 +42,7 @@
         <a href="pdf.php" class="custom-button">
             <i class="fas fa-file-pdf"></i> PDF<?php echo $_SESSION["descuento"] ?>
         </a>
-        <a href="" class="custom-button">
+        <a href="digital.php" class="custom-button">
             <i class="fas fa-digital-tachograph"></i> DIGITAL
         </a>
         <a href="" class="custom-button">
