@@ -1,3 +1,4 @@
+<?php session_start();?>
 
 <header>
     <title>Tienda Online</title>
@@ -30,7 +31,7 @@
 </header>
 
 <body>
-<?php session_start();
+<?php
 require 'header.php';
 ?>
     <button style="margin-top:80px; margin-left:80px;" class="btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">

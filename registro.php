@@ -152,9 +152,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if (isset($_POST["sus"])) {
         if($_POST["sus"] == "1")
-            $esSuscriptor = true;
+            $esSuscriptor = 1;
     } else {
-        $esSuscriptor = false;
+        $esSuscriptor = 0;
     }
 
     $claveSecreta = "tu_clave_secreta";
@@ -198,13 +198,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         icon: "success",
                         confirmButtonText: "Aceptar"
                     }).then(function() {
-                        if(' . $esSuscriptor . '){
-                            window.location = "bienvenida.php?nombre=' . urlencode($nombre) . '&correo=' . urlencode($email) . '";
-                        } else {
-                            window.location = "index.php";
-                        }
+                        window.location = "bienvenida.php?nombre=' . urlencode($nombre) . '&correo=' . urlencode($email) . '&sus='. urlencode($esSuscriptor) .'";
                     });
                 </script>';
+            exit;
         } else {
             // Error al registrar
             echo '<script>
