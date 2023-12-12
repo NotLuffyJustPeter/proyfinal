@@ -171,7 +171,7 @@
             </a>
         </div>
         <div style="margin-top:50px; margin-left: 80px;">
-            <a href="venta.php"><button type="button" class="btn btn-danger">Confirmar Pago</button></a>
+            <a href="correo-ticket.php"><button type="button" class="btn btn-danger">Confirmar Pago</button></a>
         </div>
     </div>
     

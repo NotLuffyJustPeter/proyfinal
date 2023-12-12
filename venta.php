@@ -4,7 +4,6 @@
 
 <?php
 session_start();
-
 if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
     $carrito = $_SESSION['carrito'];
     $_SESSION['impuestos'] = 0;
@@ -50,4 +49,5 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
             });
           </script>';
 }
+header('Location: index.php');
 ?>

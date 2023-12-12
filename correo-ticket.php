@@ -29,7 +29,16 @@ require 'PHPMailer/SMTP.php';
 $mail = new PHPMailer(true);
 
 $nombre = "aaron";
-$email = "aaron_lopez222@hotmail.com";
+$cuenta = $_SESSION["cuenta"];
+
+$query = "SELECT email FROM usuarios WHERE cuenta = '$cuenta'";
+$result = $conn->query($query);
+
+if ($result->num_rows > 0) {
+    $row = $result->fetch_assoc();
+    $email = $row["email"]; // Obtener el correo de la fila obtenida
+} 
+
     
     try {
     
@@ -248,7 +257,7 @@ $email = "aaron_lopez222@hotmail.com";
 
         $mail->send();
         echo '<script>alert("Message has been sent"); window.location.href = "index.php";</script>';
-        header('Location: index.php');
+        header('Location: venta.php');
     } catch (Exception $e) {
         echo '<script>alert("Message could not be sent. Mailer Error: ' . $mail->ErrorInfo . '"); window.location.href = "index.php";</script>';
         header('Location: index.php');
