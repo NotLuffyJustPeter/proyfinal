@@ -1,4 +1,3 @@
-<link rel="icon" sizes="180x180" href="imagenes/logoic.ico">
 <?php
     session_start();
 
@@ -47,6 +46,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-... (valor del hash) ..." crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+    <link rel="icon" sizes="180x180" href="imagenes/logoic.ico">
     <link rel="stylesheet" href="css/iniciar_sesion.css">
     <style>
         @media screen and (max-width: 768px) {
