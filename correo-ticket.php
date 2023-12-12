@@ -73,6 +73,7 @@ $email = "aaron_lopez222@hotmail.com";
                         
                         .can{
                             text-align: center;
+                            padding: 15px;
                         }
                         
                         .titulo{
@@ -127,17 +128,29 @@ $email = "aaron_lopez222@hotmail.com";
                             color: white;
                             font-weight: 600;
                         }
+                        .marca{
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            font-family: "Courier New", Courier, monospace;
+                        }
+                      
                  </style>
                  </head>
                  <body>';
         $emailContent = 
         '<h1>ticket</h1>
-        <table  class="table table-borderless table-hover prod">
+        <div class="marca">
+            <h2>S I R E N G A Z E</h2>
+        </div>';
+        $emailContent .= '<p>' . date("d/m/Y H:i:s") . '</p>
+        <br>
+        <hr>';        
+        $emailContent .='<div class="marca"> <table  class="table table-borderless table-hover prod">
             <thead>
                 <tr>
                     <th class="px-3 can">Imagen</th>
                     <th class="px-3 can">Producto</th>
-                    <th class="px-3 can">Descripcion</th>
                     <th class="px-3 can">Precio</th>
                     <th class="px-3 can">Cantidad</th>
                     <th class="px-3 can">Subtotal</th>
@@ -152,12 +165,12 @@ $email = "aaron_lopez222@hotmail.com";
                     if ($result->num_rows > 0) {
                         $row = $result->fetch_assoc();
                         $emailContent .= '<tr>';
-                        $emailContent .= '<td  class="align-middle px-4"><img src="cid:imagen' . $productoId . '" alt="imagen_producto_' . $productoId . '" style="width: 100px; height: 100px;"></td>';
+                        $emailContent .= '<td  class="align-middle px-4 can"><img src="cid:imagen' . $productoId . '" alt="imagen_producto_' . $productoId . '" style="width: 100px; height: 130px;"></td>';
                         $imagePath = 'imagenes/' . $row['imagen']; // Ruta de la imagen que deseas adjuntar
                         $imagenNombre = 'imagen' . $productoId; // Nombre único para cada imagen
                         $mail->AddEmbeddedImage($imagePath, $imagenNombre, $row['imagen']); 
-                        $emailContent .= '<td  class="align-middle px-4">' . $row['nombre'] . '</td>';
-                        $emailContent .= '<td  class="align-middle px-4">' . $row['descripcion'] . '</td>';
+                        $emailContent .= '<td  class="align-middle px-4 can">' . $row['nombre'] . '</td>';
+                        // $emailContent .= '<td  class="align-middle px-4">' . $row['descripcion'] . '</td>';
                         if ($row['descuento'] != 0) {
                             $precio_final = ($row['precio'] - $row['precio'] * $row['descuento'] / 100);
                             $emailContent .= '<td class="align-middle px-4 can" style="color:red";> $' . $precio_final . '</td>';
@@ -174,18 +187,63 @@ $email = "aaron_lopez222@hotmail.com";
                 }
             }
             $emailContent .= '<tr>';
-            $emailContent .= '<td colspan="5" style="text-align:center;">T&nbsp O &nbspT&nbsp A&nbsp L</td>';
-            $emailContent .= '<td class="can">$' . $total . '</td>';
-            $emailContent .= '<td></td>';
+            $emailContent .= '<td colspan="4" style="text-align:center;">P&nbsp A &nbsp G&nbsp O:</td>';
+            $emailContent .= '<td style="text-align:center;">' . (isset($_SESSION["tarjeta"]) ? $_SESSION["tarjeta"] : "") . '</td>';
             $emailContent .= '</tr>';
-            $emailContent .= '</tbody></table>';
+            $emailContent .= '<tr>';
+            $emailContent .= '<td colspan="4" style="text-align:center;">D&nbsp E &nbspS&nbsp C&nbsp U&nbsp E&nbsp N&nbsp T&nbspO:</td>';
+            $emailContent .= '<td  style="text-align:center;">' . (isset($_SESSION["descuento"]) ? $_SESSION["descuento"] : "0") . '</td>';
+            $emailContent .= '</tr>';
+            $emailContent .= '<tr>';
+            $emailContent .= '<td colspan="4" style="text-align:center;">E&nbsp N &nbsp V&nbsp I&nbsp O:</td>';
+            $emailContent .= '<td  style="text-align:center;">' . (isset($_SESSION["gastosEnvio"]) ? $_SESSION["gastosEnvio"] : "") . '</td>';
+            $emailContent .= '</tr>';
+            $emailContent .= '<tr>';
+            $emailContent .= '<td colspan="4" style="text-align:center;">I&nbsp V &nbsp A:</td>';
+            $emailContent .= '<td  style="text-align:center;">' . (isset($_SESSION["impuestos"]) ? $_SESSION["impuestos"] : "") . '</td>';
+            $emailContent .= '</tr>';
+            
+            $emailContent .= '<tr>';
+            $emailContent .= '<td colspan="4" style="text-align:center;">T&nbsp O &nbspT&nbsp A&nbsp L:</td>';
+            $emailContent .= '<td  style="text-align:center;">' . (isset($_SESSION["total"]) ? $_SESSION["total"] : "") . '</td>';
+            $emailContent .= '</tr>';
+            // $emailContetn .= '<tr>
+            //             <td>Dirreccion de envio:</td>
+            //             <td>' .  (isset($_SESSION["direccion"]) ? $_SESSION["direccion"] : "") . '</td>
+            //         </tr>
+            //         <tr>
+            //             <td>Tipo de pago:</td>
+            //             <td>' . (isset($_SESSION["tarjeta"]) ? $_SESSION["tarjeta"] : "") . '</td>
+            //         </tr>
+            //         <tr>
+            //             <td>Descuento:</td>
+            //             <td>' . (isset($_SESSION["descuento"]) ? $_SESSION["descuento"] : "0") . '</td>
+            //         </tr>
+            //         <tr>
+            //             <td>Envio:</td>
+            //             <td>' . (isset($_SESSION["gastosEnvio"]) ? $_SESSION["gastosEnvio"] : "") . '</td>
+            //         </tr>
+            //         <tr>
+            //             <td>IVA:</td>
+            //             <td>' . (isset($_SESSION["impuestos"]) ? $_SESSION["impuestos"] : "") . '</td>
+            //         </tr>
+            //         <tr>
+            //             <td>TOTAL</td>
+            //             <td>' . (isset($_SESSION["total"]) ? $_SESSION["total"] : "") . '</td>
+            //         </tr>';
+            
+            $emailContent .= '</tbody></table><hr></div>';
+            $imagePath = 'imagenes/log.jpg';
+            $mail->AddEmbeddedImage($imagePath, 'logo');
+            $emailContent .=   '<div class="marca">
+                                    <p>GRACIAS POR SU COMPRA </p>
+                                    <img src="cid:logo" alt="" width="100" height="130">
+                                    <h4 >WWW.SIRENGAZE.COM</h4>
+                                </div>';
             $mail->isHTML(true);
             $mail->Subject = $nombre;
             $mail->Body .= $emailContent; // Tu contenido HTML aquí
             $mail->Body .= '</body></html>';
-        // Adjuntar imagen al correo
-        // $imagePath = 'imagenes/Omar.jpg'; // Ruta de la imagen que deseas adjuntar
-        // $mail->AddEmbeddedImage($imagePath, 'imagen1', 'imagen1.jpg');
     
 
         $mail->send();
