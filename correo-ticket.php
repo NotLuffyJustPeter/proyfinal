@@ -256,7 +256,18 @@ if ($result->num_rows > 0) {
     
 
         $mail->send();
-        header('Location: ticket.php');
+        echo '<script>
+        Swal.fire({
+            icon: "success",
+            title: "Message has been sent",
+            showConfirmButton: false,
+            timer: 1500
+        }).then(function() {
+            window.location.href = "https://sirengaze.000webhostapp.com/ticket.php";
+        });
+    </script>';
+    
+        header('Location: venta.php');
     } catch (Exception $e) {
         header('Location: index.php');
     }
