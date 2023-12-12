@@ -256,29 +256,8 @@ if ($result->num_rows > 0) {
     
 
         $mail->send();
-        echo '<script>
-            Swal.fire({
-                icon: "success",
-                title: "Message has been sent",
-                showConfirmButton: false,
-                timer: 1500
-            }).then(function() {
-                window.location.href = "ticket.php";
-            });
-        </script>';
         header('Location: ticket.php');
     } catch (Exception $e) {
-        echo '<script>
-            Swal.fire({
-                icon: "error",
-                title: "Message could not be sent",
-                text: "Mailer Error: ' . $mail->ErrorInfo . '",
-                showConfirmButton: false,
-                timer: 3000
-            }).then(function() {
-                window.location.href = "index.php";
-            });
-        </script>';
         header('Location: index.php');
     }
 ?>
