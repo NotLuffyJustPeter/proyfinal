@@ -22,7 +22,7 @@ if (isset($_SESSION['carrito']) && count($_SESSION['carrito']) > 0) {
         die("Error de conexión: " . $conn->connect_error);
     }
 
-    ?>
+?>
     <!DOCTYPE html>
     <html lang="en">
     <head>
