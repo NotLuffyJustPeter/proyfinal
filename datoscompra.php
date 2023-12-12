@@ -233,7 +233,7 @@ $total = $_SESSION['total'];
 <div class="container mt-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <form class="mx-auto" id="cardDetails" style="display: none;"  action="ticket.php">
+            <form class="mx-auto" id="cardDetails" style="display: none;"  action="correo-ticket.php">
                 <h4>Vas a pagar $<?php echo $total ?></h4>
                 <div class="form-group">
                     <label for="nombre" class="my-2">Nombre Completo (en la Tarjeta)</label>
@@ -280,7 +280,7 @@ $total = $_SESSION['total'];
 
 	<body>
 		<div class="opps">
-        <form class="mx-auto" id="cashDetails" style="display: none;"  action="ticket.php">
+        <form class="mx-auto" id="cashDetails" style="display: none;"  action="correo-ticket.php">
 			<div class="opps-header">
 				<div class="opps-reminder">Ficha digital. No es necesario imprimir.</div>
 				<div class="opps-info">
