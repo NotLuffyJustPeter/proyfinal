@@ -263,7 +263,7 @@ if ($result->num_rows > 0) {
             showConfirmButton: false,
             timer: 1500
         }).then(function() {
-            window.location.href = "https://sirengaze.000webhostapp.com/ticket.php";
+            window.location.href = "ticket.php";
         });
     </script>';
     

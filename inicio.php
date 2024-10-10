@@ -198,7 +198,7 @@
 <body>
     <div class="bloque1">
       <div class="texto">
-            <h1 class="t1">F A S H I O N</h1>
+            <h1 class="t1">F A S H O N</h1>
             <h1 class="t2">N E V E R</h1>
             <h1 class="t2 estre" style="margin-left: 180px;">S L E E P S</h1>
             <h1 class="t2 estrella">S L E E P S</h1>
